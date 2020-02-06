@@ -1,0 +1,9 @@
+# Scade
+.build/
+.target/
+products/
+*.ipa
+*.scadeapp
+.DS_Store
+CMakeLists.txt
+fonts/
