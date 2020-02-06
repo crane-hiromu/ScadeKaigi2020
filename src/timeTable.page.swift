@@ -4,6 +4,11 @@ import ScadeKit
 
 final class TimeTablePageAdapter: SCDLatticePageAdapter {
 	
+	
+	@objc dynamic private var timetable: Timetable?
+	private var binding: SCDBindingBinding?
+	private var titleBinding: SCDBindingBinding?
+	
 	private var pageType: TimeTablePageType = .dayOne
 	
 	private var tabItems: [SCDWidgetsToolBarItem] {
@@ -35,15 +40,6 @@ final class TimeTablePageAdapter: SCDLatticePageAdapter {
 			})
 		}
 		debugPrint("----load----", tabItems)
-		
-		
-		
-		let service: TimetableService? = SCDRuntime.loadService("TimetableService.service")
-		let result = service?.getTimetable()
-		print("-----", result)
-		
-		
-		timeTableList.items = result?.sessions.map { $0.title } ?? []
 	}
 	
 	override func activate(_ view: SCDLatticeView?) {
@@ -63,6 +59,45 @@ final class TimeTablePageAdapter: SCDLatticePageAdapter {
 		
 		debugPrint("----show----")
 	
+				let service: TimetableService? = SCDRuntime.loadService("TimetableService.service")
+		
+		guard let result = service?.getTimetable() else { return }
+		timetable = Timetable(result)
+		
+//					print(timetable?.sessions.first) 
+//			print(timetable?.speakers.first) 
+//			print(timetable?.rooms.first) 
+//			print(timetable?.questions.first) 
+//			print(timetable?.categories.first) 
+		
+		binding = from(timetable!) // todo
+			.select(\.sessions)
+			.cast([Any].self)
+			.bind(to: from(timeTableList).select(\.items))
+		
+		let row = from(timeTableList).select(\.elements, .all)
+		let top = row.select(\.children, .at(0)).cast(SCDWidgetsRowView.self)
+		let middle = row.select(\.children, .at(1)).cast(SCDWidgetsRowView.self)
+		let bottom = row.select(\.children, .at(2)).cast(SCDWidgetsRowView.self)
+				
+		titleBinding = from(timeTableList)
+			.select(\.items, .all)
+			.select(\Sessions.title.ja)
+			.bind(to: middle.select(\.children, .at(0)).select(\SCDWidgetsLabel.text))
+			
+			
+
+//    self.timeTableList.elements.enumerated().forEach { i, row in
+////			let label = row.children.first?.asList?.children.first?.asRow?.children.first?.asLabel
+//			
+////			print("----elements", row.children.first, row.children.first?.asRow?.children.first)
+//			
+//			let label = row.children.first?.asRow?.children.first?.asLabel
+//			
+////			DispatchQueue.main.sync {
+//				label?.text = "gg" // self.timeTableList.items[i]. as? String ?? ""
+////			}
+//		}
 	}
 }
 
@@ -79,3 +114,21 @@ enum TimeTablePageType: String, CaseIterable {
 		}
 	}
 }
+
+@objcMembers
+final class Timetable: EObject {
+    dynamic var sessions: [Sessions]
+    dynamic var rooms: [Rooms]
+    dynamic var speakers: [Speakers]
+    dynamic var questions: [Questions]
+    dynamic var categories: [Categories]
+    
+    init(_ timetableResponse: TimetableResponse) {
+    	self.sessions = timetableResponse.sessions
+    	self.rooms = timetableResponse.rooms
+    	self.speakers = timetableResponse.speakers
+    	self.questions = timetableResponse.questions
+    	self.categories = timetableResponse.categories
+    }
+}
+
