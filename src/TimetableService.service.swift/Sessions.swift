@@ -17,7 +17,7 @@ protocol Sessions: EObjectProtocol {
 //
 //  var isPlenumSession: Bool { get }
 //
-//  var roomId: Int64 { get }
+  var roomId: Int64 { get }
 //
 //  var targetAudience: String { get }
 //

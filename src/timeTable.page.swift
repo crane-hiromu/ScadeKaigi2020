@@ -73,36 +73,49 @@ final class TimeTablePageAdapter: SCDLatticePageAdapter {
 //			print(timetable?.rooms.first) 
 //			print(timetable?.questions.first) 
 //			print(timetable?.categories.first) 
+
+		/// Androidがanyのキャストでクラッシュしてしまうので、バインディングしない方法でセット
 		
+		#if os(Android) 
+		timeTableList.items = timetable!.sessions // todo
+		#endif
+		
+		#if os(iOS)
 		from(timetable!) // todo
 			.select(\.sessions)
 			.cast([Any].self)
 			.bind(to: from(timeTableList).select(\.items))
 			.registered(with: &bindables)
+		#endif		
 			
 		let row = from(timeTableList).rows.cast(TimeTablePageListElement.self)
 		
 		from(timeTableList).items
+			.select(\Sessions.lengthInMinutes)
+			.bind(to: row.time, mapFunction: { "\($0)分 / " })
+			.registered(with: &bindables)
+			
+		from(timeTableList).items
+			.select(\Sessions.roomId)
+			.bind(to: row.room, mapFunction: { [weak self] id in
+				self?.timetable?.rooms.first { $0.id == id }?.name.ja ?? ""
+			})
+			.registered(with: &bindables)
+		
+		from(timeTableList).items
 			.select(\Sessions.title.ja)
 			.bind(to: row.title)
-			.registered(with: &bindables)
-							
-		from(timeTableList).items
-			.select(\Sessions.lengthInMinutes)
-			.bind(to: row.time, mapFunction: { "\($0)" })
-			.registered(with: &bindables)
-//			
-//		self.timeTableList.elements.enumerated().forEach { i, row in
-////            let label = row.children.first?.asList?.children.first?.asRow?.children.first?.asLabel
-//          	print("------", row.children.first?.asRow)
-//			print("------", row.children.first?.asRow?.children)
-//        }
+			.registered(with: &bindables)					
+
 	}
 	
 	func onItemSelected(with event: SCDWidgetsItemEvent?) {
     	debugPrint("----onItemSelected", event?.item)
     	
 //    	self.navigation?.push(page: ChildPageAdapter.pageName, transition: .forward)
+
+      let listElement = event!.element as? SCDWidgetsListElement
+      listElement?.backgroundColor = SCDGraphicsRGB(red:10,green:10,blue:10)
     }
 	
 	deinit {

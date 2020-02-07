@@ -11,29 +11,49 @@ extension BindingElement where T == TimeTablePageListElement {
 	
 	// MARK: Wrapper
 	
-	var topWrapper: BindingElement<SCDWidgetsRowView> {
+	private var parentWrapper: BindingElement<SCDWidgetsRowView> {
 		return self.select(\.children, .at(0)).cast(SCDWidgetsRowView.self)
 	}
 	
-	var middleWrapper: BindingElement<SCDWidgetsRowView> {
-		return self.select(\.children, .at(1)).cast(SCDWidgetsRowView.self)
+	private var middleWrapper: BindingElement<SCDWidgetsRowView> {
+		return parentWrapper.select(\.children, .at(1)).cast(SCDWidgetsRowView.self)
 	}
-		
-	var bottomWrapper: BindingElement<SCDWidgetsRowView> {
-		return self.select(\.children, .at(2)).cast(SCDWidgetsRowView.self)
+	
+	private var middleTopWrapper: BindingElement<SCDWidgetsRowView> {
+		return middleWrapper.select(\.children, .at(0)).cast(SCDWidgetsRowView.self)
+	}
+	
+	private var middleBottomWrapper: BindingElement<SCDWidgetsRowView> {
+		return middleWrapper.select(\.children, .at(2)).cast(SCDWidgetsRowView.self)
 	}
 	
 	// MARK: Parts
 	
+	var startTime: BindingElement <String> {
+		return parentWrapper.select(\.children, .at(0)).select(\SCDWidgetsLabel.text)
+	}
+	
 	var time: BindingElement <String> {
-		return self.topWrapper.select(\.children, .at(0)).select(\SCDWidgetsLabel.text) // TODO
+		return middleTopWrapper.select(\.children, .at(0)).select(\SCDWidgetsLabel.text)
+	}
+	
+	var room: BindingElement <String> {
+		return middleTopWrapper.select(\.children, .at(1)).select(\SCDWidgetsLabel.text)
 	}
 	
 	var title: BindingElement <String> {
-		return self.middleWrapper.select(\.children, .at(0)).select(\SCDWidgetsLabel.text)
+		return middleWrapper.select(\.children, .at(1)).select(\SCDWidgetsLabel.text)
 	}
 	
+//	var icon: BindingElement <String> {
+//		return middleBottomWrapper.select(\.children, .at(0)).select(\SCDWidgetsImage)
+//	}
+	
 	var name: BindingElement <String> {
-		return self.bottomWrapper.select(\.children, .at(1)).select(\SCDWidgetsLabel.text) // TODO
+		return middleBottomWrapper.select(\.children, .at(1)).select(\SCDWidgetsLabel.text)
 	}
+	
+//	var tagIcon: BindingElement <String> {
+//		return parentWrapper.select(\.children, .at(2)).select(\SCDWidgetsImage)
+//	}
 }
