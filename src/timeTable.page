@@ -213,12 +213,12 @@
             <layout xsi:type="com.scade.sdk.layout:GridLayout" marginTop="5" marginBottom="5" marginLeft="5" marginRight="5"/>
             <minArea/>
             <maxArea width="-1" height="-1"/>
-            <children xsi:type="com.scade.sdk.view:Label" name="label1" drawing="/3/@children.1/@children.2/@children.0/@children.0/@children.5/@children.1/@children.0" text="labellabellabellabellabellabellabellabellabellabellabellabellabellabellabellabellabel" multiline="true" horizontalAlignment="CENTER">
-              <layoutData xsi:type="com.scade.sdk.layout:GridData" verticalAlignment="MIDDLE" grabHorizontalSpace="true" grabVerticalSpace="true" widthConstraint="MATCH_PARENT" heightConstraint="MATCH_PARENT">
-                <minSize width="611" height="22"/>
+            <children xsi:type="com.scade.sdk.view:Label" name="label1" drawing="/3/@children.1/@children.2/@children.0/@children.0/@children.5/@children.1/@children.0" text="labellabellabellabellabellabellabellabellabellabellabellabellabellabellabellabellabel" multiline="true">
+              <layoutData xsi:type="com.scade.sdk.layout:GridData" verticalAlignment="MIDDLE" grabHorizontalSpace="true" grabVerticalSpace="true" heightConstraint="MATCH_PARENT">
+                <minSize width="392" height="22"/>
                 <maxSize width="-1" height="-1"/>
               </layoutData>
-              <size width="611" height="22"/>
+              <size width="392" height="22"/>
               <location x="5" y="5"/>
               <font fontFamily="ArialMT" size="17"/>
             </children>
@@ -831,12 +831,12 @@
                         <path>w</path>
                       </expression>
                     </constraints>
-                    <width value="611.0"/>
+                    <width value="392.0"/>
                     <height value="22.0"/>
                   </children>
-                  <children xsi:type="svg:Text" attributes="{&quot;template-id&quot;:&quot;node-text&quot;,&quot;maxWidth&quot;:&quot;1&quot;}" fillOpacity="1.0" strokeOpacity="1.0" opacity="1.0" fontSize="17" fontName="ArialMT" text="labellabellabellabellabellabellabellabellabellabellabellabellabellabellabellabellabel" anchor="middle" alignmentBaseline="central">
+                  <children xsi:type="svg:Text" attributes="{&quot;template-id&quot;:&quot;node-text&quot;,&quot;maxWidth&quot;:&quot;1&quot;}" fillOpacity="1.0" strokeOpacity="1.0" opacity="1.0" fontSize="17" fontName="ArialMT" text="labellabellabellabellabellabellabellabellabellabellabellabellabellabellabellabellabel" alignmentBaseline="central">
                     <fill xsi:type="svg_2:RGBColor" r="0.27450982" g="0.27450982" b="0.27450982"/>
-                    <x value="305.0"/>
+                    <x/>
                     <y value="11.0"/>
                   </children>
                   <matrix translateX="5.0" translateY="5.0"/>

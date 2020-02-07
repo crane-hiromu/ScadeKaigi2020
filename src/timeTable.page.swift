@@ -4,10 +4,10 @@ import ScadeKit
 
 final class TimeTablePageAdapter: SCDLatticePageAdapter {
 	
+	// MARK: Properties
 	
-	@objc dynamic private var timetable: Timetable?
-	private var binding: SCDBindingBinding?
-	private var titleBinding: SCDBindingBinding?
+	@objc dynamic private var timetable: Timetable?	
+	private var bindables = Set<SCDBindingBinding>()
 	
 	private var pageType: TimeTablePageType = .dayOne
 	
@@ -20,9 +20,9 @@ final class TimeTablePageAdapter: SCDLatticePageAdapter {
 	private lazy var timeTableList: SCDWidgetsList! = {
         let widget = self.page?.getWidgetByName("timeTableList")
         let list = widget as? SCDWidgetsList
-//        list?.onItemSelected.append(SCDWidgetsItemSelectedEventHandler { [weak self] event in
-//        	self?.onItemSelected(with: event)
-//        })
+        list?.onItemSelected.append(SCDWidgetsItemSelectedEventHandler { [weak self] event in
+        	self?.onItemSelected(with: event)
+        })
         return list
     }()
 	
@@ -37,6 +37,9 @@ final class TimeTablePageAdapter: SCDLatticePageAdapter {
 				self?.pageType = .dayOne
 				self?.tabItems.forEach { $0.backgroundColor = SCDGraphicsRGB(red:255,green:255,blue:255) }
 				item?.backgroundColor = SCDGraphicsRGB(red:255,green:127,blue:80)
+				
+				// todo reset data
+//				self?.bindables.forEach { $0.deactivate() }
 			})
 		}
 		debugPrint("----load----", tabItems)
@@ -59,45 +62,51 @@ final class TimeTablePageAdapter: SCDLatticePageAdapter {
 		
 		debugPrint("----show----")
 	
-				let service: TimetableService? = SCDRuntime.loadService("TimetableService.service")
+		let service: TimetableService? = SCDRuntime.loadService("TimetableService.service")
 		
 		guard let result = service?.getTimetable() else { return }
 		timetable = Timetable(result)
 		
-//					print(timetable?.sessions.first) 
+		
+//			print(timetable?.sessions.first) 
 //			print(timetable?.speakers.first) 
 //			print(timetable?.rooms.first) 
 //			print(timetable?.questions.first) 
 //			print(timetable?.categories.first) 
 		
-		binding = from(timetable!) // todo
+		from(timetable!) // todo
 			.select(\.sessions)
 			.cast([Any].self)
 			.bind(to: from(timeTableList).select(\.items))
+			.registered(with: &bindables)
+			
+		let row = from(timeTableList).rows.cast(TimeTablePageListElement.self)
 		
-		let row = from(timeTableList).select(\.elements, .all)
-		let top = row.select(\.children, .at(0)).cast(SCDWidgetsRowView.self)
-		let middle = row.select(\.children, .at(1)).cast(SCDWidgetsRowView.self)
-		let bottom = row.select(\.children, .at(2)).cast(SCDWidgetsRowView.self)
-				
-		titleBinding = from(timeTableList)
-			.select(\.items, .all)
+		from(timeTableList).items
 			.select(\Sessions.title.ja)
-			.bind(to: middle.select(\.children, .at(0)).select(\SCDWidgetsLabel.text))
-			
-			
-
-//    self.timeTableList.elements.enumerated().forEach { i, row in
-////			let label = row.children.first?.asList?.children.first?.asRow?.children.first?.asLabel
+			.bind(to: row.title)
+			.registered(with: &bindables)
+							
+		from(timeTableList).items
+			.select(\Sessions.lengthInMinutes)
+			.bind(to: row.time, mapFunction: { "\($0)" })
+			.registered(with: &bindables)
 //			
-////			print("----elements", row.children.first, row.children.first?.asRow?.children.first)
-//			
-//			let label = row.children.first?.asRow?.children.first?.asLabel
-//			
-////			DispatchQueue.main.sync {
-//				label?.text = "gg" // self.timeTableList.items[i]. as? String ?? ""
-////			}
-//		}
+//		self.timeTableList.elements.enumerated().forEach { i, row in
+////            let label = row.children.first?.asList?.children.first?.asRow?.children.first?.asLabel
+//          	print("------", row.children.first?.asRow)
+//			print("------", row.children.first?.asRow?.children)
+//        }
+	}
+	
+	func onItemSelected(with event: SCDWidgetsItemEvent?) {
+    	debugPrint("----onItemSelected", event?.item)
+    	
+//    	self.navigation?.push(page: ChildPageAdapter.pageName, transition: .forward)
+    }
+	
+	deinit {
+		bindables.forEach { $0.deactivate() }
 	}
 }
 
@@ -131,4 +140,3 @@ final class Timetable: EObject {
     	self.categories = timetableResponse.categories
     }
 }
-
