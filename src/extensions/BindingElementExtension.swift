@@ -11,6 +11,10 @@ extension BindingElement where T == SCDWidgetsList {
 	var items: BindingElement<Any> {
 		return self.select(\.items, .all)
 	}
+	
+	var dataSource: BindingElement<[Any]> {
+		return self.select(\.items)
+	}
 }
 
 extension SCDBindingBinding {

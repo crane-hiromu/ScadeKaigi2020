@@ -66,10 +66,13 @@ final class TimeTablePageAdapter: SCDLatticePageAdapter {
 private extension TimeTablePageAdapter {
     
     func bind() {	
+    		let dataSource = from(timeTableList).dataSource.cast([Sessions].self)
+    		
 	      from(timetable)
 	          .select(\.sessions)
-	          .bind(to: from(timeTableList).select(\.items).cast([Sessions].self))
+	          .bind(to: dataSource)
 	          .registered(with: &bindables)
+	          
 
         let bindableItem = from(timeTableList).items
         let row = from(timeTableList).rows.cast(TimeTablePageListElement.self)
