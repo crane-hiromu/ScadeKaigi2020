@@ -2,7 +2,7 @@ import ScadeKit
 
 // MARK: - Extension
 
-extension SCDWidgetsWidget {
+extension EObject {
 	
 	/* Description
 	
@@ -12,6 +12,10 @@ extension SCDWidgetsWidget {
 	
 	var asLabel: SCDWidgetsLabel? {
 		return self as? SCDWidgetsLabel
+	}
+	
+	var asImage: SCDWidgetsImage? {
+		return self as? SCDWidgetsImage
 	}
 	
 	var asList: SCDWidgetsListView? {

@@ -3,9 +3,10 @@ import ScadeKit
 // MARK: - Element
 
 
-final class TimeTablePageListElement: SCDWidgetsListElement {
-	
-}
+final class TimeTablePageListElement: SCDWidgetsListElement {}
+
+
+// MARK: - Extension
 
 extension BindingElement where T == TimeTablePageListElement {
 	
@@ -38,22 +39,30 @@ extension BindingElement where T == TimeTablePageListElement {
 	}
 	
 	var room: BindingElement <String> {
-		return middleTopWrapper.select(\.children, .at(1)).select(\SCDWidgetsLabel.text)
+		return middleTopWrapper.select(\.children, .at(2)).select(\SCDWidgetsLabel.text)
 	}
 	
 	var title: BindingElement <String> {
 		return middleWrapper.select(\.children, .at(1)).select(\SCDWidgetsLabel.text)
 	}
 	
-//	var icon: BindingElement <String> {
-//		return middleBottomWrapper.select(\.children, .at(0)).select(\SCDWidgetsImage)
-//	}
+	var icon: BindingElement <String> {
+		return middleBottomWrapper.select(\.children, .at(0)).select(\SCDWidgetsImage.content)
+	}
+	
+	var iconVisible: BindingElement <Bool> {
+		return middleBottomWrapper.select(\.children, .at(0)).select(\SCDWidgetsImage.isVisible)
+	}
+	
+	var profileVisible: BindingElement <Bool> {
+		return middleBottomWrapper.select(\SCDWidgetsContainer.layoutData).select(\SCDLayoutGridData.isExclude)
+	}
 	
 	var name: BindingElement <String> {
 		return middleBottomWrapper.select(\.children, .at(1)).select(\SCDWidgetsLabel.text)
 	}
 	
-//	var tagIcon: BindingElement <String> {
-//		return parentWrapper.select(\.children, .at(2)).select(\SCDWidgetsImage)
-//	}
+	var tagIcon: BindingElement <String> {
+		return parentWrapper.select(\.children, .at(2)).select(\SCDWidgetsImage.url)
+	}
 }
