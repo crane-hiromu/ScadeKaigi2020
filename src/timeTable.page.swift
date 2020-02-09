@@ -13,6 +13,7 @@ final class TimeTablePageAdapter: SCDLatticePageAdapter {
     		DispatchQueue.global().async { [weak self] in
     			guard let self = self else { return }
     			self.timetable.update(type: self.pageType)
+    			self.bindAfter()
     		}
     	}
     }
@@ -20,13 +21,7 @@ final class TimeTablePageAdapter: SCDLatticePageAdapter {
     private var bindables = Set<SCDBindingBinding>()
     private var tabItems: [SCDWidgetsToolBarItem] {
         return Constants.TimeTablePageType.allCases.compactMap { type in
-            let item = self.page?.getWidgetByName(type.tabItem) as? SCDWidgetsToolBarItem
-//            item?.onClick.append(SCDWidgetsEventHandler{ [weak self] _ in
-//                self?.pageType = type
-//                self?.tabItems.forEach { $0.backgroundColor = SCDGraphicsRGB(red:255,green:255,blue:255) }
-//                item?.backgroundColor = SCDGraphicsRGB(red:255,green:127,blue:80)
-//            })
-            return item
+            return self.page?.getWidgetByName(type.tabItem)?.asToolBarItem
         }
     }
     private lazy var timeTableList: SCDWidgetsList! = {
@@ -49,7 +44,7 @@ final class TimeTablePageAdapter: SCDLatticePageAdapter {
     override func load(_ path: String) {
         super.load(path)
         debugPrint("---\(#function)---")
-        timetable.update(type: .dayOne)
+        setupSafeArea()
         bind()
     }
     
@@ -79,6 +74,8 @@ final class TimeTablePageAdapter: SCDLatticePageAdapter {
 private extension TimeTablePageAdapter {
     
     func bind() {	
+    		timetable.update(type: pageType) // init	
+    	
         /// binding item is crashed on Android (to cast any) ///
         #if os(Android)
         	timeTableList.items = timetable.sessions
@@ -148,6 +145,22 @@ private extension TimeTablePageAdapter {
             .select(\Sessions.id)
             .bind(to: row.tagIcon, mapFunction: { Constants.Tag.icon(by: $0) })
             .registered(with: &bindables)
+            
+        // todo
+				DispatchQueue.global().async { 
+        	Constants.TimeTablePageType.allCases.forEach { type in
+            let item = self.page?.getWidgetByName(type.tabItem)?.asToolBarItem
+            item?.onClick.append(SCDWidgetsEventHandler{ [weak self] _ in
+                self?.tabItems.forEach { 
+            			$0.backgroundColor = SCDGraphicsRGB(red:255,green:255,blue:255) 
+            			$0.isEnable = false
+            		}
+                item?.backgroundColor = SCDGraphicsRGB(red:255,green:127,blue:80)
+                
+                self?.pageType = type
+            })
+        	}
+        }
     }
     
     func bindAfter() {
@@ -176,22 +189,6 @@ private extension TimeTablePageAdapter {
                 })
             }
         }
-        
-        DispatchQueue.global().async { 
-        	Constants.TimeTablePageType.allCases.forEach { type in
-            let item = self.page?.getWidgetByName(type.tabItem) as? SCDWidgetsToolBarItem
-            item?.onClick.append(SCDWidgetsEventHandler{ [weak self] _ in
-            		debugPrint("----onClick")
-                self?.tabItems.forEach { 
-            			$0.backgroundColor = SCDGraphicsRGB(red:255,green:255,blue:255) 
-            			$0.isEnable = false
-            		}
-                item?.backgroundColor = SCDGraphicsRGB(red:255,green:127,blue:80)
-                
-                self?.pageType = type
-            })
-        	}
-        }
     }
     
     func onItemSelected(with event: SCDWidgetsItemEvent?) {
@@ -214,8 +211,7 @@ private extension TimeTablePageAdapter {
     		} else {
     				ids.append(id)
     		}
-    		
-    		event?.target?.asImage?.url = Constants.Tag.icon(by: id)
     		UserDefaultsHelper.sessionIds.setItem(with: ids)
+    		event?.target?.asImage?.url = Constants.Tag.icon(by: id)
     }
 }

@@ -11,14 +11,15 @@ final class ScadeKaigi2020: SCDApplication {
       guard let result = service?.getTimetable() else { fatalError() } // todo
       
 	    let adapter = TimeTablePageAdapter(
-	    	timetable: TimetableEntity(result), 
-	    	pageType: .dayOne
+	    		timetable: TimetableEntity(result), 
+	    		pageType: .dayOne
 	    )
 	    adapter.load("timeTable.page")
 	    return adapter
 	}()
 	
 	override func onFinishLaunching() {	
-		timeTableAdapter.show(window)
+			debugPrint("---\(#function)---")
+			timeTableAdapter.show(window)
 	}
 }

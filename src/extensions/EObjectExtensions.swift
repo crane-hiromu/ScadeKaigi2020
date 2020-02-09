@@ -26,6 +26,18 @@ extension EObject {
 		return self as? SCDWidgetsRowView
 	}
 	
+	var asContainer: SCDWidgetsContainer? {
+		return self as? SCDWidgetsContainer
+	}
+	
+	var asGridData: SCDLayoutGridData? {
+		return self as? SCDLayoutGridData
+	}
+	
+	var asToolBarItem: SCDWidgetsToolBarItem? {
+		return self as? SCDWidgetsToolBarItem
+	}
+	
 	
 	/* example
 	 

@@ -20,6 +20,15 @@ final class TimetableEntity: EObject {
     dynamic var questions: [Questions]
     dynamic var categories: [Categories]
     
+    override init() {
+    	self.sessionsEntiry = []
+    	self.sessions = []
+    	self.rooms = []
+    	self.speakers = []
+    	self.questions = []
+    	self.categories = []
+    }
+    
     init(_ timetableResponse: TimetableResponse) {
     	self.sessionsEntiry = timetableResponse.sessions
     	self.sessions = timetableResponse.sessions

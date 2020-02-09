@@ -1,4 +1,6 @@
 
+import ScadeKit
+
 /* https://app.swaggerhub.com/apis/jmatsu/droidkaigi/2020 */
 
 struct Constants {
@@ -33,4 +35,10 @@ struct Constants {
 	        }
 	    }
 		}
+    
+		#if os(iOS)
+    static var hasNotch: Bool {
+        return 20.0 < UIApplication.shared.statusBarFrame.height // todo
+    }
+    #endif
 }
