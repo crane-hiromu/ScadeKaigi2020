@@ -7,20 +7,25 @@ final class TimeTablePageAdapter: SCDLatticePageAdapter {
     // MARK: Properties
     
     @objc dynamic private var timetable: TimetableEntity
-    private var pageType: Constants.TimeTablePageType
+    private var pageType: Constants.TimeTablePageType {
+    	didSet {
+    		debugPrint("---didSet---")
+    		DispatchQueue.global().async { [weak self] in
+    			guard let self = self else { return }
+    			self.timetable.update(type: self.pageType)
+    		}
+    	}
+    }
     
     private var bindables = Set<SCDBindingBinding>()
     private var tabItems: [SCDWidgetsToolBarItem] {
         return Constants.TimeTablePageType.allCases.compactMap { type in
             let item = self.page?.getWidgetByName(type.tabItem) as? SCDWidgetsToolBarItem
-            item?.onClick.append(SCDWidgetsEventHandler{ [weak self] _ in
-                self?.pageType = type
-                self?.tabItems.forEach { $0.backgroundColor = SCDGraphicsRGB(red:255,green:255,blue:255) }
-                item?.backgroundColor = SCDGraphicsRGB(red:255,green:127,blue:80)
-                
-                // todo reset data
-                //				self?.bindables.forEach { $0.deactivate() }
-            })
+//            item?.onClick.append(SCDWidgetsEventHandler{ [weak self] _ in
+//                self?.pageType = type
+//                self?.tabItems.forEach { $0.backgroundColor = SCDGraphicsRGB(red:255,green:255,blue:255) }
+//                item?.backgroundColor = SCDGraphicsRGB(red:255,green:127,blue:80)
+//            })
             return item
         }
     }
@@ -44,6 +49,7 @@ final class TimeTablePageAdapter: SCDLatticePageAdapter {
     override func load(_ path: String) {
         super.load(path)
         debugPrint("---\(#function)---")
+        timetable.update(type: .dayOne)
         bind()
     }
     
@@ -72,14 +78,14 @@ final class TimeTablePageAdapter: SCDLatticePageAdapter {
 
 private extension TimeTablePageAdapter {
     
-    func bind() {
+    func bind() {	
         /// binding item is crashed on Android (to cast any) ///
         #if os(Android)
         	timeTableList.items = timetable.sessions
         #else
 	        from(timetable)
 	            .select(\.sessions)
-	            .cast([Any].self) // here
+	            .cast([Any].self) // crashed on Android here
 	            .bind(to: from(timeTableList).select(\.items))
 	            .registered(with: &bindables)
         #endif
@@ -147,19 +153,19 @@ private extension TimeTablePageAdapter {
     func bindAfter() {
     		/// loading images should use a sub-thread 
     		/// not to block the main thread and not slow down view drawing 
-        DispatchQueue.global().async {
-            self.timeTableList.elements.enumerated().forEach { i, wrapper in
-            		let children = wrapper.children.first?.asRow?.children
-                let icon = children?[1].asList?.children[2].asRow?.children.first?.asImage
-                let request = SCDNetworkRequest()
-                request.url = icon?.content ?? ""
-                if let response = request.call() {
-                    icon?.content = String(data: response.body, encoding: .isoLatin1)! // todo
-                    icon?.isContentPriority = true
-                }
-
-            }
-        }
+//        DispatchQueue.global().async {
+//            self.timeTableList.elements.enumerated().forEach { i, wrapper in
+//            		let children = wrapper.children.first?.asRow?.children
+//                let icon = children?[1].asList?.children[2].asRow?.children.first?.asImage
+//                let request = SCDNetworkRequest()
+//                request.url = icon?.content ?? ""
+//                if let response = request.call() {
+//                    icon?.content = String(data: response.body, encoding: .isoLatin1)! // todo
+//                    icon?.isContentPriority = true
+//                }
+//
+//            }
+//        }
     		
         /// append tag click event
     		DispatchQueue.global().async {
@@ -169,6 +175,22 @@ private extension TimeTablePageAdapter {
                     self?.onTagSelected(with: e, at: i)
                 })
             }
+        }
+        
+        DispatchQueue.global().async { 
+        	Constants.TimeTablePageType.allCases.forEach { type in
+            let item = self.page?.getWidgetByName(type.tabItem) as? SCDWidgetsToolBarItem
+            item?.onClick.append(SCDWidgetsEventHandler{ [weak self] _ in
+            		debugPrint("----onClick")
+                self?.tabItems.forEach { 
+            			$0.backgroundColor = SCDGraphicsRGB(red:255,green:255,blue:255) 
+            			$0.isEnable = false
+            		}
+                item?.backgroundColor = SCDGraphicsRGB(red:255,green:127,blue:80)
+                
+                self?.pageType = type
+            })
+        	}
         }
     }
     
