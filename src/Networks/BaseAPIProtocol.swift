@@ -5,7 +5,7 @@ import ScadeKit
 
 protocol BaseAPIProtocol {
     associatedtype ResponseType
-
+    
     var method: HTTPMethod { get }
     var baseURL: URL { get }
     var path: String { get }
@@ -14,7 +14,7 @@ protocol BaseAPIProtocol {
 
 extension BaseAPIProtocol {
     var baseURL: URL {
-    	return URL(string: Constants.API.baseURL)!
+        return URL(string: Constants.API.baseURL)!
     }
     var headers: Headers? {
         return [
@@ -32,14 +32,14 @@ protocol BaseRequestProtocol: BaseAPIProtocol {
 }
 
 extension BaseRequestProtocol {
-
+    
     var asURLRequest: URLRequest {
         var urlRequest: URLRequest = {
             let url = baseURL.appendingPathComponent(path)
-        	guard let params = parameters else { return URLRequest(url: url) }                           
-
+            guard let params = parameters else { return URLRequest(url: url) }                           
+            
             // todo post
-			
+            
             // get
             var compnents = URLComponents(string: url.absoluteString)
             compnents?.queryItems = params.map { URLQueryItem(name: $0, value: "\($1)") }
@@ -50,5 +50,5 @@ extension BaseRequestProtocol {
         urlRequest.timeoutInterval = TimeInterval(30)
         return urlRequest
     }
-
+    
 }

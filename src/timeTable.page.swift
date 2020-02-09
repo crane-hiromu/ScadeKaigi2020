@@ -27,9 +27,9 @@ final class TimeTablePageAdapter: SCDLatticePageAdapter {
     // MARK: Override
     
     init(timetable: TimetableEntity, pageType: Constants.TimeTablePageType) {
-	    	debugPrint("---\(#function)---")
-	    	self.timetable = timetable
-	    	self.pageType = pageType
+        debugPrint("---\(#function)---")
+        self.timetable = timetable
+        self.pageType = pageType
     }
     
     override func load(_ path: String) {
@@ -66,14 +66,14 @@ final class TimeTablePageAdapter: SCDLatticePageAdapter {
 private extension TimeTablePageAdapter {
     
     func bind() {	
-    		let dataSource = from(timeTableList).dataSource.cast([Sessions].self)
-    		
-	      from(timetable)
-	          .select(\.sessions)
-	          .bind(to: dataSource)
-	          .registered(with: &bindables)
-	          
-
+        let dataSource = from(timeTableList).dataSource.cast([Sessions].self)
+        
+        from(timetable)
+            .select(\.sessions)
+            .bind(to: dataSource)
+            .registered(with: &bindables)
+        
+        
         let bindableItem = from(timeTableList).items
         let row = from(timeTableList).rows.cast(TimeTablePageListElement.self)
         
@@ -112,7 +112,7 @@ private extension TimeTablePageAdapter {
                 self?.timetable.speakers(by: id).first?.profilePicture ?? ""
             })
             .registered(with: &bindables)
-            
+        
         bindableItem
             .select(\Sessions.id)
             .bind(to: row.iconVisible, mapFunction: { [weak self] id in
@@ -126,52 +126,52 @@ private extension TimeTablePageAdapter {
                 (self?.timetable.speakers(by: id).first?.profilePicture == nil)
             })
             .registered(with: &bindables)
-            
-       	bindableItem
+        
+        bindableItem
             .select(\Sessions.id)
             .bind(to: row.tagIcon, mapFunction: { Constants.Tag.icon(by: $0) })
             .registered(with: &bindables)
-            
+        
         // todo
-				DispatchQueue.global().async { 
-        	Constants.TimeTablePageType.allCases.forEach { type in
-            let item = self.page?.getWidgetByName(type.tabItem)?.asToolBarItem
-            item?.onClick.append(SCDWidgetsEventHandler{ [weak self] _ in
-                self?.tabItems.forEach { 
-            			$0.backgroundColor = SCDGraphicsRGB(red:255,green:255,blue:255) 
-            			$0.isEnable = false
-            		}
-                item?.backgroundColor = SCDGraphicsRGB(red:255,green:127,blue:80)
-                
-                self?.pageType = type
-                self?.onTabClicked()
-            })
-        	}
+        DispatchQueue.global().async {
+            Constants.TimeTablePageType.allCases.forEach { type in
+                let item = self.page?.getWidgetByName(type.tabItem)?.asToolBarItem
+                item?.onClick.append(SCDWidgetsEventHandler{ [weak self] _ in
+                    self?.tabItems.forEach {
+                        $0.backgroundColor = SCDGraphicsRGB(red:0,green:0,blue:0)
+                        $0.isEnable = false
+                    }
+                    item?.backgroundColor = SCDGraphicsRGB(red:255,green:127,blue:80)
+                    
+                    self?.pageType = type
+                    self?.onTabClicked()
+                })
+            }
         }
     }
     
     func bindAfter() {
-    		/// loading images should use a sub-thread 
-    		/// not to block the main thread and not slow down view drawing 
-//        DispatchQueue.global().async {
-//            self.timeTableList.elements.enumerated().forEach { i, wrapper in
-//            		let children = wrapper.children.first?.asRow?.children
-//                let icon = children?[1].asList?.children[2].asRow?.children.first?.asImage
-//                let request = SCDNetworkRequest()
-//                request.url = icon?.content ?? ""
-//                if let response = request.call() {
-//                    icon?.content = String(data: response.body, encoding: .isoLatin1)! // todo
-//                    icon?.isContentPriority = true
-//                }
-//
-//            }
-//        }
-    		
+        /// loading images should use a sub-thread
+        /// not to block the main thread and not slow down view drawing
+        //        DispatchQueue.global().async {
+        //            self.timeTableList.elements.enumerated().forEach { i, wrapper in
+        //            		let children = wrapper.children.first?.asRow?.children
+        //                let icon = children?[1].asList?.children[2].asRow?.children.first?.asImage
+        //                let request = SCDNetworkRequest()
+        //                request.url = icon?.content ?? ""
+        //                if let response = request.call() {
+        //                    icon?.content = String(data: response.body, encoding: .isoLatin1)! // todo
+        //                    icon?.isContentPriority = true
+        //                }
+        //
+        //            }
+        //        }
+        
         /// append tag click event
-    		DispatchQueue.global().async {
+        DispatchQueue.global().async {
             self.timeTableList.elements.enumerated().forEach { i, wrapper in
-								let image = wrapper.children.first?.asRow?.children[2].asImage
-								image?.onClick.removeAll() // have to reset case of android keeping previous event
+                let image = wrapper.children.first?.asRow?.children[2].asImage
+                image?.onClick.removeAll() // have to reset case of android keeping previous event
                 image?.onClick.append(SCDWidgetsEventHandler { [weak self] e in
                     self?.onTagSelected(with: e, at: i)
                 })
@@ -180,24 +180,24 @@ private extension TimeTablePageAdapter {
     }
     
     func onTabClicked() {
-    		/// refreshing list by binding is crashed on Android so reset bind for Android only
-    	 	#if os(Android)
-		    	 	DispatchQueue.global().async { [weak self] in
-    	 					guard let self = self else { return }
-		       			self.bindables.forEach { $0.deactivate() }
-		    	 			self.timetable.update(type: self.pageType)
-		    	 			
-		    	 			DispatchQueue.main.async { 
-		    	 					self.bind()
-		    	 					self.bindAfter()
-		    	 			}
-    				}
+        /// refreshing list by binding is crashed on Android so reset bind for Android only
+        #if os(Android)
+        DispatchQueue.global().async { [weak self] in
+            guard let self = self else { return }
+            self.bindables.forEach { $0.deactivate() }
+            self.timetable.update(type: self.pageType)
+            
+            DispatchQueue.main.async {
+                self.bind()
+                self.bindAfter()
+            }
+        }
         #else 
-	        	DispatchQueue.global().async { [weak self] in
-		    				guard let self = self else { return }
-		    				self.timetable.update(type: self.pageType)
-		    				self.bindAfter()
-	    			}
+        DispatchQueue.global().async { [weak self] in
+            guard let self = self else { return }
+            self.timetable.update(type: self.pageType)
+            self.bindAfter()
+        }
         #endif
     }
     
@@ -216,12 +216,12 @@ private extension TimeTablePageAdapter {
         let id = timetable.sessions[index].id
         var ids: [String] = UserDefaultsHelper.sessionIds.arrayString ?? []
         
-    		if let idIndex = ids.firstIndex(of: id) {
-    				ids.remove(at: idIndex)
-    		} else {
-    				ids.append(id)
-    		}
-    		UserDefaultsHelper.sessionIds.setItem(with: ids)
-    		event?.target?.asImage?.url = Constants.Tag.icon(by: id)
+        if let idIndex = ids.firstIndex(of: id) {
+            ids.remove(at: idIndex)
+        } else {
+            ids.append(id)
+        }
+        UserDefaultsHelper.sessionIds.setItem(with: ids)
+        event?.target?.asImage?.url = Constants.Tag.icon(by: id)
     }
 }
