@@ -2,11 +2,11 @@ import Foundation
 
 // MARK: - Response
 
-struct TimetablesResponse: Codable {
-	var sessions: [Session]
-}
-
-struct Session: Codable {
-	
-	
-}
+//struct TimetablesResponse: Codable {
+//	var sessions: [Session]
+//}
+//
+//struct Session: Codable {
+//	
+//	
+//}

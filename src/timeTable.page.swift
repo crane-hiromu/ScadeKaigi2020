@@ -54,6 +54,7 @@ final class TimeTablePageAdapter: SCDLatticePageAdapter {
     
     deinit {
         bindables.forEach { $0.deactivate() }
+        cancelCycle()
     }
 }
 
@@ -146,6 +147,7 @@ private extension TimeTablePageAdapter {
     func setup() {
     	  timeTablePageView.appendOnTabClick()
         timeTablePageView.appendOnTagClick()
+        observeCycle()
     }
     
 //    func bindAfter() {
