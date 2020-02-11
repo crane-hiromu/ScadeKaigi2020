@@ -8,7 +8,7 @@ final class SpeakersEntity: EObject {
 				self.speakers = []
 		}
 		
-		init(_ speakers: [Speakers]) {
+		func update(speakers: [Speakers]) {
 				self.speakers = speakers.sorted { $0.fullName < $1.fullName }
 		}
 }

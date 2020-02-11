@@ -21,6 +21,14 @@ struct Constants {
         }
     }
     
+    enum PageType: String {
+    		case timeTable, speckersList, profile
+    		
+    		var page: String {
+    				return "\(rawValue).page"
+    		}
+    }
+    
     #if os(iOS)
     static var hasNotch: Bool {
         return 20.0 < UIApplication.shared.statusBarFrame.height // todo

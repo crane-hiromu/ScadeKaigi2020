@@ -64,11 +64,11 @@ final class TimeTablePageAdapter: SCDLatticePageAdapter {
 extension TimeTablePageAdapter: LifeCycleEventable {
 	
 		func onEnter(with event: SCDWidgetsEnterEvent?) {
-			
+				bindables.forEach { $0.activate() }
 		}
 		
 		func onExit(with event: SCDWidgetsExitEvent?) {
-			
+				bindables.forEach { $0.deactivate() }
 		}
 }
 
@@ -77,12 +77,10 @@ extension TimeTablePageAdapter: LifeCycleEventable {
 
 private extension TimeTablePageAdapter {
     
-    func bind() {	
-        let dataSource = timeTablePageView.dataSource
-        
+    func bind() {
         from(timetable)
             .select(\.sessions)
-            .bind(to: dataSource)
+            .bind(to: timeTablePageView.dataSource)
             .registered(with: &bindables)
         
         let bindableItem = timeTablePageView.bindableItem

@@ -15,4 +15,8 @@ extension SCDLatticeNavigation {
 	    			self.go(with: page, data: data, transition: transition.rawValue)
 	    	}
     }
+    
+    func push(type: Constants.PageType, data: Any? = nil, transition: Transition = .normal) {
+    		push(page: type.page, data: data, transition: transition)
+    }
 }

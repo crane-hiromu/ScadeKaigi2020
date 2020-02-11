@@ -13,11 +13,11 @@ extension LifeCycleEventable where Self: SCDLatticePageAdapter {
 	
 		func observeCycle() {
 				page?.onEnter.append(SCDWidgetsEnterEventHandler { [weak self] event in
-        		debugPrint("---onEnter---", event)
+        		debugPrint("---onEnter---", self?.className ?? "")
         		self?.onEnter(with: event)
         })
         page?.onExit.append(SCDWidgetsExitEventHandler { [weak self] event in
-        		debugPrint("---onExit---", event)
+        		debugPrint("---onExit---", self?.className ?? "")
         		self?.onExit(with: event)
         })
 		}
