@@ -78,7 +78,7 @@ private extension SpeakersListPageAdapter {
 }
 
 
-// MARK: - SpeckersListPageAdapter
+// MARK: - SpeakersListPageAdapter
 
 extension SpeakersListPageAdapter: SpeakersListPageDelegate {
     
@@ -87,6 +87,7 @@ extension SpeakersListPageAdapter: SpeakersListPageDelegate {
     }
     
     func onItemSelected(with event: SCDWidgetsItemEvent?) {
-        navigation?.push(type: .profile, transition: .forward)
+    		print("---", event?.item)
+        navigation?.push(type: .profile, data: event?.item, transition: .forward)
     }
 }

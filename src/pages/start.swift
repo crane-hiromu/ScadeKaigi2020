@@ -33,7 +33,7 @@ final class ScadeKaigi2020: SCDApplication {
         debugPrint("---\(#function)---")
         
         timeTableAdapter.load(type: .timeTable)
-        speakersListAdapter.load(type: .speckersList)
+        speakersListAdapter.load(type: .speakersList)
         profileAdapter.load(type: .profile)
         
         timeTableAdapter.show(window)

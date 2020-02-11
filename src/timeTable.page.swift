@@ -179,7 +179,7 @@ extension TimeTablePageAdapter: TimeTablePageDelegate {
 	  func onSearchClicked() {
     		debugPrint("---\(#function)---")
     		
-    		navigation?.push(type: .speckersList, data: timetable.speakers, transition: .forward)
+    		navigation?.push(type: .speakersList, data: timetable.speakers, transition: .forward)
     }
     
     func onMenuClicked() {
