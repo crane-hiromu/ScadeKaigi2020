@@ -59,15 +59,31 @@ final class TimeTablePageView {
 
 extension TimeTablePageView {
     
-    func appendOnClick() {
-        tabItems.enumerated().forEach { index, item in
-            item.onClick.append(tabHandler[index])
+    func appendOnTabClick() {
+    		DispatchQueue.global().async {
+		        self.tabItems.enumerated().forEach { index, item in
+		            item.onClick.append(self.tabHandler[index])
+		        }
         }
     }
     
-    func removeOnClick() {
-        tabItems.forEach { item in
-            item.onClick.removeAll()
+    func removeOnTabClick() {
+	    	DispatchQueue.global().async {
+		        self.tabItems.forEach { item in
+		            item.onClick.removeAll()
+		        }
+	      }
+    }
+    
+    func appendOnTagClick() {
+    		DispatchQueue.global().async {
+						self.timeTableList.elements.enumerated().forEach { i, wrapper in
+	              let image = wrapper.children.first?.asRow?.children[2].asImage
+	              image?.onClick.removeAll() // have to reset case of android keeping previous event
+	              image?.onClick.append(SCDWidgetsEventHandler { [weak self] e in
+	                  self?.timeTablePageDelegate?.onTagSelected(with: e, at: i)
+	              })
+	          }
         }
     }
 }

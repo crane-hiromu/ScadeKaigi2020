@@ -16,6 +16,7 @@ final class TimeTablePageAdapter: SCDLatticePageAdapter {
         return view
     }()
     
+    
     // MARK: Override
     
     init(timetable: TimetableEntity, pageType: TimeTablePageType) {
@@ -29,8 +30,8 @@ final class TimeTablePageAdapter: SCDLatticePageAdapter {
         super.load(path)
         debugPrint("---\(#function)---")
         
+        timetable.update(type: pageType) // init first view
         setupSafeArea()
-        setup()
         bind()
     }
     
@@ -47,7 +48,9 @@ final class TimeTablePageAdapter: SCDLatticePageAdapter {
     override func show(_ view: SCDLatticeView?) {
         super.show(view)
         debugPrint("---\(#function)---")
-        bindAfter()
+        
+        timeTablePageView.appendOnTabClick()
+        timeTablePageView.appendOnTagClick()
     }
     
     deinit {
@@ -59,14 +62,6 @@ final class TimeTablePageAdapter: SCDLatticePageAdapter {
 // MARK: - Private 
 
 private extension TimeTablePageAdapter {
-    
-    func setup() {
-        // init first view
-        timetable.update(type: pageType)
-        
-        // append tab btn event
-        timeTablePageView.appendOnClick()
-    }
     
     func bind() {	
         let dataSource = timeTablePageView.dataSource
@@ -135,36 +130,27 @@ private extension TimeTablePageAdapter {
             .registered(with: &bindables)
     }
     
-    func bindAfter() {
-        /// loading images should use a sub-thread
-        /// not to block the main thread and not slow down view drawing
-        //        DispatchQueue.global().async {
-        //            self.timeTableList.elements.enumerated().forEach { i, wrapper in
-        //            		let children = wrapper.children.first?.asRow?.children
-        //                let icon = children?[1].asListView?.children[2].asRow?.children.first?.asImage
-        //                let request = SCDNetworkRequest()
-        //                request.url = icon?.content ?? ""
-        //                if let response = request.call() {
-        //                    icon?.content = String(data: response.body, encoding: .isoLatin1)! // todo
-        //                    icon?.isContentPriority = true
-        //                }
-        //
-        //            }
-        //        }
-        
-        
-        
-        //        /// append tag click event
-        //        DispatchQueue.global().async {
-        //            self.timeTablePageView.timeTableList.elements.enumerated().forEach { i, wrapper in
-        //                let image = wrapper.children.first?.asRow?.children[2].asImage
-        //                image?.onClick.removeAll() // have to reset case of android keeping previous event
-        //                image?.onClick.append(SCDWidgetsEventHandler { [weak self] e in
-        //                    self?.onTagSelected(with: e, at: i)
-        //                })
-        //            }
-        //        }
-    }
+//    func bindAfter() {
+//        /// loading images should use a sub-thread
+//        /// not to block the main thread and not slow down view drawing
+//        //        DispatchQueue.global().async {
+//        //            self.timeTableList.elements.enumerated().forEach { i, wrapper in
+//        //            		let children = wrapper.children.first?.asRow?.children
+//        //                let icon = children?[1].asListView?.children[2].asRow?.children.first?.asImage
+//        //                let request = SCDNetworkRequest()
+//        //                request.url = icon?.content ?? ""
+//        //                if let response = request.call() {
+//        //                    icon?.content = String(data: response.body, encoding: .isoLatin1)! // todo
+//        //                    icon?.isContentPriority = true
+//        //                }
+//        //
+//        //            }
+//        //        }
+//        
+//        
+//        /// append tag click event
+//				timeTablePageView.appendOnTagClick()
+//    }
 }
 
 
@@ -175,7 +161,7 @@ extension TimeTablePageAdapter: TimeTablePageDelegate {
     func onItemSelected(with event: SCDWidgetsItemEvent?) {
         debugPrint("----onItemSelected", event?.item)
         
-        //        self.navigation?.push(page: ChildPageAdapter.pageName, transition: .forward)
+        self.navigation?.push(page: "speckersList.page", data: nil, transition: .forward)
         
         //      let listElement = event!.element as? SCDWidgetsListElement
         //      listElement?.backgroundColor = SCDGraphicsRGB(red:10,green:10,blue:10)
@@ -197,8 +183,10 @@ extension TimeTablePageAdapter: TimeTablePageDelegate {
     }
     
     func onTabClicked(by type: TimeTablePageType) {
+    		guard self.pageType != type else { return } // ignore click current tab
+    		
         self.pageType = type
-        timeTablePageView.removeOnClick()
+        timeTablePageView.removeOnTabClick()
         timeTablePageView.tabItems.enumerated().forEach { i, item in
             item.backgroundColor = (type.rawValue == i) ? .tabItemOrange : .white
         }
@@ -213,20 +201,20 @@ extension TimeTablePageAdapter: TimeTablePageDelegate {
             
             DispatchQueue.main.async {
                 self.bind()
-                self.bindAfter()
+                self.timeTablePageView.appendOnTagClick()
             }
         }
         #else
         DispatchQueue.global().async { [weak self] in
             guard let self = self else { return }
             self.timetable.update(type: type)
-            self.bindAfter()
+            self.timeTablePageView.appendOnTagClick()
         }
         #endif
         
         /// if click tab before finishing drawing view is crashed on App so wait for 2.5 second
         DispatchQueue.global().asyncAfter(deadline: .now()+2) {
-            self.timeTablePageView.appendOnClick()
+            self.timeTablePageView.appendOnTabClick()
             AlertManager.shared.stopIndicator()
         }
     }

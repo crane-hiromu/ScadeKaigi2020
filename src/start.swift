@@ -3,6 +3,8 @@ import ScadeKit
 // MARK: - Application
 
 final class ScadeKaigi2020: SCDApplication {
+	
+		// MARK: Properties
     
     private let window = SCDLatticeWindow()
     
@@ -14,21 +16,30 @@ final class ScadeKaigi2020: SCDApplication {
             timetable: TimetableEntity(result), 
             pageType: .dayOne
         )
-        adapter.load("timeTable.page")
         return adapter
     }()
     
+    private lazy var speckersListAdapter: SpeckersListPageAdapter = {
+        let adapter = SpeckersListPageAdapter()
+        return adapter
+    }()
+    
+    
+    // MARK: Overrides
+    
     override func onFinishLaunching() {	
         debugPrint("---\(#function)---")
-        timeTableAdapter.show(window)
         
-        //			debugPrint(UserDefaultsHelper.sessionIds.arrayString)
-        //			debugPrint(UserDefaultsHelper.id.string)
-        //			debugPrint(UserDefaults.standard.string(forKey: "hoge"))
-        //			
-        //			UserDefaults.standard.set("huga", forKey: "hoge")
+        timeTableAdapter.load("timeTable.page")
+        speckersListAdapter.load("speckersList.page")
+        
+        
+        timeTableAdapter.show(window)
     }
 }
+
+
+// MARK: - iOS
 
 #if os(iOS) 
 
