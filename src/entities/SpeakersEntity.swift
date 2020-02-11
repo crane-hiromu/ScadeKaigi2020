@@ -2,17 +2,13 @@ import ScadeKit
 
 @objcMembers
 final class SpeakersEntity: EObject {
-		dynamic var speakers: [Speaker]
+		dynamic var speakers: [Speakers]
 		
 		override init() {
 				self.speakers = []
 		}
-	
-		init(_ speakers: [Speaker]) {
-        self.speakers = speakers.sorted { $0.fullName < $1.fullName }
-    }
 		
-//		init(_ speakers: [Speakers]) {
-//				self.speakers = speakers // todo convert
-//		}
+		init(_ speakers: [Speakers]) {
+				self.speakers = speakers.sorted { $0.fullName < $1.fullName }
+		}
 }

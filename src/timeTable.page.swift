@@ -181,7 +181,7 @@ extension TimeTablePageAdapter: TimeTablePageDelegate {
 	  func onSearchClicked() {
     		debugPrint("---\(#function)---")
     		
-    		navigation?.push(page: "speckersList.page", data: timetable.speakers)
+    		navigation?.push(page: "speckersList.page", data: timetable.speakers, transition: .forward)
     }
     
     func onMenuClicked() {
@@ -234,7 +234,7 @@ extension TimeTablePageAdapter: TimeTablePageDelegate {
             self.timetable.update(type: type)
             
             DispatchQueue.main.async {
-                self.bind()
+                self.bindables.forEach { $0.activate() }
                 self.timeTablePageView.appendOnTagClick()
             }
         }
