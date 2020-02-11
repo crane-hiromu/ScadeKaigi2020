@@ -27,7 +27,6 @@
         <maxArea width="-1" height="-1"/>
       </children>
       <children xsi:type="com.scade.sdk.view:RowView" name="statusBarNotch" drawing="/3/@children.1/@children.0/@children.1">
-        <backgroundColor Red="255" Green="255" Blue="255"/>
         <layoutData xsi:type="com.scade.sdk.layout:GridData" row="1" horizontalAlignment="CENTER" verticalAlignment="MIDDLE" grabHorizontalSpace="true" widthConstraint="MATCH_PARENT">
           <minSize/>
         </layoutData>
@@ -42,25 +41,28 @@
         <layoutData xsi:type="com.scade.sdk.layout:GridData" row="2" grabHorizontalSpace="true" widthConstraint="MATCH_PARENT">
           <minSize/>
         </layoutData>
-        <size width="414" height="46"/>
+        <size width="414" height="40"/>
         <location y="44"/>
         <layout xsi:type="com.scade.sdk.layout:AutoLayout"/>
-        <minArea height="46"/>
+        <minArea height="40"/>
         <maxArea width="-1" height="-1"/>
         <children xsi:type="com.scade.sdk.view:Button" name="closeButton" drawing="/3/@children.1/@children.0/@children.3/@children.2" backgroundImage="res/iconClose.png" horizontalAlignment="CENTER">
           <layoutData xsi:type="com.scade.sdk.layout:AutoLayoutData">
             <constraints source="/0/@children.0/@children.2/@children.0" sourceAnchor="HEIGHT" constant="24.0" active="true"/>
-            <constraints source="/0/@children.0/@children.2/@children.0" target="/0/@children.0/@children.2" constant="16.0" active="true"/>
+            <constraints source="/0/@children.0/@children.2/@children.0" target="/0/@children.0/@children.2" constant="24.0" active="true"/>
             <constraints source="/0/@children.0/@children.2/@children.0" sourceAnchor="CENTER_Y" target="/0/@children.0/@children.2" targetAnchor="CENTER_Y" active="true"/>
             <constraints source="/0/@children.0/@children.2/@children.0" sourceAnchor="WIDTH" constant="24.0" active="true"/>
           </layoutData>
           <size width="24" height="24"/>
-          <location x="16" y="11"/>
+          <location x="24" y="8"/>
           <font fontFamily="ArialMT" size="17"/>
         </children>
         <children xsi:type="com.scade.sdk.view:Label" name="navigationTitle" drawing="/3/@children.1/@children.0/@children.3/@children.3" text="Speakers" horizontalAlignment="CENTER">
-          <layoutData xsi:type="com.scade.sdk.layout:AutoLayoutData"/>
-          <size width="139" height="40"/>
+          <layoutData xsi:type="com.scade.sdk.layout:AutoLayoutData">
+            <constraints source="/0/@children.0/@children.2/@children.1" sourceAnchor="CENTER_Y" target="/0/@children.0/@children.2" targetAnchor="CENTER_Y" active="true"/>
+            <constraints source="/0/@children.0/@children.2/@children.1" sourceAnchor="CENTER_X" target="/0/@children.0/@children.2" targetAnchor="CENTER_X" active="true"/>
+          </layoutData>
+          <size width="162" height="30"/>
           <location x="126" y="5"/>
           <font fontFamily="ArialMT" size="17">
             <color Red="75" Green="75" Blue="75"/>
@@ -72,8 +74,8 @@
         <layoutData xsi:type="com.scade.sdk.layout:GridData" row="3" verticalAlignment="MIDDLE" grabHorizontalSpace="true" grabVerticalSpace="true" widthConstraint="MATCH_PARENT" heightConstraint="MATCH_PARENT">
           <minSize/>
         </layoutData>
-        <size width="414" height="806"/>
-        <location y="90"/>
+        <size width="414" height="812"/>
+        <location y="84"/>
         <layout xsi:type="com.scade.sdk.view.widgets.layout:ListLayout"/>
         <minArea/>
         <maxArea width="-1" height="-1"/>
@@ -193,11 +195,6 @@
                 <path>w</path>
               </expression>
             </constraints>
-            <children xsi:type="svg:Rect">
-              <fill xsi:type="svg_2:RGBColor" r="1.0" g="1.0" b="1.0"/>
-              <width value="100.0" measurement="PERCENTAGE"/>
-              <height value="100.0" measurement="PERCENTAGE"/>
-            </children>
             <width value="414.0"/>
             <height value="24.0"/>
           </children>
@@ -253,7 +250,7 @@
               <height value="100.0" measurement="PERCENTAGE"/>
             </children>
             <width value="414.0"/>
-            <height value="46.0"/>
+            <height value="40.0"/>
           </children>
           <children xsi:type="svg:Group" attributes="{&quot;template-id&quot;:&quot;content&quot;}"/>
           <children xsi:type="svg:Group" attributes="">
@@ -282,7 +279,7 @@
               <x value="12.0"/>
               <y value="12.0"/>
             </children>
-            <matrix translateX="16.0" translateY="11.0"/>
+            <matrix translateX="24.0" translateY="8.0"/>
           </children>
           <children xsi:type="svg:Group" attributes="" fillOpacity="1.0" strokeOpacity="1.0" opacity="1.0">
             <children xsi:type="svg:Box" attributes="{&quot;template-id&quot;:&quot;background&quot;}">
@@ -298,20 +295,20 @@
                   <path>h</path>
                 </expression>
               </constraints>
-              <width value="139.0"/>
-              <height value="40.0"/>
+              <width value="162.0"/>
+              <height value="30.0"/>
             </children>
             <children xsi:type="svg:Text" attributes="{&quot;template-id&quot;:&quot;node-text&quot;}" fillOpacity="1.0" strokeOpacity="1.0" opacity="1.0" fontSize="17" fontName="ArialMT" text="Speakers" anchor="middle" alignmentBaseline="central">
               <fill xsi:type="svg_2:RGBColor" r="0.29411766" g="0.29411766" b="0.29411766"/>
-              <x value="69.0"/>
-              <y value="20.0"/>
+              <x value="81.0"/>
+              <y value="15.0"/>
             </children>
             <matrix translateX="126.0" translateY="5.0"/>
           </children>
           <matrix translateY="44.0"/>
         </children>
         <children xsi:type="svg:Group" attributes="">
-          <children xsi:type="svg:ScrollGroup" attributes="{&quot;template-id&quot;:&quot;listContent&quot;}" width="414" height="806">
+          <children xsi:type="svg:ScrollGroup" attributes="{&quot;template-id&quot;:&quot;listContent&quot;}" width="414" height="812">
             <constraints xsi:type="svg_1:ScrollSizeConstraint" exprStr="size.w size.h">
               <width xsi:type="com.scade.sdk.expr:Variable" name="size">
                 <path>w</path>
@@ -449,7 +446,7 @@
               <children xsi:type="svg:Group" attributes="" visible="false"/>
             </children>
           </children>
-          <matrix translateY="90.0"/>
+          <matrix translateY="84.0"/>
         </children>
       </children>
     </children>

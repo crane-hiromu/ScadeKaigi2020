@@ -50,13 +50,13 @@
         <maxArea width="-1" height="-1"/>
         <children xsi:type="com.scade.sdk.view:Button" name="searchButton" drawing="/3/@children.1/@children.0/@children.2/@children.1/@children.0" backgroundImage="res/iconSearch.png" horizontalAlignment="CENTER">
           <layoutData xsi:type="com.scade.sdk.layout:AutoLayoutData">
-            <constraints source="/0/@children.0/@children.2/@children.0" sourceAnchor="RIGHT" target="/0/@children.0/@children.2" targetAnchor="RIGHT" active="true"/>
-            <constraints source="/0/@children.0/@children.2/@children.0" sourceAnchor="WIDTH" constant="85.0" active="true"/>
+            <constraints source="/0/@children.0/@children.2/@children.0" sourceAnchor="RIGHT" target="/0/@children.0/@children.2" targetAnchor="RIGHT" constant="-24.0" active="true"/>
+            <constraints source="/0/@children.0/@children.2/@children.0" sourceAnchor="WIDTH" constant="24.0" active="true"/>
             <constraints source="/0/@children.0/@children.2/@children.0" sourceAnchor="HEIGHT" constant="24.0" active="true"/>
             <constraints source="/0/@children.0/@children.2/@children.0" sourceAnchor="CENTER_Y" target="/0/@children.0/@children.2" targetAnchor="CENTER_Y" active="true"/>
           </layoutData>
-          <size width="85" height="24"/>
-          <location x="329" y="8"/>
+          <size width="24" height="24"/>
+          <location x="366" y="8"/>
           <font fontFamily="ArialMT" size="17"/>
         </children>
         <children xsi:type="com.scade.sdk.view:Label" name="navigationTitle" drawing="/3/@children.1/@children.0/@children.2/@children.1/@children.1" text="ScadeKaigi2020" horizontalAlignment="CENTER">
@@ -74,18 +74,19 @@
         </children>
         <children xsi:type="com.scade.sdk.view:Button" name="menuButton" drawing="/3/@children.1/@children.0/@children.2/@children.2" backgroundImage="res/iconHamburger.png" horizontalAlignment="CENTER">
           <layoutData xsi:type="com.scade.sdk.layout:AutoLayoutData">
-            <constraints source="/0/@children.0/@children.2/@children.2" target="/0/@children.0/@children.2" active="true"/>
+            <constraints source="/0/@children.0/@children.2/@children.2" target="/0/@children.0/@children.2" constant="24.0" active="true"/>
             <constraints source="/0/@children.0/@children.2/@children.2" sourceAnchor="HEIGHT" constant="24.0" active="true"/>
             <constraints source="/0/@children.0/@children.2/@children.2" sourceAnchor="CENTER_Y" target="/0/@children.0/@children.2" targetAnchor="CENTER_Y" active="true"/>
+            <constraints source="/0/@children.0/@children.2/@children.2" sourceAnchor="WIDTH" constant="24.0" active="true"/>
           </layoutData>
-          <size width="85" height="24"/>
-          <location y="8"/>
+          <size width="24" height="24"/>
+          <location x="24" y="8"/>
           <font fontFamily="ArialMT" size="17"/>
         </children>
       </children>
       <children xsi:type="com.scade.sdk.view:ToolBar" name="toolbar" drawing="/3/@children.1/@children.0/@children.3">
         <backgroundColor/>
-        <layoutData xsi:type="com.scade.sdk.layout:GridData" row="3" verticalAlignment="MIDDLE" grabHorizontalSpace="true">
+        <layoutData xsi:type="com.scade.sdk.layout:GridData" row="3" horizontalAlignment="CENTER" verticalAlignment="MIDDLE" grabHorizontalSpace="true">
           <minSize/>
         </layoutData>
         <size width="414" height="52"/>
@@ -95,22 +96,22 @@
         <maxArea width="-1" height="-1"/>
         <children xsi:type="com.scade.sdk.view:ToolBarItem" name="tabItemDayOne" drawing="/3/@children.1/@children.0/@children.3/@children.1/@children.1">
           <backgroundColor Red="255" Green="127" Blue="80"/>
-          <layoutData xsi:type="com.scade.sdk.layout:GridData" horizontalAlignment="CENTER" grabHorizontalSpace="true" heightConstraint="MATCH_PARENT">
+          <layoutData xsi:type="com.scade.sdk.layout:GridData" horizontalAlignment="CENTER" verticalAlignment="MIDDLE" grabHorizontalSpace="true">
             <minSize/>
             <gridStyle marginTop="5" marginBottom="3"/>
           </layoutData>
           <size width="105" height="52"/>
           <location/>
-          <layout xsi:type="com.scade.sdk.layout:GridLayout"/>
+          <layout xsi:type="com.scade.sdk.layout:GridLayout" rows="2"/>
           <minArea width="45" height="52"/>
           <maxArea width="-1" height="-1"/>
           <children xsi:type="com.scade.sdk.view:Label" name="tabItemDayOneLabel" drawing="/3/@children.1/@children.0/@children.3/@children.1/@children.1/@children.2" text="DAY1" multiline="true" horizontalAlignment="CENTER">
-            <layoutData xsi:type="com.scade.sdk.layout:GridData" horizontalAlignment="CENTER" grabHorizontalSpace="true" grabVerticalSpace="true" widthConstraint="MATCH_PARENT" heightConstraint="MATCH_PARENT">
+            <layoutData xsi:type="com.scade.sdk.layout:GridData" horizontalAlignment="CENTER" verticalAlignment="MIDDLE" grabHorizontalSpace="true" grabVerticalSpace="true" widthConstraint="MATCH_PARENT">
               <minSize width="40" height="18"/>
               <maxSize width="-1" height="-1"/>
             </layoutData>
-            <size width="105" height="44"/>
-            <location y="5"/>
+            <size width="105" height="18"/>
+            <location y="18"/>
             <font fontFamily="Arial-BoldMT" size="15">
               <color Red="255" Green="255" Blue="255"/>
             </font>
@@ -118,7 +119,7 @@
         </children>
         <children xsi:type="com.scade.sdk.view:ToolBarItem" name="tabItemDayTwo" drawing="/3/@children.1/@children.0/@children.3/@children.1/@children.2">
           <backgroundColor/>
-          <layoutData xsi:type="com.scade.sdk.layout:GridData" column="1" horizontalAlignment="CENTER" grabHorizontalSpace="true" heightConstraint="MATCH_PARENT">
+          <layoutData xsi:type="com.scade.sdk.layout:GridData" column="1" horizontalAlignment="CENTER" verticalAlignment="MIDDLE" grabHorizontalSpace="true">
             <minSize/>
             <gridStyle marginTop="5" marginBottom="3"/>
           </layoutData>
@@ -128,12 +129,12 @@
           <minArea width="45" height="45"/>
           <maxArea width="-1" height="-1"/>
           <children xsi:type="com.scade.sdk.view:Label" name="tabItemDayTwoLabel" drawing="/3/@children.1/@children.0/@children.3/@children.1/@children.2/@children.2" text="DAY2" multiline="true" horizontalAlignment="CENTER">
-            <layoutData xsi:type="com.scade.sdk.layout:GridData" horizontalAlignment="CENTER" grabHorizontalSpace="true" grabVerticalSpace="true" widthConstraint="MATCH_PARENT" heightConstraint="MATCH_PARENT">
+            <layoutData xsi:type="com.scade.sdk.layout:GridData" horizontalAlignment="CENTER" verticalAlignment="MIDDLE" grabHorizontalSpace="true" grabVerticalSpace="true" widthConstraint="MATCH_PARENT">
               <minSize width="40" height="18"/>
               <maxSize width="-1" height="-1"/>
             </layoutData>
-            <size width="103" height="44"/>
-            <location y="5"/>
+            <size width="103" height="18"/>
+            <location y="18"/>
             <font fontFamily="Arial-BoldMT" size="15">
               <color Red="255" Green="255" Blue="255"/>
             </font>
@@ -141,7 +142,7 @@
         </children>
         <children xsi:type="com.scade.sdk.view:ToolBarItem" name="tabItemEvent" drawing="/3/@children.1/@children.0/@children.3/@children.1/@children.3">
           <backgroundColor/>
-          <layoutData xsi:type="com.scade.sdk.layout:GridData" column="2" horizontalAlignment="CENTER" grabHorizontalSpace="true" heightConstraint="MATCH_PARENT">
+          <layoutData xsi:type="com.scade.sdk.layout:GridData" column="2" horizontalAlignment="CENTER" verticalAlignment="MIDDLE" grabHorizontalSpace="true">
             <minSize/>
             <gridStyle marginTop="5" marginBottom="3"/>
           </layoutData>
@@ -151,12 +152,12 @@
           <minArea width="45" height="45"/>
           <maxArea width="-1" height="-1"/>
           <children xsi:type="com.scade.sdk.view:Label" name="tabItemEventLabel" drawing="/3/@children.1/@children.0/@children.3/@children.1/@children.3/@children.2" text="EVENT" multiline="true" horizontalAlignment="CENTER">
-            <layoutData xsi:type="com.scade.sdk.layout:GridData" horizontalAlignment="CENTER" grabHorizontalSpace="true" grabVerticalSpace="true" widthConstraint="MATCH_PARENT" heightConstraint="MATCH_PARENT">
+            <layoutData xsi:type="com.scade.sdk.layout:GridData" horizontalAlignment="CENTER" verticalAlignment="MIDDLE" grabHorizontalSpace="true" grabVerticalSpace="true" widthConstraint="MATCH_PARENT">
               <minSize width="50" height="18"/>
               <maxSize width="-1" height="-1"/>
             </layoutData>
-            <size width="103" height="44"/>
-            <location y="5"/>
+            <size width="103" height="18"/>
+            <location y="18"/>
             <font fontFamily="Arial-BoldMT" size="15">
               <color Red="255" Green="255" Blue="255"/>
             </font>
@@ -164,7 +165,7 @@
         </children>
         <children xsi:type="com.scade.sdk.view:ToolBarItem" name="tabItemMyPlan" drawing="/3/@children.1/@children.0/@children.3/@children.1/@children.4">
           <backgroundColor/>
-          <layoutData xsi:type="com.scade.sdk.layout:GridData" column="3" horizontalAlignment="CENTER" grabHorizontalSpace="true" heightConstraint="MATCH_PARENT">
+          <layoutData xsi:type="com.scade.sdk.layout:GridData" column="3" horizontalAlignment="CENTER" verticalAlignment="MIDDLE" grabHorizontalSpace="true">
             <minSize/>
             <gridStyle marginTop="5" marginBottom="3"/>
           </layoutData>
@@ -174,12 +175,12 @@
           <minArea width="45" height="45"/>
           <maxArea width="-1" height="-1"/>
           <children xsi:type="com.scade.sdk.view:Label" name="tabItemMyPlanLabel" drawing="/3/@children.1/@children.0/@children.3/@children.1/@children.4/@children.2" text="MY PLAN" multiline="true" horizontalAlignment="CENTER">
-            <layoutData xsi:type="com.scade.sdk.layout:GridData" horizontalAlignment="CENTER" grabHorizontalSpace="true" grabVerticalSpace="true" widthConstraint="MATCH_PARENT" heightConstraint="MATCH_PARENT">
+            <layoutData xsi:type="com.scade.sdk.layout:GridData" horizontalAlignment="CENTER" verticalAlignment="MIDDLE" grabHorizontalSpace="true" grabVerticalSpace="true" widthConstraint="MATCH_PARENT">
               <minSize width="67" height="18"/>
               <maxSize width="-1" height="-1"/>
             </layoutData>
-            <size width="103" height="44"/>
-            <location y="5"/>
+            <size width="103" height="18"/>
+            <location y="18"/>
             <font fontFamily="Arial-BoldMT" size="15">
               <color Red="255" Green="255" Blue="255"/>
             </font>
@@ -454,15 +455,15 @@
                   <width value="100.0" measurement="PERCENTAGE"/>
                   <height value="100.0" measurement="PERCENTAGE"/>
                 </children>
-                <width value="85.0"/>
+                <width value="24.0"/>
                 <height value="24.0"/>
               </children>
               <children xsi:type="svg:Text" attributes="{&quot;template-id&quot;:&quot;node-text&quot;}" fillOpacity="1.0" strokeOpacity="1.0" opacity="1.0" fontSize="17" fontName="ArialMT" text="" anchor="middle" alignmentBaseline="central">
                 <fill xsi:type="svg_2:RGBColor" r="0.26666668" g="0.41568628" b="0.7019608"/>
-                <x value="42.0"/>
+                <x value="12.0"/>
                 <y value="12.0"/>
               </children>
-              <matrix translateX="329.0" translateY="8.0"/>
+              <matrix translateX="366.0" translateY="8.0"/>
             </children>
             <children xsi:type="svg:Group" attributes="" fillOpacity="1.0" strokeOpacity="1.0" opacity="1.0">
               <children xsi:type="svg:Box" attributes="{&quot;template-id&quot;:&quot;background&quot;}">
@@ -507,15 +508,15 @@
                 <width value="100.0" measurement="PERCENTAGE"/>
                 <height value="100.0" measurement="PERCENTAGE"/>
               </children>
-              <width value="85.0"/>
+              <width value="24.0"/>
               <height value="24.0"/>
             </children>
             <children xsi:type="svg:Text" attributes="{&quot;template-id&quot;:&quot;node-text&quot;}" fillOpacity="1.0" strokeOpacity="1.0" opacity="1.0" fontSize="17" fontName="ArialMT" text="" anchor="middle" alignmentBaseline="central">
               <fill xsi:type="svg_2:RGBColor" r="0.26666668" g="0.41568628" b="0.7019608"/>
-              <x value="42.0"/>
+              <x value="12.0"/>
               <y value="12.0"/>
             </children>
-            <matrix translateY="8.0"/>
+            <matrix translateX="24.0" translateY="8.0"/>
           </children>
           <matrix translateY="44.0"/>
         </children>
@@ -605,14 +606,14 @@
                     </expression>
                   </constraints>
                   <width value="105.0"/>
-                  <height value="44.0"/>
+                  <height value="18.0"/>
                 </children>
                 <children xsi:type="svg:Text" attributes="{&quot;template-id&quot;:&quot;node-text&quot;,&quot;maxWidth&quot;:&quot;1&quot;}" fillOpacity="1.0" strokeOpacity="1.0" opacity="1.0" fontSize="15" fontName="Arial-BoldMT" text="DAY1" anchor="middle" alignmentBaseline="central">
                   <fill xsi:type="svg_2:RGBColor" r="1.0" g="1.0" b="1.0"/>
                   <x value="52.0"/>
-                  <y value="22.0"/>
+                  <y value="9.0"/>
                 </children>
-                <matrix translateY="5.0"/>
+                <matrix translateY="18.0"/>
               </children>
             </children>
             <children xsi:type="svg:Group" attributes="" fillOpacity="1.0" strokeOpacity="1.0" opacity="1.0">
@@ -653,14 +654,14 @@
                     </expression>
                   </constraints>
                   <width value="103.0"/>
-                  <height value="44.0"/>
+                  <height value="18.0"/>
                 </children>
                 <children xsi:type="svg:Text" attributes="{&quot;template-id&quot;:&quot;node-text&quot;,&quot;maxWidth&quot;:&quot;1&quot;}" fillOpacity="1.0" strokeOpacity="1.0" opacity="1.0" fontSize="15" fontName="Arial-BoldMT" text="DAY2" anchor="middle" alignmentBaseline="central">
                   <fill xsi:type="svg_2:RGBColor" r="1.0" g="1.0" b="1.0"/>
                   <x value="51.0"/>
-                  <y value="22.0"/>
+                  <y value="9.0"/>
                 </children>
-                <matrix translateY="5.0"/>
+                <matrix translateY="18.0"/>
               </children>
               <matrix translateX="105.0"/>
             </children>
@@ -702,14 +703,14 @@
                     </expression>
                   </constraints>
                   <width value="103.0"/>
-                  <height value="44.0"/>
+                  <height value="18.0"/>
                 </children>
                 <children xsi:type="svg:Text" attributes="{&quot;template-id&quot;:&quot;node-text&quot;,&quot;maxWidth&quot;:&quot;1&quot;}" fillOpacity="1.0" strokeOpacity="1.0" opacity="1.0" fontSize="15" fontName="Arial-BoldMT" text="EVENT" anchor="middle" alignmentBaseline="central">
                   <fill xsi:type="svg_2:RGBColor" r="1.0" g="1.0" b="1.0"/>
                   <x value="51.0"/>
-                  <y value="22.0"/>
+                  <y value="9.0"/>
                 </children>
-                <matrix translateY="5.0"/>
+                <matrix translateY="18.0"/>
               </children>
               <matrix translateX="208.0"/>
             </children>
@@ -751,14 +752,14 @@
                     </expression>
                   </constraints>
                   <width value="103.0"/>
-                  <height value="44.0"/>
+                  <height value="18.0"/>
                 </children>
                 <children xsi:type="svg:Text" attributes="{&quot;template-id&quot;:&quot;node-text&quot;,&quot;maxWidth&quot;:&quot;1&quot;}" fillOpacity="1.0" strokeOpacity="1.0" opacity="1.0" fontSize="15" fontName="Arial-BoldMT" text="MY PLAN" anchor="middle" alignmentBaseline="central">
                   <fill xsi:type="svg_2:RGBColor" r="1.0" g="1.0" b="1.0"/>
                   <x value="51.0"/>
-                  <y value="22.0"/>
+                  <y value="9.0"/>
                 </children>
-                <matrix translateY="5.0"/>
+                <matrix translateY="18.0"/>
               </children>
               <matrix translateX="311.0"/>
             </children>

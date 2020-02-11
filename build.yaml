@@ -39,8 +39,8 @@ ios:
     search-paths: []
     linked-libs: []
   sign:
-    provision-profile: /Users/Hiromu.Tsuruta/XcodeApp/profile/appscade.mobileprovision
-    certificate: /Users/Hiromu.Tsuruta/XcodeApp/profile/appscade.p12
+    provision-profile: /Users/admin/Scade/profile/appscade.mobileprovision
+    certificate: /Users/admin/Scade/profile/appscade.p12
   icons: 
     iphone: # or ipad, sizes: 20X20, 29X29, 40X40, 60X60, 76X76, 83.5X83.5
       60X60_2X:
