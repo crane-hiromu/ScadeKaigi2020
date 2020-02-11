@@ -3,12 +3,12 @@ import ScadeKit
 // MARK: - Element
 
 
-final class SpeckersListPageListElement: SCDWidgetsListElement {}
+final class SpeakersListPageListElement: SCDWidgetsListElement {}
 
 
 // MARK: - Extension
 
-extension BindingElement where T == SpeckersListPageListElement {
+extension BindingElement where T == SpeakersListPageListElement {
     
     // MARK: Wrapper
     

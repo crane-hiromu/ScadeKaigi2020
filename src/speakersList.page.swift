@@ -3,16 +3,16 @@ import ScadeKit
 
 // MARK: - Adapter
 
-final class SpeckersListPageAdapter: SCDLatticePageAdapter {
+final class SpeakersListPageAdapter: SCDLatticePageAdapter {
     
     // MARK: Properties
     
     @objc dynamic private var model = SpeakersEntity()
     private var bindables = Set<SCDBindingBinding>()
     
-    private lazy var speckersListPage: SpeckersListPage = {
-        let view = SpeckersListPage(adapter: self)
-        view.speckersListPageDelegate = self
+    private lazy var speakersListPage: SpeakersListPage = {
+        let view = SpeakersListPage(adapter: self)
+        view.speakersListPageDelegate = self
         return view
     }()
     
@@ -45,7 +45,7 @@ final class SpeckersListPageAdapter: SCDLatticePageAdapter {
 
 // MARK: - LifeCycleEventable
 
-extension SpeckersListPageAdapter: LifeCycleEventable {
+extension SpeakersListPageAdapter: LifeCycleEventable {
     
     func onEnter(with event: SCDWidgetsEnterEvent?) {
         bindables.forEach { $0.activate() }
@@ -59,16 +59,16 @@ extension SpeckersListPageAdapter: LifeCycleEventable {
 
 // MARK: - Private
 
-private extension SpeckersListPageAdapter {
+private extension SpeakersListPageAdapter {
     
     func bind() {
         from(model)
             .select(\.speakers)
-            .bind(to: speckersListPage.dataSource)
+            .bind(to: speakersListPage.dataSource)
             .registered(with: &bindables)
         
-        let bindableItem = speckersListPage.bindableItem
-        let row = speckersListPage.row
+        let bindableItem = speakersListPage.bindableItem
+        let row = speakersListPage.row
         
         bindableItem
             .select(\Speakers.fullName)
@@ -80,13 +80,13 @@ private extension SpeckersListPageAdapter {
 
 // MARK: - SpeckersListPageAdapter
 
-extension SpeckersListPageAdapter: SpeckersListPageDelegate {
+extension SpeakersListPageAdapter: SpeakersListPageDelegate {
     
     func onBackClicked() {
         navigation?.push(type: .timeTable, transition: .back)
     }
     
     func onItemSelected(with event: SCDWidgetsItemEvent?) {
-        
+        navigation?.push(type: .profile, transition: .forward)
     }
 }

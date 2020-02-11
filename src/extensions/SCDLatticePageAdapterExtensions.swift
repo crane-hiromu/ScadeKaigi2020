@@ -19,4 +19,8 @@ extension SCDLatticePageAdapter {
         notch?.isExclude = !Constants.hasNotch
         #endif
     }
+    
+    func load(type: Constants.PageType) {
+    		load(type.page)
+    }
 }

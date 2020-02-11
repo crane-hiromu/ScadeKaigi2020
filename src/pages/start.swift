@@ -12,15 +12,17 @@ final class ScadeKaigi2020: SCDApplication {
         let service: TimetableService? = SCDRuntime.loadService("TimetableService.service")
         guard let result = service?.getTimetable() else { fatalError() } // todo
         
-        let adapter = TimeTablePageAdapter(
-            timetable: TimetableEntity(result), 
-            pageType: .dayOne
-        )
+        let adapter = TimeTablePageAdapter(timetable: TimetableEntity(result),  pageType: .dayOne)
         return adapter
     }()
     
-    private lazy var speckersListAdapter: SpeckersListPageAdapter = {
-        let adapter = SpeckersListPageAdapter()
+    private lazy var speakersListAdapter: SpeakersListPageAdapter = {
+        let adapter = SpeakersListPageAdapter()
+        return adapter
+    }()
+    
+    private lazy var profileAdapter: ProfilePageAdapter = {
+        let adapter = ProfilePageAdapter()
         return adapter
     }()
     
@@ -30,9 +32,9 @@ final class ScadeKaigi2020: SCDApplication {
     override func onFinishLaunching() {	
         debugPrint("---\(#function)---")
         
-        timeTableAdapter.load("timeTable.page")
-        speckersListAdapter.load("speckersList.page")
-        
+        timeTableAdapter.load(type: .timeTable)
+        speakersListAdapter.load(type: .speckersList)
+        profileAdapter.load(type: .profile)
         
         timeTableAdapter.show(window)
     }

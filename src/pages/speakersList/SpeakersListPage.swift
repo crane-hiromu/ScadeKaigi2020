@@ -2,23 +2,23 @@ import ScadeKit
 
 // MARK: - Delegate
 
-protocol SpeckersListPageDelegate: SCDLatticePageAdapter {
+protocol SpeakersListPageDelegate: SCDLatticePageAdapter {
     func onBackClicked()
     func onItemSelected(with event: SCDWidgetsItemEvent?)
 }
 
 // MARK: - View
 
-final class SpeckersListPage {
+final class SpeakersListPage {
     
     // MARK: Properties
     
-    weak var adapter: SpeckersListPageAdapter?
-    weak var speckersListPageDelegate: SpeckersListPageDelegate?
+    weak var adapter: SpeakersListPageAdapter?
+    weak var speakersListPageDelegate: SpeakersListPageDelegate?
     
     lazy var dataSource = from(speakerList).dataSource.cast([Speakers].self)
     lazy var bindableItem = from(speakerList).items
-    lazy var row = from(speakerList).rows.cast(SpeckersListPageListElement.self)
+    lazy var row = from(speakerList).rows.cast(SpeakersListPageListElement.self)
     
     
     // MARK: Widgets
@@ -26,7 +26,7 @@ final class SpeckersListPage {
     private lazy var backButton: SCDWidgetsButton! = {
         let btn = adapter?.page?.getWidgetByName("backButton")?.asButton
         btn?.onClick.append(SCDWidgetsEventHandler { [weak self] event in
-            self?.speckersListPageDelegate?.onBackClicked()
+            self?.speakersListPageDelegate?.onBackClicked()
         })
         return btn
     }()
@@ -34,7 +34,7 @@ final class SpeckersListPage {
     private lazy var speakerList: SCDWidgetsList! = {
         let list = adapter?.page?.getWidgetByName("speakerList")?.asList
         list?.onItemSelected.append(SCDWidgetsItemSelectedEventHandler { [weak self] event in
-            self?.speckersListPageDelegate?.onItemSelected(with: event)
+            self?.speakersListPageDelegate?.onItemSelected(with: event)
         })
         return list
     }()
@@ -42,7 +42,7 @@ final class SpeckersListPage {
     
     // MARK: Initializer
     
-    init(adapter: SpeckersListPageAdapter?) {
+    init(adapter: SpeakersListPageAdapter?) {
         self.adapter = adapter
         
         /// todo access widgets
@@ -51,6 +51,6 @@ final class SpeckersListPage {
     
     deinit {
         adapter = nil
-        speckersListPageDelegate = nil
+        speakersListPageDelegate = nil
     }
 }
