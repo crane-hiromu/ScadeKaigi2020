@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.scade.sdk.data.service="http://scade.com/sdk/data/service" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="src">
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.scade.sdk.data.service="http://scade.com/sdk/data/service" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="services">
   <eClassifiers xsi:type="com.scade.sdk.data.service:Service" name="TimetableService" auth="//TimetableService/@contents.0">
     <eSuperTypes href="http://scade.com/ScadeKaigi2020#//TimetableService"/>
     <eOperations xsi:type="com.scade.sdk.data.service:HttpRequest" name="getTimetable" eType="//TimetableResponse" responseType="JSON" url="https://api.droidkaigi.jp/2020/timetable/"/>
