@@ -46,7 +46,7 @@ final class TimetableEntity: EObject {
         return speakers.filter { $0.sessions.first { $0 == sessionid }?.isEmpty == false }
     }
     
-    func update(type: Constants.TimeTablePageType) {
+    func update(type: TimeTablePageType) {
         switch type {
         case .dayOne:
             self.sessions = sessionsEntiry.filter { $0.startsAt.contains("02-20T") }

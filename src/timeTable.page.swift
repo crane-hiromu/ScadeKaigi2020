@@ -7,27 +7,20 @@ final class TimeTablePageAdapter: SCDLatticePageAdapter {
     // MARK: Properties
     
     @objc dynamic private var timetable: TimetableEntity
-    private var pageType: Constants.TimeTablePageType
-    
+    private var pageType: TimeTablePageType
     private var bindables = Set<SCDBindingBinding>()
-    private var tabItems: [SCDWidgetsToolBarItem] {
-        return Constants.TimeTablePageType.allCases.compactMap { type in
-            return self.page?.getWidgetByName(type.tabItem)?.asToolBarItem
-        }
-    }
-    private lazy var timeTableList: SCDWidgetsList! = {
-        let widget = self.page?.getWidgetByName("timeTableList")
-        let list = widget as? SCDWidgetsList
-        list?.onItemSelected.append(SCDWidgetsItemSelectedEventHandler { [weak self] event in
-            self?.onItemSelected(with: event)
-        })
-        return list
+    
+    private lazy var timeTablePageView: TimeTablePageView = {
+        let view = TimeTablePageView(adapter: self)
+        view.timeTablePageDelegate = self
+        return view
     }()
     
     // MARK: Override
     
-    init(timetable: TimetableEntity, pageType: Constants.TimeTablePageType) {
+    init(timetable: TimetableEntity, pageType: TimeTablePageType) {
         debugPrint("---\(#function)---")
+        
         self.timetable = timetable
         self.pageType = pageType
     }
@@ -35,8 +28,9 @@ final class TimeTablePageAdapter: SCDLatticePageAdapter {
     override func load(_ path: String) {
         super.load(path)
         debugPrint("---\(#function)---")
+        
         setupSafeArea()
-        timetable.update(type: pageType) // init	
+        setup()
         bind()
     }
     
@@ -61,21 +55,29 @@ final class TimeTablePageAdapter: SCDLatticePageAdapter {
     }
 }
 
+
 // MARK: - Private 
 
 private extension TimeTablePageAdapter {
     
+    func setup() {
+        // init first view
+        timetable.update(type: pageType)
+        
+        // append tab btn event
+        timeTablePageView.appendOnClick()
+    }
+    
     func bind() {	
-        let dataSource = from(timeTableList).dataSource.cast([Sessions].self)
+        let dataSource = timeTablePageView.dataSource
         
         from(timetable)
             .select(\.sessions)
             .bind(to: dataSource)
             .registered(with: &bindables)
         
-        
-        let bindableItem = from(timeTableList).items
-        let row = from(timeTableList).rows.cast(TimeTablePageListElement.self)
+        let bindableItem = timeTablePageView.bindableItem
+        let row = timeTablePageView.row
         
         bindableItem
             .select(\Sessions.startsAt)
@@ -131,23 +133,6 @@ private extension TimeTablePageAdapter {
             .select(\Sessions.id)
             .bind(to: row.tagIcon, mapFunction: { Constants.Tag.icon(by: $0) })
             .registered(with: &bindables)
-        
-        // todo
-        DispatchQueue.global().async {
-            Constants.TimeTablePageType.allCases.forEach { type in
-                let item = self.page?.getWidgetByName(type.tabItem)?.asToolBarItem
-                item?.onClick.append(SCDWidgetsEventHandler{ [weak self] _ in
-                    self?.tabItems.forEach {
-                        $0.backgroundColor = SCDGraphicsRGB(red:0,green:0,blue:0)
-                        $0.isEnable = false
-                    }
-                    item?.backgroundColor = SCDGraphicsRGB(red:255,green:127,blue:80)
-                    
-                    self?.pageType = type
-                    self?.onTabClicked()
-                })
-            }
-        }
     }
     
     func bindAfter() {
@@ -156,7 +141,7 @@ private extension TimeTablePageAdapter {
         //        DispatchQueue.global().async {
         //            self.timeTableList.elements.enumerated().forEach { i, wrapper in
         //            		let children = wrapper.children.first?.asRow?.children
-        //                let icon = children?[1].asList?.children[2].asRow?.children.first?.asImage
+        //                let icon = children?[1].asListView?.children[2].asRow?.children.first?.asImage
         //                let request = SCDNetworkRequest()
         //                request.url = icon?.content ?? ""
         //                if let response = request.call() {
@@ -167,44 +152,30 @@ private extension TimeTablePageAdapter {
         //            }
         //        }
         
-        /// append tag click event
-        DispatchQueue.global().async {
-            self.timeTableList.elements.enumerated().forEach { i, wrapper in
-                let image = wrapper.children.first?.asRow?.children[2].asImage
-                image?.onClick.removeAll() // have to reset case of android keeping previous event
-                image?.onClick.append(SCDWidgetsEventHandler { [weak self] e in
-                    self?.onTagSelected(with: e, at: i)
-                })
-            }
-        }
+        
+        
+        //        /// append tag click event
+        //        DispatchQueue.global().async {
+        //            self.timeTablePageView.timeTableList.elements.enumerated().forEach { i, wrapper in
+        //                let image = wrapper.children.first?.asRow?.children[2].asImage
+        //                image?.onClick.removeAll() // have to reset case of android keeping previous event
+        //                image?.onClick.append(SCDWidgetsEventHandler { [weak self] e in
+        //                    self?.onTagSelected(with: e, at: i)
+        //                })
+        //            }
+        //        }
     }
-    
-    func onTabClicked() {
-        /// refreshing list by binding is crashed on Android so reset bind for Android only
-        #if os(Android)
-        DispatchQueue.global().async { [weak self] in
-            guard let self = self else { return }
-            self.bindables.forEach { $0.deactivate() }
-            self.timetable.update(type: self.pageType)
-            
-            DispatchQueue.main.async {
-                self.bind()
-                self.bindAfter()
-            }
-        }
-        #else 
-        DispatchQueue.global().async { [weak self] in
-            guard let self = self else { return }
-            self.timetable.update(type: self.pageType)
-            self.bindAfter()
-        }
-        #endif
-    }
+}
+
+
+// MARK: - TimeTablePageDelegate
+
+extension TimeTablePageAdapter: TimeTablePageDelegate {
     
     func onItemSelected(with event: SCDWidgetsItemEvent?) {
         debugPrint("----onItemSelected", event?.item)
         
-        //    	self.navigation?.push(page: ChildPageAdapter.pageName, transition: .forward)
+        //        self.navigation?.push(page: ChildPageAdapter.pageName, transition: .forward)
         
         //      let listElement = event!.element as? SCDWidgetsListElement
         //      listElement?.backgroundColor = SCDGraphicsRGB(red:10,green:10,blue:10)
@@ -223,5 +194,40 @@ private extension TimeTablePageAdapter {
         }
         UserDefaultsHelper.sessionIds.setItem(with: ids)
         event?.target?.asImage?.url = Constants.Tag.icon(by: id)
+    }
+    
+    func onTabClicked(by type: TimeTablePageType) {
+        self.pageType = type
+        timeTablePageView.removeOnClick()
+        timeTablePageView.tabItems.enumerated().forEach { i, item in
+            item.backgroundColor = (type.rawValue == i) ? .tabItemOrange : .white
+        }
+        AlertManager.shared.startIndicator()
+        
+        /// refreshing list by binding is crashed on Android so reset bind for Android only
+        #if os(Android)
+        DispatchQueue.global().async { [weak self] in
+            guard let self = self else { return }
+            self.bindables.forEach { $0.deactivate() }
+            self.timetable.update(type: type)
+            
+            DispatchQueue.main.async {
+                self.bind()
+                self.bindAfter()
+            }
+        }
+        #else
+        DispatchQueue.global().async { [weak self] in
+            guard let self = self else { return }
+            self.timetable.update(type: type)
+            self.bindAfter()
+        }
+        #endif
+        
+        /// if click tab before finishing drawing view is crashed on App so wait for 2.5 second
+        DispatchQueue.global().asyncAfter(deadline: .now()+2) {
+            self.timeTablePageView.appendOnClick()
+            AlertManager.shared.stopIndicator()
+        }
     }
 }

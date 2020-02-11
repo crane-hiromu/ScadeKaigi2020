@@ -29,3 +29,16 @@ final class ScadeKaigi2020: SCDApplication {
         //			UserDefaults.standard.set("huga", forKey: "hoge")
     }
 }
+
+#if os(iOS) 
+
+import UIKit 
+
+extension SCDApplication {
+		static var rootViewController: UIViewController? {
+				get {
+						return UIApplication.shared.delegate?.window??.rootViewController
+				}
+		}
+}
+#endif

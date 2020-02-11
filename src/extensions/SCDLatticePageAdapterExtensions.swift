@@ -38,7 +38,7 @@ extension SCDLatticePageAdapter {
         #if(os(Android))	
         content?.isExclude = true
         notch?.isExclude = true
-        #else
+        #elseif(os(iOS))
         content?.isExclude = false
         notch?.isExclude = !Constants.hasNotch
         #endif

@@ -21,21 +21,6 @@ struct Constants {
         }
     }
     
-    // MARK: Enums
-    
-    enum TimeTablePageType: String, CaseIterable {
-        case dayOne, dayTwo, event, myPlan
-        
-        var tabItem: String {
-            switch self {
-            case .dayOne: return "tabItemDayOne"
-            case .dayTwo: return "tabItemDayTwo"
-            case .event: return "tabItemEvent"
-            case .myPlan: return "tabItemMyPlan"
-            }
-        }
-    }
-    
     #if os(iOS)
     static var hasNotch: Bool {
         return 20.0 < UIApplication.shared.statusBarFrame.height // todo
