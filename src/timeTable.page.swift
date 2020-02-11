@@ -179,7 +179,7 @@ extension TimeTablePageAdapter: TimeTablePageDelegate {
 	  func onSearchClicked() {
     		debugPrint("---\(#function)---")
     		
-    		navigation?.push(page: "speckersList.page", data: timetable.speakers, transition: .forward)
+    		navigation?.push(type: .speckersList, data: timetable.speakers, transition: .forward)
     }
     
     func onMenuClicked() {
@@ -189,7 +189,7 @@ extension TimeTablePageAdapter: TimeTablePageDelegate {
     }
     
     func onItemSelected(with event: SCDWidgetsItemEvent?) {
-        debugPrint("----onItemSelected", event?.item)
+        debugPrint("----onItemSelected")
         
         
         
