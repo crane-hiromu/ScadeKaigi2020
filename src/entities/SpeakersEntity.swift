@@ -9,6 +9,6 @@ final class SpeakersEntity: EObject {
 		}
 		
 		func update(speakers: [Speakers]) {
-				self.speakers = speakers.sorted { $0.fullName < $1.fullName }
+				self.speakers = speakers.sorted { $0.fullName.lowercased() < $1.fullName.lowercased() }
 		}
 }

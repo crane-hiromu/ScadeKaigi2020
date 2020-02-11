@@ -92,5 +92,7 @@ private extension ProfilePageAdapter {
 				profilePage.tagLabel.text = ""
 				profilePage.bioLabel.text = ""
 				profilePage.profileImage.content = ""
+				profilePage.profileImage.isContentPriority = false
+				profilePage.profileImage.url = "res/iconProfile.png" // todo
 		}
 }

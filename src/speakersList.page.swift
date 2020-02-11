@@ -87,7 +87,6 @@ extension SpeakersListPageAdapter: SpeakersListPageDelegate {
     }
     
     func onItemSelected(with event: SCDWidgetsItemEvent?) {
-    		print("---", event?.item)
         navigation?.push(type: .profile, data: event?.item, transition: .forward)
     }
 }
