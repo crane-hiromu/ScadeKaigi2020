@@ -49,13 +49,26 @@ final class TimeTablePageAdapter: SCDLatticePageAdapter {
         super.show(view)
         debugPrint("---\(#function)---")
         
-        timeTablePageView.appendOnTabClick()
-        timeTablePageView.appendOnTagClick()
+        setup()
     }
     
     deinit {
         bindables.forEach { $0.deactivate() }
     }
+}
+
+
+// MARK: - LifeCycleEventable
+
+extension TimeTablePageAdapter: LifeCycleEventable {
+	
+		func onEnter(with event: SCDWidgetsEnterEvent?) {
+			
+		}
+		
+		func onExit(with event: SCDWidgetsExitEvent?) {
+			
+		}
 }
 
 
@@ -130,6 +143,11 @@ private extension TimeTablePageAdapter {
             .registered(with: &bindables)
     }
     
+    func setup() {
+    	  timeTablePageView.appendOnTabClick()
+        timeTablePageView.appendOnTagClick()
+    }
+    
 //    func bindAfter() {
 //        /// loading images should use a sub-thread
 //        /// not to block the main thread and not slow down view drawing
@@ -157,11 +175,23 @@ private extension TimeTablePageAdapter {
 // MARK: - TimeTablePageDelegate
 
 extension TimeTablePageAdapter: TimeTablePageDelegate {
+	
+	  func onSearchClicked() {
+    		debugPrint("---\(#function)---")
+    		
+    		navigation?.push(page: "speckersList.page", data: timetable.speakers)
+    }
+    
+    func onMenuClicked() {
+    		debugPrint("---\(#function)---")
+    		
+    		// navigation?.push(page: "specker.page", data: nil, transition: .forward)
+    }
     
     func onItemSelected(with event: SCDWidgetsItemEvent?) {
         debugPrint("----onItemSelected", event?.item)
         
-        self.navigation?.push(page: "speckersList.page", data: nil, transition: .forward)
+        
         
         //      let listElement = event!.element as? SCDWidgetsListElement
         //      listElement?.backgroundColor = SCDGraphicsRGB(red:10,green:10,blue:10)
@@ -183,6 +213,8 @@ extension TimeTablePageAdapter: TimeTablePageDelegate {
     }
     
     func onTabClicked(by type: TimeTablePageType) {
+    		debugPrint("---\(#function)---")
+    		
     		guard self.pageType != type else { return } // ignore click current tab
     		
         self.pageType = type

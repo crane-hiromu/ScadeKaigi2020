@@ -18,6 +18,10 @@ extension EObject {
         return self as? SCDWidgetsImage
     }
     
+    var asButton: SCDWidgetsButton? {
+    		return self as? SCDWidgetsButton
+    }
+    
     var asList: SCDWidgetsList? {
     		return self as? SCDWidgetsList
     }

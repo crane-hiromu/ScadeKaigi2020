@@ -3,9 +3,11 @@ import ScadeKit
 // MARK: - Delegate
 
 protocol TimeTablePageDelegate: SCDLatticePageAdapter {
+		func onSearchClicked()
+    func onMenuClicked()
+    func onTabClicked(by type: TimeTablePageType)
     func onItemSelected(with event: SCDWidgetsItemEvent?)
     func onTagSelected(with event: SCDWidgetsEvent?, at index: Int)
-    func onTabClicked(by type: TimeTablePageType)
 }
 
 // MARK: - View
@@ -26,6 +28,22 @@ final class TimeTablePageView {
     
     // MARK: Widgets
     
+    private lazy var searchButton: SCDWidgetsButton! = {
+        let btn = adapter?.page?.getWidgetByName("searchButton")?.asButton
+        btn?.onClick.append(SCDWidgetsEventHandler { [weak self] event in
+            self?.timeTablePageDelegate?.onSearchClicked()
+        })
+        return btn
+    }()
+    
+    private lazy var menuButton: SCDWidgetsButton! = {
+        let btn = adapter?.page?.getWidgetByName("menuButton")?.asButton
+        btn?.onClick.append(SCDWidgetsEventHandler { [weak self] event in
+            self?.timeTablePageDelegate?.onMenuClicked()
+        })
+        return btn
+    }()
+    
     private lazy var timeTableList: SCDWidgetsList! = {
         let list = adapter?.page?.getWidgetByName("timeTableList")?.asList
         list?.onItemSelected.append(SCDWidgetsItemSelectedEventHandler { [weak self] event in
@@ -33,6 +51,7 @@ final class TimeTablePageView {
         })
         return list
     }()
+    
     
     
     // MARK: Initializer
@@ -47,10 +66,15 @@ final class TimeTablePageView {
                 self?.timeTablePageDelegate?.onTabClicked(by: type)
             }
         }
+        
+        /// todo access widgets
+        searchButton.isVisible = true
+        menuButton.isVisible = true
     }
     
     deinit {
         adapter = nil
+        timeTablePageDelegate = nil
     }
 }
 

@@ -7,7 +7,7 @@ extension SCDLatticeNavigation {
 				case normal, forward = "FORWARD_PUSH", back = "BACKWARD_PUSH"
 		}
 	
-    func push(page: String, data: Any? = nil, transition: Transition) {
+    func push(page: String, data: Any? = nil, transition: Transition = .normal) {
 	    	switch transition {
 	    	case .normal:
 	    			self.go(with: page, data: data)
