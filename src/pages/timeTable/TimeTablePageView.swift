@@ -52,7 +52,15 @@ final class TimeTablePageView {
         return list
     }()
     
-    
+    private lazy var sidebar: SCDWidgetsSidebar! = {
+        let bar = adapter?.page?.getWidgetByName("sidebar")?.asSideBar
+        let homeMenu = bar?.panel?.getWidgetByName("homeMenuButton")?.asClikable
+        homeMenu?.onClick.append(SCDWidgetsEventHandler{ _ in 
+        		print("Menu1 clicked")
+        })
+        return bar
+    }()
+
     
     // MARK: Initializer
     
@@ -70,6 +78,7 @@ final class TimeTablePageView {
         /// todo access widgets
         searchButton.isVisible = true
         menuButton.isVisible = true
+        sidebar.isVisible = true
     }
     
     deinit {
@@ -109,5 +118,9 @@ extension TimeTablePageView {
 	              })
 	          }
         }
+    }
+    
+    func setSidebar() {
+    		sidebar?.isHidden.toggle()
     }
 }

@@ -185,7 +185,7 @@ extension TimeTablePageAdapter: TimeTablePageDelegate {
     func onMenuClicked() {
     		debugPrint("---\(#function)---")
     		
-    		
+    		timeTablePageView.setSidebar()
     }
     
     func onItemSelected(with event: SCDWidgetsItemEvent?) {

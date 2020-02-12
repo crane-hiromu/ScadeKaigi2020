@@ -46,6 +46,14 @@ extension EObject {
         return self as? SCDWidgetsToolBarItem
     }
     
+    var asSideBar: SCDWidgetsSidebar? {
+    		return self as? SCDWidgetsSidebar
+    }
+    
+    var asClikable: SCDWidgetsClickable? {
+    		return self as? SCDWidgetsClickable
+    }
+    
     
     /* example
      
