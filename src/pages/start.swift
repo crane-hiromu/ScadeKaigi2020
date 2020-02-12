@@ -10,7 +10,8 @@ final class ScadeKaigi2020: SCDApplication {
     
     private lazy var timeTableAdapter: TimeTablePageAdapter = {
         let service: TimetableService? = SCDRuntime.loadService("TimetableService.service")
-        guard let result = service?.getTimetable() else { fatalError() } // todo
+        guard let result = service?.getTimetable() else { fatalError() }
+        DataManager.shared.set(timetable: result)
         
         let adapter = TimeTablePageAdapter(timetable: TimetableEntity(result),  pageType: .dayOne)
         return adapter

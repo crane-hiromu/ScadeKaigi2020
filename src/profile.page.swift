@@ -74,8 +74,10 @@ private extension ProfilePageAdapter {
         profilePage.nameLabel.text = profile.fullName
         profilePage.tagLabel.text = profile.tagLine
         profilePage.bioLabel.text = profile.bio
-        // profilePage.sessionLabel.text = "" 
-        // profilePage.timeLabel.text = profile
+        
+        let session = DataManager.shared.sessions.first { $0.id == profile.sessions.first }
+        profilePage.sessionLabel.text = session?.title.ja ?? ""
+       	profilePage.timeLabel.text = "\(session?.startsAt.toDateAndTime ?? "") -"
         
         DispatchQueue.global().async {
             let request = SCDNetworkRequest()
@@ -93,6 +95,5 @@ private extension ProfilePageAdapter {
         profilePage.bioLabel.text = ""
         profilePage.profileImage.content = ""
         profilePage.profileImage.isContentPriority = false
-        profilePage.profileImage.url = "res/iconProfile.png" // todo
     }
 }

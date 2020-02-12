@@ -26,4 +26,17 @@ extension String {
         )
         return formatter.string(from: date).description
     }
+    
+    var toDateAndTime: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZ'"
+        guard let date = formatter.date(from: self) else { return "" }
+        
+        formatter.dateFormat = DateFormatter.dateFormat(
+            fromTemplate: "MM月dd日 HH:mm",
+            options: 0, 
+            locale: Locale(identifier: "ja_JP")
+        )
+        return formatter.string(from: date).description
+    }
 }
