@@ -35,7 +35,7 @@ final class ProfilePageAdapter: SCDLatticePageAdapter {
     
     deinit {
         cancelCycle()
-       
+        
     }
 }
 
@@ -57,7 +57,7 @@ extension ProfilePageAdapter: LifeCycleEventable {
 // MARK: - ProfilePageDelegate
 
 extension ProfilePageAdapter: ProfilePageDelegate {
-
+    
     func onBackClicked() {
         navigation?.push(type: .speakersList, transition: .back)
     }
@@ -67,32 +67,32 @@ extension ProfilePageAdapter: ProfilePageDelegate {
 // MARK: - Private
 
 private extension ProfilePageAdapter {
-	
-		func setup() {
-				guard let profile = speakers else { return }
-				
-				profilePage.nameLabel.text = profile.fullName
-				profilePage.tagLabel.text = profile.tagLine
-				profilePage.bioLabel.text = profile.bio
-				// profilePage.sessionLabel.text = "" 
-				// profilePage.timeLabel.text = profile
-				
-				DispatchQueue.global().async {
-						let request = SCDNetworkRequest()
-						request.url = profile.profilePicture
-						guard let response = request.call() else { return }
-						
-						self.profilePage.profileImage.content = dataToString(data: response.body, isUtf8: false)
-						self.profilePage.profileImage.isContentPriority = true
-				}
-		}
-		
-		func reset() {
-				profilePage.nameLabel.text = ""
-				profilePage.tagLabel.text = ""
-				profilePage.bioLabel.text = ""
-				profilePage.profileImage.content = ""
-				profilePage.profileImage.isContentPriority = false
-				profilePage.profileImage.url = "res/iconProfile.png" // todo
-		}
+    
+    func setup() {
+        guard let profile = speakers else { return }
+        
+        profilePage.nameLabel.text = profile.fullName
+        profilePage.tagLabel.text = profile.tagLine
+        profilePage.bioLabel.text = profile.bio
+        // profilePage.sessionLabel.text = "" 
+        // profilePage.timeLabel.text = profile
+        
+        DispatchQueue.global().async {
+            let request = SCDNetworkRequest()
+            request.url = profile.profilePicture
+            guard let response = request.call() else { return }
+            
+            self.profilePage.profileImage.content = dataToString(data: response.body, isUtf8: false)
+            self.profilePage.profileImage.isContentPriority = true
+        }
+    }
+    
+    func reset() {
+        profilePage.nameLabel.text = ""
+        profilePage.tagLabel.text = ""
+        profilePage.bioLabel.text = ""
+        profilePage.profileImage.content = ""
+        profilePage.profileImage.isContentPriority = false
+        profilePage.profileImage.url = "res/iconProfile.png" // todo
+    }
 }

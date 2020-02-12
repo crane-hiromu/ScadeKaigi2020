@@ -22,11 +22,11 @@ struct Constants {
     }
     
     enum PageType: String {
-    		case timeTable, speakersList, profile
-    		
-    		var page: String {
-    				return "\(rawValue).page"
-    		}
+        case timeTable, speakersList, profile
+        
+        var page: String {
+            return "\(rawValue).page"
+        }
     }
     
     #if os(iOS)
@@ -42,14 +42,14 @@ struct Constants {
 /* https://github.com/scadedoc/UgExamples/blob/master/UgBitmapDemo/src/main.page.swift */
 
 #if os(Android)
-		func dataToString(data: SF_NSData, isUtf8: Bool) -> String {
-				let enc = isUtf8 ? String.Encoding.utf8 : String.Encoding.isoLatin1
-				let nsstring = SF_NSString(bytes: data.bytes, length: Int(data.length), encoding: enc.rawValue)
-				
-				return String(nsstring)
-		}
+func dataToString(data: SF_NSData, isUtf8: Bool) -> String {
+    let enc = isUtf8 ? String.Encoding.utf8 : String.Encoding.isoLatin1
+    let nsstring = SF_NSString(bytes: data.bytes, length: Int(data.length), encoding: enc.rawValue)
+    
+    return String(nsstring)
+}
 #else
-   func dataToString(data: Data, isUtf8: Bool) -> String {
-			return String(data: data, encoding: isUtf8 ? .utf8 : .isoLatin1)!
-		}
+func dataToString(data: Data, isUtf8: Bool) -> String {
+    return String(data: data, encoding: isUtf8 ? .utf8 : .isoLatin1)!
+}
 #endif

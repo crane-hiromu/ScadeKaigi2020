@@ -3,11 +3,11 @@ import ScadeKit
 // MARK: - Manager
 
 final class AlertManager: EObject {
-	
-		static let shared = AlertManager()
-		private override init() {}
-		
-		#if os(iOS)
+    
+    static let shared = AlertManager()
+    private override init() {}
+    
+    #if os(iOS)
     var indicator: UIAlertController = {
         let indicator = UIActivityIndicatorView(style: .gray)
         indicator.color = .orange
@@ -19,20 +19,20 @@ final class AlertManager: EObject {
         return alert
     }()
     #endif
-		
+    
     func startIndicator() {
-    		#if os(iOS)
-				DispatchQueue.main.async { 
-						SCDApplication.rootViewController?.present(self.indicator, animated: true)
-				}
-    		#endif
+        #if os(iOS)
+        DispatchQueue.main.async { 
+            SCDApplication.rootViewController?.present(self.indicator, animated: true)
+        }
+        #endif
     }
     
     func stopIndicator(completion: @escaping () -> Void = {}) {	
-    		#if os(iOS)
-    		DispatchQueue.main.async { 
-    				self.indicator.dismiss(animated: true, completion: completion)
-    		}		
-    		#endif
+        #if os(iOS)
+        DispatchQueue.main.async { 
+            self.indicator.dismiss(animated: true, completion: completion)
+        }		
+        #endif
     }
 }

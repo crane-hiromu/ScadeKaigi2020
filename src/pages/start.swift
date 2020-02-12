@@ -3,8 +3,8 @@ import ScadeKit
 // MARK: - Application
 
 final class ScadeKaigi2020: SCDApplication {
-	
-		// MARK: Properties
+    
+    // MARK: Properties
     
     private let window = SCDLatticeWindow()
     
@@ -48,10 +48,10 @@ final class ScadeKaigi2020: SCDApplication {
 import UIKit 
 
 extension SCDApplication {
-		static var rootViewController: UIViewController? {
-				get {
-						return UIApplication.shared.delegate?.window??.rootViewController
-				}
-		}
+    static var rootViewController: UIViewController? {
+        get {
+            return UIApplication.shared.delegate?.window??.rootViewController
+        }
+    }
 }
 #endif
