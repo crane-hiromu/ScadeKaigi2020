@@ -27,6 +27,11 @@ final class ScadeKaigi2020: SCDApplication {
         return adapter
     }()
     
+    private lazy var sessionAdapter: SessionPageAdapter = {
+        let adapter = SessionPageAdapter()
+        return adapter
+    }()
+    
     
     // MARK: Overrides
     
@@ -36,6 +41,7 @@ final class ScadeKaigi2020: SCDApplication {
         timeTableAdapter.load(type: .timeTable)
         speakersListAdapter.load(type: .speakersList)
         profileAdapter.load(type: .profile)
+        sessionAdapter.load(type: .session)
         
         timeTableAdapter.show(window)
     }

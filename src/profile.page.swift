@@ -35,7 +35,6 @@ final class ProfilePageAdapter: SCDLatticePageAdapter {
     
     deinit {
         cancelCycle()
-        
     }
 }
 

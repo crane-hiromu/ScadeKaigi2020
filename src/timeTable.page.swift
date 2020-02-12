@@ -185,16 +185,13 @@ extension TimeTablePageAdapter: TimeTablePageDelegate {
     func onMenuClicked() {
     		debugPrint("---\(#function)---")
     		
-    		// navigation?.push(page: "specker.page", data: nil, transition: .forward)
+    		
     }
     
     func onItemSelected(with event: SCDWidgetsItemEvent?) {
         debugPrint("----onItemSelected")
         
-        
-        
-        //      let listElement = event!.element as? SCDWidgetsListElement
-        //      listElement?.backgroundColor = SCDGraphicsRGB(red:10,green:10,blue:10)
+        navigation?.push(type: .session, data: event?.item, transition: .forward)
     }
     
     func onTagSelected(with event: SCDWidgetsEvent?, at index: Int) {
