@@ -168,7 +168,7 @@
           <color Red="75" Green="75" Blue="75"/>
         </font>
       </children>
-      <children xsi:type="com.scade.sdk.view:Label" name="sessionLabel" drawing="/3/@children.1/@children.6/@children.2" text="session title">
+      <children xsi:type="com.scade.sdk.view:Label" name="sessionLabel" drawing="/3/@children.1/@children.6/@children.2" text="session title" multiline="true">
         <layoutData xsi:type="com.scade.sdk.layout:GridData" row="1" horizontalAlignment="CENTER" verticalAlignment="MIDDLE" grabHorizontalSpace="true" widthConstraint="MATCH_PARENT">
           <minSize width="64" height="22"/>
           <maxSize width="-1" height="-1"/>
@@ -581,7 +581,7 @@
             <width value="350.0"/>
             <height value="22.0"/>
           </children>
-          <children xsi:type="svg:Text" attributes="{&quot;template-id&quot;:&quot;node-text&quot;}" fillOpacity="1.0" strokeOpacity="1.0" opacity="1.0" fontSize="12" fontName="ArialMT" text="session title" alignmentBaseline="central">
+          <children xsi:type="svg:Text" attributes="{&quot;template-id&quot;:&quot;node-text&quot;,&quot;maxWidth&quot;:&quot;1&quot;}" fillOpacity="1.0" strokeOpacity="1.0" opacity="1.0" fontSize="12" fontName="ArialMT" text="session title" alignmentBaseline="central">
             <fill xsi:type="svg_2:RGBColor" r="0.29411766" g="0.29411766" b="0.29411766"/>
             <x/>
             <y value="11.0"/>

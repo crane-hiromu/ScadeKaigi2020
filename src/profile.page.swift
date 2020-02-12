@@ -83,8 +83,10 @@ private extension ProfilePageAdapter {
             request.url = profile.profilePicture
             guard let response = request.call() else { return }
             
-            self.profilePage.profileImage.content = dataToString(data: response.body, isUtf8: false)
-            self.profilePage.profileImage.isContentPriority = true
+            DispatchQueue.main.async {
+            		self.profilePage.profileImage.content = dataToString(data: response.body, isUtf8: false)
+            		self.profilePage.profileImage.isContentPriority = true
+            }
         }
     }
     
