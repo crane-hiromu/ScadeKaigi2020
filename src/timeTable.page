@@ -343,6 +343,27 @@
         </template>
       </children>
     </children>
+    <children xsi:type="com.scade.sdk.view:Sidebar" name="sidebar" drawing="/3/@children.1/@children.1">
+      <layoutData xsi:type="com.scade.sdk.layout:AutoLayoutData">
+        <constraints source="/0/@children.1" sourceAnchor="TOP" target="/0" targetAnchor="TOP" active="true"/>
+        <constraints source="/0/@children.1" target="/0" active="true"/>
+        <constraints source="/0/@children.1" sourceAnchor="BOTTOM" target="/0" targetAnchor="BOTTOM" active="true"/>
+        <constraints source="/0/@children.1" sourceAnchor="RIGHT" target="/0" targetAnchor="RIGHT" active="true"/>
+      </layoutData>
+      <size width="414" height="896"/>
+      <location/>
+      <layout xsi:type="com.scade.sdk.layout:GridLayout"/>
+      <minArea/>
+      <maxArea width="-1" height="-1"/>
+      <panel xsi:type="com.scade.sdk.view:GridView" name="sidebarView" drawing="/3/@children.1/@children.1/@children.2" visible="false">
+        <backgroundColor Red="255" Green="255" Blue="255"/>
+        <size width="200" height="896"/>
+        <location/>
+        <layout xsi:type="com.scade.sdk.layout:GridLayout"/>
+        <minArea/>
+        <maxArea width="-1" height="-1"/>
+      </panel>
+    </children>
     <adapterClass href="http://scade.com/ScadeKaigi2020#//TimeTablePageAdapter"/>
   </com.scade.sdk.view:Page>
   <com.scade.sdk.data.binding:BindingModel/>
@@ -1126,6 +1147,49 @@
             </children>
             <children xsi:type="svg:Group" attributes="{&quot;template-id&quot;:&quot;content&quot;}"/>
           </children>
+        </children>
+      </children>
+      <children xsi:type="svg:Group">
+        <children xsi:type="svg:Box" attributes="{&quot;template-id&quot;:&quot;background&quot;}">
+          <constraints xsi:type="svg_1:DirectConstraint" exprStr="size.h">
+            <feature xsi:type="ecore:EReference" href="http://scade.com/svg#//draw/Box/height"/>
+            <expression xsi:type="com.scade.sdk.expr:Variable" name="size">
+              <path>h</path>
+            </expression>
+          </constraints>
+          <constraints xsi:type="svg_1:DirectConstraint" exprStr="size.w">
+            <feature xsi:type="ecore:EReference" href="http://scade.com/svg#//draw/Box/width"/>
+            <expression xsi:type="com.scade.sdk.expr:Variable" name="size">
+              <path>w</path>
+            </expression>
+          </constraints>
+          <width value="414.0"/>
+          <height value="896.0"/>
+        </children>
+        <children xsi:type="svg:Group" attributes="{&quot;template-id&quot;:&quot;content&quot;}"/>
+        <children xsi:type="svg:Group" visible="false">
+          <children xsi:type="svg:Box" attributes="{&quot;template-id&quot;:&quot;background&quot;}">
+            <constraints xsi:type="svg_1:DirectConstraint" exprStr="size.h">
+              <feature xsi:type="ecore:EReference" href="http://scade.com/svg#//draw/Box/height"/>
+              <expression xsi:type="com.scade.sdk.expr:Variable" name="size">
+                <path>h</path>
+              </expression>
+            </constraints>
+            <constraints xsi:type="svg_1:DirectConstraint" exprStr="size.w">
+              <feature xsi:type="ecore:EReference" href="http://scade.com/svg#//draw/Box/width"/>
+              <expression xsi:type="com.scade.sdk.expr:Variable" name="size">
+                <path>w</path>
+              </expression>
+            </constraints>
+            <children xsi:type="svg:Rect">
+              <fill xsi:type="svg_2:RGBColor" r="1.0" g="1.0" b="1.0"/>
+              <width value="100.0" measurement="PERCENTAGE"/>
+              <height value="100.0" measurement="PERCENTAGE"/>
+            </children>
+            <width value="200.0"/>
+            <height value="896.0"/>
+          </children>
+          <children xsi:type="svg:Group" attributes="{&quot;template-id&quot;:&quot;content&quot;}"/>
         </children>
       </children>
     </children>
