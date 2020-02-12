@@ -78,7 +78,7 @@ final class TimeTablePageView {
         /// todo access widgets
         searchButton.isVisible = true
         menuButton.isVisible = true
-        sidebar.isVisible = true
+        sidebar.isHidden = true
     }
     
     deinit {
@@ -121,6 +121,6 @@ extension TimeTablePageView {
     }
     
     func setSidebar() {
-    		sidebar?.isHidden.toggle()
+    		sidebar.isHidden.toggle()
     }
 }
