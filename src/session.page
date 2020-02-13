@@ -10,9 +10,9 @@
         <constraints source="/0/@children.0" target="/0" active="true"/>
         <constraints source="/0/@children.0" sourceAnchor="RIGHT" target="/0" targetAnchor="RIGHT" active="true"/>
       </layoutData>
-      <size width="414" height="106"/>
+      <size width="414" height="352"/>
       <location/>
-      <layout xsi:type="com.scade.sdk.layout:GridLayout" rows="3"/>
+      <layout xsi:type="com.scade.sdk.layout:GridLayout" rows="4"/>
       <minArea/>
       <maxArea width="-1" height="-1"/>
       <children xsi:type="com.scade.sdk.view:RowView" name="statusBarContent" drawing="/3/@children.1/@children.0/@children.1/@children.0">
@@ -55,31 +55,118 @@
           <location x="24"/>
           <font fontFamily="ArialMT" size="17"/>
         </children>
-        <children xsi:type="com.scade.sdk.view:Label" name="titlelabel11" drawing="/3/@children.1/@children.0/@children.3/@children.1/@children.1" text="Session" horizontalAlignment="CENTER">
-          <layoutData xsi:type="com.scade.sdk.layout:AutoLayoutData">
-            <constraints source="/0/@children.0/@children.2/@children.1" sourceAnchor="CENTER_X" target="/0/@children.0/@children.2" targetAnchor="CENTER_X" active="true"/>
-            <constraints source="/0/@children.0/@children.2/@children.1" sourceAnchor="TOP" target="/0/@children.0/@children.2" targetAnchor="TOP" active="true"/>
-            <constraints source="/0/@children.0/@children.2/@children.1" sourceAnchor="WIDTH" constant="85.0" active="true"/>
-            <constraints source="/0/@children.0/@children.2/@children.1" sourceAnchor="BOTTOM" target="/0/@children.0/@children.2" targetAnchor="BOTTOM" active="true"/>
+      </children>
+      <children xsi:type="com.scade.sdk.view:ListView" name="verticalview11" drawing="/3/@children.1/@children.0/@children.4">
+        <layoutData xsi:type="com.scade.sdk.layout:GridData" row="3" grabHorizontalSpace="true" widthConstraint="MATCH_PARENT"/>
+        <size width="414" height="175"/>
+        <location y="84"/>
+        <layout xsi:type="com.scade.sdk.layout:GridLayout" rows="4" verticalSpacing="4" marginTop="24" marginBottom="24" marginLeft="16" marginRight="16"/>
+        <minArea/>
+        <maxArea width="-1" height="-1"/>
+        <children xsi:type="com.scade.sdk.view:Label" name="sessionTitle" drawing="/3/@children.1/@children.0/@children.4/@children.1/@children.0" text="Session Title" multiline="true">
+          <layoutData xsi:type="com.scade.sdk.layout:GridData" horizontalAlignment="CENTER" verticalAlignment="MIDDLE" grabHorizontalSpace="true" widthConstraint="MATCH_PARENT">
+            <minSize width="97" height="22"/>
+            <maxSize width="-1" height="-1"/>
           </layoutData>
-          <size width="85" height="40"/>
-          <location x="164"/>
-          <font fontFamily="ArialMT" size="17">
-            <color Red="68" Green="106" Blue="179"/>
-          </font>
+          <size width="382" height="22"/>
+          <location x="16" y="24"/>
+          <font fontFamily="ArialMT" size="17"/>
+        </children>
+        <children xsi:type="com.scade.sdk.view:RowView" name="timeWrapper" drawing="/3/@children.1/@children.0/@children.4/@children.2">
+          <layoutData xsi:type="com.scade.sdk.layout:GridData" row="1" grabHorizontalSpace="true" grabVerticalSpace="true" widthConstraint="MATCH_PARENT" heightConstraint="MATCH_PARENT"/>
+          <size width="382" height="27"/>
+          <location x="16" y="50"/>
+          <layout xsi:type="com.scade.sdk.layout:GridLayout" columns="2" horizontalSpacing="4" marginTop="5" marginBottom="5" marginLeft="5" marginRight="5"/>
+          <minArea/>
+          <maxArea width="-1" height="-1"/>
+          <children xsi:type="com.scade.sdk.view:Image" name="timeIcon" drawing="/3/@children.1/@children.0/@children.4/@children.2/@children.1/@children.0" content="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAIAAAD/gAIDAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NTc3MiwgMjAxNC8wMS8xMy0xOTo0NDowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RDZGQjRCRUYyNkNBMTFFNDkxNDVFMDcyNTQyRUQwNDYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RDZGQjRCRjAyNkNBMTFFNDkxNDVFMDcyNTQyRUQwNDYiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpENkZCNEJFRDI2Q0ExMUU0OTE0NUUwNzI1NDJFRDA0NiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpENkZCNEJFRTI2Q0ExMUU0OTE0NUUwNzI1NDJFRDA0NiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pmri+DQAAAS8SURBVHja7JxdK2xRGMfPnHPChUGHGIphmCGN8lYahdyQQi7kI/hOfALFhaSk3CLlLTZ5G2YoQ+MtjULU+befWu323uaME5PZ/v+L3Zq1n732Wr/9rGc9aymusbGxH1Rq+kkEhEVYhEVYhEVYREBYhEVYhEVYhEUEhEVYhEVYhEVYREBYhEVYhEVYhEUEhEVYhEVYhEVYREBYhEVYhEVY316/U7QbHR3F9eLiYmZmhp5FERZhERZhfc/VMMkSOT8/H41GGxoaqqqqPB6PLJp7e3sHBwdiFggE6urqbG8ZhRbKysoKCwtzc3Px8+bmJhKJaJr2+PhoNc7JyQkGg7BXzZ6cnGxvb3u93t7eXtSMj4+/9QrYoPz8/ByLxdAZdD4dsER5eXnd3d1+v1/VeHQVFRUtLS3Z3sIjq6urxkYGBwdl2Ep/dFVWVs7Ozpp4lZSU9PX1ZWVlmZqtra3d2tqy7STg9vf3o0FVg8e9utbX102d+URY+FzwBbjA7u7u3d0d/Ki9vR1dwZfPzs4GqcPDw42NDeOt5ubmo6Mj1KhGrq6ucMV3Pj09BRpxHJhheF1dXXBeZVlQUCCk4BqaLtgDX2NjI0aO9m07KaQSiQS4iF+jnaamJnQPb7m/v7d1dpN+DQwMpEKkpaUFV7xsf3/fVIl+o8dwIvn+19fXt7e3NTU1KGNOwckXFhbUrdfX1/LycnkKs0w1FY/Hd3Z2YPDy8oKfuJ6fn7tcrtLSUowqHA4r5+rp6cnPz0cBHofPIPYPDw+wgcMWFxeL2drammq8tbXV5/MB7uTk5OXlpVSiQXQA7o/2ccUUTlOAhycbfwIQsEp5ZWXFeAt9QqdRcLvdxnrbwHR2diYFhQADk9kKTGrYSsvLy9K4SXBSXG3D3+bmJq6YGfDNdMBCcLV2QsEyzjURIrdEmX+2rHDAZaQgDgsdHx9b7dENadwU4CS6YeIneYX6Hp8bsz5QGBgmKRYsDM8YjI1RWTlvim3KrIdGRkaSmCG8ZgwszK/Ozk7lbnBMOKzVARFcMjXP+ihh7RsaGpIFDoEZ8UjNa0nlPkS2mVfmZfChUEhITU9PYwWwDfYiLJFqwqbYONKC9z7ypWEhP5DAb1oN4HFvjby6utrWQ63rBhI3KdTX1zsBluxv5GoU0kVTDVJHWWeRDVg9BR5qu0RiXqOA/BP5c8bDksEAFvZG4k2I99jigYg1b1pcXJQC8ngMXuwBDvbAYZtnqfwLNJHiGykj6UfKKrvFzAjw2Ayhuwhbfl3GQarNuTHjRb2EuZCu5PbiXHNzcx0dHUhHgrqsSXUquciXgIVQNTExgWEjeMG/MNFisRh2msgYkXPJtsm0DUByj52d2BvPDwBLThSsyefU1JTpYCOhC4uG2iokl8th/zFkeHgY7vNJf1hx1OEfIp3k/XKGQVjJ1NbWJoVwOOzYDP4/5lokEonH4xKVsSBWVFSow1hN06wHEt8UViAQkENU27tysubkveG7hLz06enJ5/O53W6VJSCiI07JUa3DN9LvVVRX+t/LP4URFmERFmERFkVYhEVYhEVYhEURFmERFmERFmFRhEVYhEVYhEVYFGERFmERFmERFkVYhEVYhEVYDtVfAQYA9Kg8ERKqtwIAAAAASUVORK5CYII=" url="res/iconClock.png" contentPriority="false">
+            <layoutData xsi:type="com.scade.sdk.layout:GridData" verticalAlignment="MIDDLE" grabVerticalSpace="true" heightConstraint="MATCH_PARENT">
+              <minSize width="16" height="16"/>
+              <maxSize width="-1" height="-1"/>
+            </layoutData>
+            <size width="16" height="17"/>
+            <location x="5" y="5"/>
+          </children>
+          <children xsi:type="com.scade.sdk.view:Label" name="timeLabel" drawing="/3/@children.1/@children.0/@children.4/@children.2/@children.2" text="00:00">
+            <layoutData xsi:type="com.scade.sdk.layout:GridData" column="1" horizontalAlignment="CENTER" verticalAlignment="MIDDLE" grabHorizontalSpace="true" widthConstraint="MATCH_PARENT">
+              <minSize width="31" height="17"/>
+              <maxSize width="-1" height="-1"/>
+            </layoutData>
+            <size width="352" height="17"/>
+            <location x="25" y="5"/>
+            <font fontFamily="ArialMT" size="12"/>
+          </children>
+        </children>
+        <children xsi:type="com.scade.sdk.view:RowView" name="infoWrapper" drawing="/3/@children.1/@children.0/@children.4/@children.3">
+          <layoutData xsi:type="com.scade.sdk.layout:GridData" row="2" grabHorizontalSpace="true" grabVerticalSpace="true" widthConstraint="MATCH_PARENT" heightConstraint="MATCH_PARENT">
+            <minSize/>
+          </layoutData>
+          <size width="382" height="27"/>
+          <location x="16" y="81"/>
+          <layout xsi:type="com.scade.sdk.layout:GridLayout" columns="3" marginTop="5" marginBottom="5" marginLeft="5" marginRight="5"/>
+          <minArea/>
+          <maxArea width="-1" height="-1"/>
+          <children xsi:type="com.scade.sdk.view:Label" name="minLabel" drawing="/3/@children.1/@children.0/@children.4/@children.3/@children.2" text="min" horizontalAlignment="CENTER">
+            <layoutData xsi:type="com.scade.sdk.layout:GridData" horizontalAlignment="CENTER" verticalAlignment="MIDDLE">
+              <minSize width="28" height="17"/>
+              <maxSize width="-1" height="-1"/>
+            </layoutData>
+            <size width="28" height="17"/>
+            <location x="5" y="5"/>
+            <font fontFamily="ArialMT" size="12"/>
+          </children>
+          <children xsi:type="com.scade.sdk.view:Label" name="slashLabel" drawing="/3/@children.1/@children.0/@children.4/@children.3/@children.3" text="/">
+            <layoutData xsi:type="com.scade.sdk.layout:GridData" column="1" horizontalAlignment="CENTER" verticalAlignment="MIDDLE">
+              <minSize width="3" height="17"/>
+              <maxSize width="-1" height="-1"/>
+            </layoutData>
+            <size width="3" height="17"/>
+            <location x="33" y="5"/>
+            <font fontFamily="ArialMT" size="12"/>
+          </children>
+          <children xsi:type="com.scade.sdk.view:Label" name="roomLabel" drawing="/3/@children.1/@children.0/@children.4/@children.3/@children.4" text="room" horizontalAlignment="CENTER">
+            <layoutData xsi:type="com.scade.sdk.layout:GridData" column="2" horizontalAlignment="CENTER" verticalAlignment="MIDDLE">
+              <minSize width="36" height="17"/>
+              <maxSize width="-1" height="-1"/>
+            </layoutData>
+            <size width="36" height="17"/>
+            <location x="36" y="5"/>
+            <font fontFamily="ArialMT" size="12"/>
+          </children>
+        </children>
+        <children xsi:type="com.scade.sdk.view:RowView" name="tagWrapper" drawing="/3/@children.1/@children.0/@children.4/@children.4">
+          <layoutData xsi:type="com.scade.sdk.layout:GridData" row="3" grabHorizontalSpace="true" grabVerticalSpace="true" widthConstraint="MATCH_PARENT" heightConstraint="MATCH_PARENT">
+            <minSize/>
+          </layoutData>
+          <size width="382" height="39"/>
+          <location x="16" y="112"/>
+          <layout xsi:type="com.scade.sdk.layout:GridLayout" columns="2" horizontalSpacing="8" marginTop="16" marginBottom="5" marginLeft="5" marginRight="5"/>
+          <minArea/>
+          <maxArea width="-1" height="-1"/>
+          <children xsi:type="com.scade.sdk.view:Label" name="categoryLabel" drawing="/3/@children.1/@children.0/@children.4/@children.4/@children.2" text="category" horizontalAlignment="CENTER">
+            <backgroundColor Red="211" Green="210" Blue="212"/>
+            <layoutData xsi:type="com.scade.sdk.layout:GridData" horizontalAlignment="CENTER" verticalAlignment="MIDDLE">
+              <minSize width="50" height="18"/>
+              <maxSize width="-1" height="-1"/>
+            </layoutData>
+            <size width="50" height="18"/>
+            <location x="5" y="16"/>
+            <font fontFamily="ArialMT" size="13">
+              <color/>
+            </font>
+          </children>
+          <children xsi:type="com.scade.sdk.view:Label" name="langLabel" drawing="/3/@children.1/@children.0/@children.4/@children.4/@children.3" text="language" horizontalAlignment="CENTER">
+            <backgroundColor Green="225" Blue="255"/>
+            <layoutData xsi:type="com.scade.sdk.layout:GridData" column="1" horizontalAlignment="CENTER" verticalAlignment="MIDDLE">
+              <minSize width="52" height="18"/>
+              <maxSize width="-1" height="-1"/>
+            </layoutData>
+            <size width="52" height="18"/>
+            <location x="63" y="16"/>
+            <font fontFamily="ArialMT" size="13"/>
+          </children>
         </children>
       </children>
-    </children>
-    <children xsi:type="com.scade.sdk.view:Label" name="label1" drawing="/3/@children.1/@children.1" text="label">
-      <layoutData xsi:type="com.scade.sdk.layout:AutoLayoutData">
-        <constraints source="/0/@children.1" sourceAnchor="TOP" target="/0/@children.0" targetAnchor="BOTTOM" active="true"/>
-        <constraints source="/0/@children.1" target="/0" constant="100.0" active="true"/>
-        <constraints source="/0/@children.1" sourceAnchor="BOTTOM" target="/0" targetAnchor="BOTTOM" active="true"/>
-        <constraints source="/0/@children.1" sourceAnchor="RIGHT" target="/0" targetAnchor="RIGHT" constant="-100.0" active="true"/>
-      </layoutData>
-      <size width="214" height="790"/>
-      <location x="100" y="106"/>
-      <font fontFamily="ArialMT" size="17"/>
     </children>
     <adapterClass href="http://scade.com/ScadeKaigi2020#//SessionPageAdapter"/>
   </com.scade.sdk.view:Page>
@@ -123,7 +210,7 @@
             </expression>
           </constraints>
           <width value="414.0"/>
-          <height value="106.0"/>
+          <height value="352.0"/>
         </children>
         <children xsi:type="svg:Group" attributes="{&quot;template-id&quot;:&quot;content&quot;}">
           <children xsi:type="svg:Group">
@@ -244,6 +331,90 @@
               </children>
               <matrix translateX="24.0"/>
             </children>
+          </children>
+          <matrix translateY="44.0"/>
+        </children>
+        <children xsi:type="svg:Group" attributes="">
+          <children xsi:type="svg:Box" attributes="{&quot;template-id&quot;:&quot;background&quot;}">
+            <constraints xsi:type="svg_1:DirectConstraint" exprStr="size.h">
+              <feature xsi:type="ecore:EReference" href="http://scade.com/svg#//draw/Box/height"/>
+              <expression xsi:type="com.scade.sdk.expr:Variable" name="size">
+                <path>h</path>
+              </expression>
+            </constraints>
+            <constraints xsi:type="svg_1:DirectConstraint" exprStr="size.w">
+              <feature xsi:type="ecore:EReference" href="http://scade.com/svg#//draw/Box/width"/>
+              <expression xsi:type="com.scade.sdk.expr:Variable" name="size">
+                <path>w</path>
+              </expression>
+            </constraints>
+            <width value="414.0"/>
+            <height value="175.0"/>
+          </children>
+          <children xsi:type="svg:Group" attributes="{&quot;template-id&quot;:&quot;content&quot;}">
+            <children xsi:type="svg:Group">
+              <children xsi:type="svg:Box" attributes="{&quot;template-id&quot;:&quot;background&quot;}">
+                <constraints xsi:type="svg_1:DirectConstraint" exprStr="size.h">
+                  <feature xsi:type="ecore:EReference" href="http://scade.com/svg#//draw/Box/height"/>
+                  <expression xsi:type="com.scade.sdk.expr:Variable" name="size">
+                    <path>h</path>
+                  </expression>
+                </constraints>
+                <constraints xsi:type="svg_1:DirectConstraint" exprStr="size.w">
+                  <feature xsi:type="ecore:EReference" href="http://scade.com/svg#//draw/Box/width"/>
+                  <expression xsi:type="com.scade.sdk.expr:Variable" name="size">
+                    <path>w</path>
+                  </expression>
+                </constraints>
+                <width value="382.0"/>
+                <height value="22.0"/>
+              </children>
+              <children xsi:type="svg:Text" attributes="{&quot;template-id&quot;:&quot;node-text&quot;,&quot;maxWidth&quot;:&quot;1&quot;}" fillOpacity="1.0" strokeOpacity="1.0" opacity="1.0" fontSize="17" fontName="ArialMT" text="Session Title" alignmentBaseline="central">
+                <fill xsi:type="svg_2:RGBColor" r="0.27450982" g="0.27450982" b="0.27450982"/>
+                <x/>
+                <y value="11.0"/>
+              </children>
+              <matrix translateX="16.0" translateY="24.0"/>
+            </children>
+          </children>
+          <children xsi:type="svg:Group" attributes="">
+            <children xsi:type="svg:Box" attributes="{&quot;template-id&quot;:&quot;background&quot;}">
+              <constraints xsi:type="svg_1:DirectConstraint" exprStr="size.h">
+                <feature xsi:type="ecore:EReference" href="http://scade.com/svg#//draw/Box/height"/>
+                <expression xsi:type="com.scade.sdk.expr:Variable" name="size">
+                  <path>h</path>
+                </expression>
+              </constraints>
+              <constraints xsi:type="svg_1:DirectConstraint" exprStr="size.w">
+                <feature xsi:type="ecore:EReference" href="http://scade.com/svg#//draw/Box/width"/>
+                <expression xsi:type="com.scade.sdk.expr:Variable" name="size">
+                  <path>w</path>
+                </expression>
+              </constraints>
+              <width value="382.0"/>
+              <height value="27.0"/>
+            </children>
+            <children xsi:type="svg:Group" attributes="{&quot;template-id&quot;:&quot;content&quot;}">
+              <children xsi:type="svg:Group">
+                <children xsi:type="svg:Image" attributes="{&quot;template-id&quot;:&quot;node-image&quot;}" xhref="res/iconClock.png">
+                  <constraints xsi:type="svg_1:DirectConstraint" exprStr="size.h">
+                    <feature xsi:type="ecore:EReference" href="http://scade.com/svg#//draw/Image/height"/>
+                    <expression xsi:type="com.scade.sdk.expr:Variable" name="size">
+                      <path>h</path>
+                    </expression>
+                  </constraints>
+                  <constraints xsi:type="svg_1:DirectConstraint" exprStr="size.w">
+                    <feature xsi:type="ecore:EReference" href="http://scade.com/svg#//draw/Image/width"/>
+                    <expression xsi:type="com.scade.sdk.expr:Variable" name="size">
+                      <path>w</path>
+                    </expression>
+                  </constraints>
+                  <width value="16.0"/>
+                  <height value="17.0"/>
+                </children>
+                <matrix translateX="5.0" translateY="5.0"/>
+              </children>
+            </children>
             <children xsi:type="svg:Group" attributes="">
               <children xsi:type="svg:Box" attributes="{&quot;template-id&quot;:&quot;background&quot;}">
                 <constraints xsi:type="svg_1:DirectConstraint" exprStr="size.h">
@@ -258,43 +429,190 @@
                     <path>w</path>
                   </expression>
                 </constraints>
-                <width value="85.0"/>
-                <height value="40.0"/>
+                <width value="352.0"/>
+                <height value="17.0"/>
               </children>
-              <children xsi:type="svg:Text" attributes="{&quot;template-id&quot;:&quot;node-text&quot;}" fillOpacity="1.0" strokeOpacity="1.0" opacity="1.0" fontSize="17" fontName="ArialMT" text="Session" anchor="middle" alignmentBaseline="central">
-                <fill xsi:type="svg_2:RGBColor" r="0.26666668" g="0.41568628" b="0.7019608"/>
-                <x value="42.0"/>
-                <y value="20.0"/>
+              <children xsi:type="svg:Text" attributes="{&quot;template-id&quot;:&quot;node-text&quot;}" fillOpacity="1.0" strokeOpacity="1.0" opacity="1.0" fontSize="12" fontName="ArialMT" text="00:00" alignmentBaseline="central">
+                <fill xsi:type="svg_2:RGBColor" r="0.27450982" g="0.27450982" b="0.27450982"/>
+                <x/>
+                <y value="8.0"/>
               </children>
-              <matrix translateX="164.0"/>
+              <matrix translateX="25.0" translateY="5.0"/>
             </children>
+            <matrix translateX="16.0" translateY="50.0"/>
           </children>
-          <matrix translateY="44.0"/>
+          <children xsi:type="svg:Group" attributes="">
+            <children xsi:type="svg:Box" attributes="{&quot;template-id&quot;:&quot;background&quot;}">
+              <constraints xsi:type="svg_1:DirectConstraint" exprStr="size.h">
+                <feature xsi:type="ecore:EReference" href="http://scade.com/svg#//draw/Box/height"/>
+                <expression xsi:type="com.scade.sdk.expr:Variable" name="size">
+                  <path>h</path>
+                </expression>
+              </constraints>
+              <constraints xsi:type="svg_1:DirectConstraint" exprStr="size.w">
+                <feature xsi:type="ecore:EReference" href="http://scade.com/svg#//draw/Box/width"/>
+                <expression xsi:type="com.scade.sdk.expr:Variable" name="size">
+                  <path>w</path>
+                </expression>
+              </constraints>
+              <width value="382.0"/>
+              <height value="27.0"/>
+            </children>
+            <children xsi:type="svg:Group" attributes="{&quot;template-id&quot;:&quot;content&quot;}"/>
+            <children xsi:type="svg:Group" attributes="">
+              <children xsi:type="svg:Box" attributes="{&quot;template-id&quot;:&quot;background&quot;}">
+                <constraints xsi:type="svg_1:DirectConstraint" exprStr="size.h">
+                  <feature xsi:type="ecore:EReference" href="http://scade.com/svg#//draw/Box/height"/>
+                  <expression xsi:type="com.scade.sdk.expr:Variable" name="size">
+                    <path>h</path>
+                  </expression>
+                </constraints>
+                <constraints xsi:type="svg_1:DirectConstraint" exprStr="size.w">
+                  <feature xsi:type="ecore:EReference" href="http://scade.com/svg#//draw/Box/width"/>
+                  <expression xsi:type="com.scade.sdk.expr:Variable" name="size">
+                    <path>w</path>
+                  </expression>
+                </constraints>
+                <width value="28.0"/>
+                <height value="17.0"/>
+              </children>
+              <children xsi:type="svg:Text" attributes="{&quot;template-id&quot;:&quot;node-text&quot;}" fillOpacity="1.0" strokeOpacity="1.0" opacity="1.0" fontSize="12" fontName="ArialMT" text="min" anchor="middle" alignmentBaseline="central">
+                <fill xsi:type="svg_2:RGBColor" r="0.27450982" g="0.27450982" b="0.27450982"/>
+                <x value="14.0"/>
+                <y value="8.0"/>
+              </children>
+              <matrix translateX="5.0" translateY="5.0"/>
+            </children>
+            <children xsi:type="svg:Group" attributes="">
+              <children xsi:type="svg:Box" attributes="{&quot;template-id&quot;:&quot;background&quot;}">
+                <constraints xsi:type="svg_1:DirectConstraint" exprStr="size.h">
+                  <feature xsi:type="ecore:EReference" href="http://scade.com/svg#//draw/Box/height"/>
+                  <expression xsi:type="com.scade.sdk.expr:Variable" name="size">
+                    <path>h</path>
+                  </expression>
+                </constraints>
+                <constraints xsi:type="svg_1:DirectConstraint" exprStr="size.w">
+                  <feature xsi:type="ecore:EReference" href="http://scade.com/svg#//draw/Box/width"/>
+                  <expression xsi:type="com.scade.sdk.expr:Variable" name="size">
+                    <path>w</path>
+                  </expression>
+                </constraints>
+                <width value="3.0"/>
+                <height value="17.0"/>
+              </children>
+              <children xsi:type="svg:Text" attributes="{&quot;template-id&quot;:&quot;node-text&quot;}" fillOpacity="1.0" strokeOpacity="1.0" opacity="1.0" fontSize="12" fontName="ArialMT" text="/" alignmentBaseline="central">
+                <fill xsi:type="svg_2:RGBColor" r="0.27450982" g="0.27450982" b="0.27450982"/>
+                <x/>
+                <y value="8.0"/>
+              </children>
+              <matrix translateX="33.0" translateY="5.0"/>
+            </children>
+            <children xsi:type="svg:Group" attributes="">
+              <children xsi:type="svg:Box" attributes="{&quot;template-id&quot;:&quot;background&quot;}">
+                <constraints xsi:type="svg_1:DirectConstraint" exprStr="size.h">
+                  <feature xsi:type="ecore:EReference" href="http://scade.com/svg#//draw/Box/height"/>
+                  <expression xsi:type="com.scade.sdk.expr:Variable" name="size">
+                    <path>h</path>
+                  </expression>
+                </constraints>
+                <constraints xsi:type="svg_1:DirectConstraint" exprStr="size.w">
+                  <feature xsi:type="ecore:EReference" href="http://scade.com/svg#//draw/Box/width"/>
+                  <expression xsi:type="com.scade.sdk.expr:Variable" name="size">
+                    <path>w</path>
+                  </expression>
+                </constraints>
+                <width value="36.0"/>
+                <height value="17.0"/>
+              </children>
+              <children xsi:type="svg:Text" attributes="{&quot;template-id&quot;:&quot;node-text&quot;}" fillOpacity="1.0" strokeOpacity="1.0" opacity="1.0" fontSize="12" fontName="ArialMT" text="room" anchor="middle" alignmentBaseline="central">
+                <fill xsi:type="svg_2:RGBColor" r="0.27450982" g="0.27450982" b="0.27450982"/>
+                <x value="18.0"/>
+                <y value="8.0"/>
+              </children>
+              <matrix translateX="36.0" translateY="5.0"/>
+            </children>
+            <matrix translateX="16.0" translateY="81.0"/>
+          </children>
+          <children xsi:type="svg:Group" attributes="">
+            <children xsi:type="svg:Box" attributes="{&quot;template-id&quot;:&quot;background&quot;}">
+              <constraints xsi:type="svg_1:DirectConstraint" exprStr="size.h">
+                <feature xsi:type="ecore:EReference" href="http://scade.com/svg#//draw/Box/height"/>
+                <expression xsi:type="com.scade.sdk.expr:Variable" name="size">
+                  <path>h</path>
+                </expression>
+              </constraints>
+              <constraints xsi:type="svg_1:DirectConstraint" exprStr="size.w">
+                <feature xsi:type="ecore:EReference" href="http://scade.com/svg#//draw/Box/width"/>
+                <expression xsi:type="com.scade.sdk.expr:Variable" name="size">
+                  <path>w</path>
+                </expression>
+              </constraints>
+              <width value="382.0"/>
+              <height value="39.0"/>
+            </children>
+            <children xsi:type="svg:Group" attributes="{&quot;template-id&quot;:&quot;content&quot;}"/>
+            <children xsi:type="svg:Group" attributes="">
+              <children xsi:type="svg:Box" attributes="{&quot;template-id&quot;:&quot;background&quot;}">
+                <constraints xsi:type="svg_1:DirectConstraint" exprStr="size.h">
+                  <feature xsi:type="ecore:EReference" href="http://scade.com/svg#//draw/Box/height"/>
+                  <expression xsi:type="com.scade.sdk.expr:Variable" name="size">
+                    <path>h</path>
+                  </expression>
+                </constraints>
+                <constraints xsi:type="svg_1:DirectConstraint" exprStr="size.w">
+                  <feature xsi:type="ecore:EReference" href="http://scade.com/svg#//draw/Box/width"/>
+                  <expression xsi:type="com.scade.sdk.expr:Variable" name="size">
+                    <path>w</path>
+                  </expression>
+                </constraints>
+                <children xsi:type="svg:Rect">
+                  <fill xsi:type="svg_2:RGBColor" r="0.827451" g="0.8235294" b="0.83137256"/>
+                  <width value="100.0" measurement="PERCENTAGE"/>
+                  <height value="100.0" measurement="PERCENTAGE"/>
+                </children>
+                <width value="50.0"/>
+                <height value="18.0"/>
+              </children>
+              <children xsi:type="svg:Text" attributes="{&quot;template-id&quot;:&quot;node-text&quot;}" fillOpacity="1.0" strokeOpacity="1.0" opacity="1.0" fontSize="13" fontName="ArialMT" text="category" anchor="middle" alignmentBaseline="central">
+                <fill xsi:type="svg_2:RGBColor"/>
+                <x value="25.0"/>
+                <y value="9.0"/>
+              </children>
+              <matrix translateX="5.0" translateY="16.0"/>
+            </children>
+            <children xsi:type="svg:Group" attributes="">
+              <children xsi:type="svg:Box" attributes="{&quot;template-id&quot;:&quot;background&quot;}">
+                <constraints xsi:type="svg_1:DirectConstraint" exprStr="size.h">
+                  <feature xsi:type="ecore:EReference" href="http://scade.com/svg#//draw/Box/height"/>
+                  <expression xsi:type="com.scade.sdk.expr:Variable" name="size">
+                    <path>h</path>
+                  </expression>
+                </constraints>
+                <constraints xsi:type="svg_1:DirectConstraint" exprStr="size.w">
+                  <feature xsi:type="ecore:EReference" href="http://scade.com/svg#//draw/Box/width"/>
+                  <expression xsi:type="com.scade.sdk.expr:Variable" name="size">
+                    <path>w</path>
+                  </expression>
+                </constraints>
+                <children xsi:type="svg:Rect">
+                  <fill xsi:type="svg_2:RGBColor" g="0.88235295" b="1.0"/>
+                  <width value="100.0" measurement="PERCENTAGE"/>
+                  <height value="100.0" measurement="PERCENTAGE"/>
+                </children>
+                <width value="52.0"/>
+                <height value="18.0"/>
+              </children>
+              <children xsi:type="svg:Text" attributes="{&quot;template-id&quot;:&quot;node-text&quot;}" fillOpacity="1.0" strokeOpacity="1.0" opacity="1.0" fontSize="13" fontName="ArialMT" text="language" anchor="middle" alignmentBaseline="central">
+                <fill xsi:type="svg_2:RGBColor" r="0.27450982" g="0.27450982" b="0.27450982"/>
+                <x value="26.0"/>
+                <y value="9.0"/>
+              </children>
+              <matrix translateX="63.0" translateY="16.0"/>
+            </children>
+            <matrix translateX="16.0" translateY="112.0"/>
+          </children>
+          <matrix translateY="84.0"/>
         </children>
-      </children>
-      <children xsi:type="svg:Group">
-        <children xsi:type="svg:Box" attributes="{&quot;template-id&quot;:&quot;background&quot;}">
-          <constraints xsi:type="svg_1:DirectConstraint" exprStr="size.h">
-            <feature xsi:type="ecore:EReference" href="http://scade.com/svg#//draw/Box/height"/>
-            <expression xsi:type="com.scade.sdk.expr:Variable" name="size">
-              <path>h</path>
-            </expression>
-          </constraints>
-          <constraints xsi:type="svg_1:DirectConstraint" exprStr="size.w">
-            <feature xsi:type="ecore:EReference" href="http://scade.com/svg#//draw/Box/width"/>
-            <expression xsi:type="com.scade.sdk.expr:Variable" name="size">
-              <path>w</path>
-            </expression>
-          </constraints>
-          <width value="214.0"/>
-          <height value="790.0"/>
-        </children>
-        <children xsi:type="svg:Text" attributes="{&quot;template-id&quot;:&quot;node-text&quot;}" fillOpacity="1.0" strokeOpacity="1.0" opacity="1.0" fontSize="17" fontName="ArialMT" text="label" alignmentBaseline="central">
-          <fill xsi:type="svg_2:RGBColor" r="0.27450982" g="0.27450982" b="0.27450982"/>
-          <x/>
-          <y value="395.0"/>
-        </children>
-        <matrix translateX="100.0" translateY="106.0"/>
       </children>
     </children>
   </svg:Box>

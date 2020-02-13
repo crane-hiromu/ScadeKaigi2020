@@ -33,6 +33,8 @@ final class TimeTablePageAdapter: SCDLatticePageAdapter {
         timetable.update(type: pageType) // init first view
         setupSafeArea()
         bind()
+        
+        print("------", timetable.sessions)
     }
     
     override func activate(_ view: SCDLatticeView?) {
