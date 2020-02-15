@@ -44,11 +44,11 @@ final class SessionPageAdapter: SCDLatticePageAdapter {
 extension SessionPageAdapter: LifeCycleEventable {
     
     func onEnter(with event: SCDWidgetsEnterEvent?) {
-        
+        reset()
     }
     
     func onExit(with event: SCDWidgetsExitEvent?) {
-        reset()
+
     }
 }
 
@@ -68,11 +68,28 @@ extension SessionPageAdapter: SessionPageDelegate {
 private extension SessionPageAdapter {
 	
 		func setup() {
-				//todo
-				sessionPage.backButton.isVisible = true // access
+				guard let sess = session else { return }
+				
+				sessionPage.sessionTitleLabel.text = sess.title.ja
+				sessionPage.timeLabel.text = sess.startsAt.toTime
+				sessionPage.minLabel.text = "\(sess.lengthInMinutes)min"
+				sessionPage.roomLabel.text = DataManager.shared.room(by: sess.roomId) ?? ""
+				sessionPage.categoryLabel.text = DataManager.shared.category(by: sess.sessionCategoryItemId)?.name.ja ?? ""
+				sessionPage.langLabel.text = sess.language
+				sessionPage.descriptionLabel.text = DataManager.shared.description(by: sess.id) ?? ""
+				sessionPage.targetLabel.text = sess.targetAudience
+				sessionPage.speakerLabel.text = DataManager.shared.speakers(by: sess.id).first?.fullName ?? ""
 		}
 		
 		func reset() {
-			
+				sessionPage.sessionTitleLabel.text = ""
+				sessionPage.timeLabel.text = ""
+				sessionPage.minLabel.text = ""
+				sessionPage.roomLabel.text = ""
+				sessionPage.categoryLabel.text = ""
+				sessionPage.langLabel.text = ""
+				sessionPage.descriptionLabel.text = ""
+				sessionPage.targetLabel.text = ""
+				sessionPage.speakerLabel.text = ""
 		}
 }

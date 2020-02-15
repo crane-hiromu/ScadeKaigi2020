@@ -33,8 +33,6 @@ final class TimeTablePageAdapter: SCDLatticePageAdapter {
         timetable.update(type: pageType) // init first view
         setupSafeArea()
         bind()
-        
-        print("------", timetable.sessions)
     }
     
     override func activate(_ view: SCDLatticeView?) {
@@ -244,7 +242,7 @@ extension TimeTablePageAdapter: TimeTablePageDelegate {
         #endif
         
         /// if click tab before finishing drawing view is crashed on App so wait for 2.5 second
-        DispatchQueue.global().asyncAfter(deadline: .now()+2) {
+        DispatchQueue.global().asyncAfter(deadline: .now()+2.5) {
             self.timeTablePageView.appendOnTabClick()
             AlertManager.shared.stopIndicator()
         }

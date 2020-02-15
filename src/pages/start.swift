@@ -38,6 +38,8 @@ final class ScadeKaigi2020: SCDApplication {
     override func onFinishLaunching() {	
         debugPrint("---\(#function)---")
         
+        DataManager.shared.call()
+        
         timeTableAdapter.load(type: .timeTable)
         speakersListAdapter.load(type: .speakersList)
         profileAdapter.load(type: .profile)
