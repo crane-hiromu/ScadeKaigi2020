@@ -22,13 +22,13 @@ final class SponsorPageAdapter: SCDLatticePageAdapter {
         debugPrint("---\(#function)---")
         
         self.sponsorEntity = sponsor
+        
     }
     
     override func load(_ path: String) {		
         super.load(path)
         debugPrint("---\(#function)---")
         
-        sponsorPage.backButton.isVisible = true // access
         setupSafeArea()
         bind()
     }
@@ -61,7 +61,7 @@ private extension SponsorPageAdapter {
             .bind(to: sponsorPage.dataSource)
             .registered(with: &bindables)
         
-        let bindableGoldItem = sponsorPage.bindableItem
+        let bindableGoldItem = sponsorPage.bindableGoldItem
         let goldRow = sponsorPage.goldRow
         
         bindableGoldItem
@@ -70,6 +70,19 @@ private extension SponsorPageAdapter {
             .registered(with: &bindables)
 
         bindableGoldItem
+            .select(\SponsorRowModel.right)
+            .bind(to: goldRow.rightImage, mapFunction: { $0.logo })
+            .registered(with: &bindables)
+            
+        let bindableSupporterItem = sponsorPage.bindableSupporterItem
+        let supporterRow = sponsorPage.supporterRow
+        
+        bindableSupporterItem
+            .select(\SponsorRowModel.left)
+            .bind(to: goldRow.leftImage, mapFunction: { $0.logo })
+            .registered(with: &bindables)
+
+        supporterRow
             .select(\SponsorRowModel.right)
             .bind(to: goldRow.rightImage, mapFunction: { $0.logo })
             .registered(with: &bindables)

@@ -18,8 +18,10 @@ final class SponsorPage {
     private weak var adapter: SponsorPageAdapter?
     
     lazy var dataSource = from(goldList).dataSource.cast([SponsorRowModel].self)
-    lazy var bindableItem = from(goldList).items
+    lazy var bindableGoldItem = from(goldList).items
     lazy var goldRow = from(goldList).rows.cast(SponsorPageListElement.self)
+    lazy var bindableSupporterItem = from(supporterList).items
+    lazy var supporterRow = from(supporterList).rows.cast(SponsorPageListElement.self)
     
     // MARK: Widgets
     
@@ -33,6 +35,14 @@ final class SponsorPage {
     
     private lazy var goldList: SCDWidgetsList! = {
         let list = adapter?.page?.getWidgetByName("goldList")?.asList
+        list?.onItemSelected.append(SCDWidgetsItemSelectedEventHandler { [weak self] event in
+            self?.sponsorPageDelegate?.onItemSelected(with: event)
+        })
+        return list
+    }()
+    
+    private lazy var supporterList: SCDWidgetsList! = {
+        let list = adapter?.page?.getWidgetByName("supporterList")?.asList
         list?.onItemSelected.append(SCDWidgetsItemSelectedEventHandler { [weak self] event in
             self?.sponsorPageDelegate?.onItemSelected(with: event)
         })
