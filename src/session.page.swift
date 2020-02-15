@@ -3,7 +3,7 @@ import ScadeKit
 // MARK: - Adapter
 
 final class SessionPageAdapter: SCDLatticePageAdapter {
-	
+    
     // MARK: Properties
     
     private var session: Sessions? = nil
@@ -14,18 +14,18 @@ final class SessionPageAdapter: SCDLatticePageAdapter {
         return view
     }()
     
-
-		// MARK: Override
-	
-		override func load(_ path: String) {		
-				super.load(path)
-				debugPrint("---\(#function)---")
-				
-				setupSafeArea()
+    
+    // MARK: Override
+    
+    override func load(_ path: String) {
+        super.load(path)
+        debugPrint("---\(#function)---")
+        
+        setupSafeArea()
         observeCycle()
-		}
-		
-		override func show(_ view: SCDLatticeView?, data: Any?) {
+    }
+    
+    override func show(_ view: SCDLatticeView?, data: Any?) {
         super.show(view, data: data)
         debugPrint("---\(#function)---")
         
@@ -48,7 +48,7 @@ extension SessionPageAdapter: LifeCycleEventable {
     }
     
     func onExit(with event: SCDWidgetsExitEvent?) {
-
+        
     }
 }
 
@@ -66,30 +66,34 @@ extension SessionPageAdapter: SessionPageDelegate {
 // MARK: - Private
 
 private extension SessionPageAdapter {
-	
-		func setup() {
-				guard let sess = session else { return }
-				
-				sessionPage.sessionTitleLabel.text = sess.title.ja
-				sessionPage.timeLabel.text = sess.startsAt.toTime
-				sessionPage.minLabel.text = "\(sess.lengthInMinutes)min"
-				sessionPage.roomLabel.text = DataManager.shared.room(by: sess.roomId) ?? ""
-				sessionPage.categoryLabel.text = DataManager.shared.category(by: sess.sessionCategoryItemId)?.name.ja ?? ""
-				sessionPage.langLabel.text = sess.language
-				sessionPage.descriptionLabel.text = DataManager.shared.description(by: sess.id) ?? ""
-				sessionPage.targetLabel.text = sess.targetAudience
-				sessionPage.speakerLabel.text = DataManager.shared.speakers(by: sess.id).first?.fullName ?? ""
-		}
-		
-		func reset() {
-				sessionPage.sessionTitleLabel.text = ""
-				sessionPage.timeLabel.text = ""
-				sessionPage.minLabel.text = ""
-				sessionPage.roomLabel.text = ""
-				sessionPage.categoryLabel.text = ""
-				sessionPage.langLabel.text = ""
-				sessionPage.descriptionLabel.text = ""
-				sessionPage.targetLabel.text = ""
-				sessionPage.speakerLabel.text = ""
-		}
+    
+    func setup() {
+        guard let sess = session else { return }
+        
+        sessionPage.sessionTitleLabel.text = sess.title.ja
+        sessionPage.timeLabel.text = sess.startsAt.toTime
+        sessionPage.minLabel.text = "\(sess.lengthInMinutes)min"
+        sessionPage.roomLabel.text = DataManager.shared.room(by: sess.roomId) ?? ""
+        sessionPage.categoryLabel.text = DataManager.shared.category(by: sess.sessionCategoryItemId)?.name.ja ?? ""
+        sessionPage.langLabel.text = sess.language
+        sessionPage.descriptionLabel.text = DataManager.shared.description(by: sess.id) ?? ""
+        sessionPage.targetLabel.text = sess.targetAudience
+        
+        guard let speaker = DataManager.shared.speakers(by: sess.id).first else { return }
+        sessionPage.speakerLabel.text = speaker.fullName
+        sessionPage.speakerIconImage.load(with: speaker.profilePicture)
+    }
+    
+    func reset() {
+        sessionPage.sessionTitleLabel.text = ""
+        sessionPage.timeLabel.text = ""
+        sessionPage.minLabel.text = ""
+        sessionPage.roomLabel.text = ""
+        sessionPage.categoryLabel.text = ""
+        sessionPage.langLabel.text = ""
+        sessionPage.descriptionLabel.text = ""
+        sessionPage.targetLabel.text = ""
+        sessionPage.speakerLabel.text = ""
+        sessionPage.speakerIconImage.content = ""
+    }
 }

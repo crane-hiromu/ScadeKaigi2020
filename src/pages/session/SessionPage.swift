@@ -9,8 +9,8 @@ protocol SessionPageDelegate: SCDLatticePageAdapter {
 // MARK: - View
 
 final class SessionPage {
-	
-	  // MARK: Properties
+    
+    // MARK: Properties
     
     weak var sessionPageDelegate: SessionPageDelegate?
     private weak var adapter: SessionPageAdapter?
@@ -25,7 +25,7 @@ final class SessionPage {
         })
         return btn
     }()
-        
+    
     lazy var sessionTitleLabel: SCDWidgetsLabel! = {
         return adapter?.page?.getWidgetByName("sessionTitle")?.asLabel
     }()
@@ -45,7 +45,7 @@ final class SessionPage {
     lazy var categoryLabel: SCDWidgetsLabel! = {
         return adapter?.page?.getWidgetByName("categoryLabel")?.asLabel
     }()
-        
+    
     lazy var langLabel: SCDWidgetsLabel! = {
         return adapter?.page?.getWidgetByName("langLabel")?.asLabel
     }()
@@ -53,12 +53,12 @@ final class SessionPage {
     lazy var descriptionLabel: SCDWidgetsLabel! = {
         return adapter?.page?.getWidgetByName("descriptionLabel")?.asLabel
     }()
-     
+    
     lazy var targetLabel: SCDWidgetsLabel! = {
         return adapter?.page?.getWidgetByName("targetLabel")?.asLabel
     }()   
     
-   	lazy var speakerIconImage: SCDWidgetsImage! = {
+    lazy var speakerIconImage: SCDWidgetsImage! = {
         return adapter?.page?.getWidgetByName("speakerIconImage")?.asImage
     }()
     
@@ -66,7 +66,7 @@ final class SessionPage {
         return adapter?.page?.getWidgetByName("speakerLabel")?.asLabel
     }()
     
-		    
+    
     // MARK: Initializer
     
     init(adapter: SessionPageAdapter?) {

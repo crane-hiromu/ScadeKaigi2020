@@ -21,6 +21,6 @@ extension SCDLatticePageAdapter {
     }
     
     func load(type: Constants.PageType) {
-    		load(type.page)
+        load(type.page)
     }
 }

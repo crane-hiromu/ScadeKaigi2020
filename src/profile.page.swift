@@ -77,17 +77,7 @@ private extension ProfilePageAdapter {
         let session = DataManager.shared.sessions.first { $0.id == profile.sessions.first }
         profilePage.sessionLabel.text = session?.title.ja ?? ""
        	profilePage.timeLabel.text = "\(session?.startsAt.toDateAndTime ?? "") -"
-        
-        DispatchQueue.global().async {
-            let request = SCDNetworkRequest()
-            request.url = profile.profilePicture
-            guard let response = request.call() else { return }
-            
-            DispatchQueue.main.async {
-            		self.profilePage.profileImage.content = dataToString(data: response.body, isUtf8: false)
-            		self.profilePage.profileImage.isContentPriority = true
-            }
-        }
+        profilePage.profileImage.load(with: profile.profilePicture)
     }
     
     func reset() {

@@ -19,11 +19,11 @@ extension EObject {
     }
     
     var asButton: SCDWidgetsButton? {
-    		return self as? SCDWidgetsButton
+        return self as? SCDWidgetsButton
     }
     
     var asList: SCDWidgetsList? {
-    		return self as? SCDWidgetsList
+        return self as? SCDWidgetsList
     }
     
     var asListView: SCDWidgetsListView? {
@@ -47,11 +47,11 @@ extension EObject {
     }
     
     var asSideBar: SCDWidgetsSidebar? {
-    		return self as? SCDWidgetsSidebar
+        return self as? SCDWidgetsSidebar
     }
     
     var asClikable: SCDWidgetsClickable? {
-    		return self as? SCDWidgetsClickable
+        return self as? SCDWidgetsClickable
     }
     
     
