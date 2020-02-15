@@ -40,10 +40,10 @@
         <layoutData xsi:type="com.scade.sdk.layout:GridData" row="2" grabHorizontalSpace="true" widthConstraint="MATCH_PARENT">
           <minSize/>
         </layoutData>
-        <size width="414" height="40"/>
+        <size width="414" height="46"/>
         <location y="44"/>
         <layout xsi:type="com.scade.sdk.layout:AutoLayout"/>
-        <minArea height="40"/>
+        <minArea height="46"/>
         <maxArea width="-1" height="-1"/>
         <children xsi:type="com.scade.sdk.view:Button" name="backButton" drawing="/3/@children.1/@children.0/@children.2/@children.1/@children.0" horizontalAlignment="CENTER">
           <layoutData xsi:type="com.scade.sdk.layout:AutoLayoutData">
@@ -52,7 +52,7 @@
             <constraints source="/0/@children.0/@children.2/@children.0" target="/0/@children.0/@children.2" constant="24.0" active="true"/>
             <constraints source="/0/@children.0/@children.2/@children.0" sourceAnchor="WIDTH" constant="60.0" active="true"/>
           </layoutData>
-          <size width="60" height="40"/>
+          <size width="60" height="46"/>
           <location x="24"/>
           <font fontFamily="ArialMT" size="17"/>
         </children>
@@ -63,7 +63,7 @@
           <maxSize width="-1" height="-1"/>
         </layoutData>
         <size width="100" height="140"/>
-        <location x="157" y="84"/>
+        <location x="157" y="90"/>
       </children>
       <children xsi:type="com.scade.sdk.view:Label" name="nameLabel" drawing="/3/@children.1/@children.0/@children.4" text="fullname" horizontalAlignment="CENTER">
         <layoutData xsi:type="com.scade.sdk.layout:GridData" row="4" horizontalAlignment="CENTER">
@@ -71,7 +71,7 @@
           <maxSize width="-1" height="-1"/>
         </layoutData>
         <size width="65" height="36"/>
-        <location x="174" y="224"/>
+        <location x="174" y="230"/>
         <font fontFamily="ArialMT" size="17">
           <color Red="75" Green="75" Blue="75"/>
         </font>
@@ -82,15 +82,17 @@
           <maxSize width="-1" height="-1"/>
         </layoutData>
         <size width="41" height="30"/>
-        <location x="186" y="260"/>
+        <location x="186" y="266"/>
         <font fontFamily="ArialMT" size="12">
           <color Red="75" Green="75" Blue="75"/>
         </font>
       </children>
       <children xsi:type="com.scade.sdk.view:RowView" name="firstLineWrapper" drawing="/3/@children.1/@children.0/@children.6">
-        <layoutData xsi:type="com.scade.sdk.layout:GridData" row="6" grabHorizontalSpace="true" widthConstraint="MATCH_PARENT"/>
+        <layoutData xsi:type="com.scade.sdk.layout:GridData" row="6" grabHorizontalSpace="true" widthConstraint="MATCH_PARENT">
+          <minSize/>
+        </layoutData>
         <size width="414" height="33"/>
-        <location y="290"/>
+        <location y="296"/>
         <layout xsi:type="com.scade.sdk.layout:GridLayout" marginTop="16" marginBottom="16" marginLeft="16" marginRight="16"/>
         <minArea height="1"/>
         <maxArea width="-1" height="-1"/>
@@ -107,9 +109,11 @@
         </children>
       </children>
       <children xsi:type="com.scade.sdk.view:ListView" name="bioWrapper" drawing="/3/@children.1/@children.0/@children.7">
-        <layoutData xsi:type="com.scade.sdk.layout:GridData" row="7" grabHorizontalSpace="true" widthConstraint="MATCH_PARENT" heightConstraint="MATCH_PARENT"/>
+        <layoutData xsi:type="com.scade.sdk.layout:GridData" row="7" grabHorizontalSpace="true" widthConstraint="MATCH_PARENT" heightConstraint="MATCH_PARENT">
+          <minSize/>
+        </layoutData>
         <size width="414" height="17"/>
-        <location y="323"/>
+        <location y="329"/>
         <layout xsi:type="com.scade.sdk.layout:GridLayout" marginLeft="16" marginRight="16"/>
         <minArea/>
         <maxArea width="-1" height="-1"/>
@@ -126,9 +130,11 @@
         </children>
       </children>
       <children xsi:type="com.scade.sdk.view:RowView" name="secondLineWrapper" drawing="/3/@children.1/@children.0/@children.8">
-        <layoutData xsi:type="com.scade.sdk.layout:GridData" row="8" grabHorizontalSpace="true" widthConstraint="MATCH_PARENT"/>
+        <layoutData xsi:type="com.scade.sdk.layout:GridData" row="8" grabHorizontalSpace="true" widthConstraint="MATCH_PARENT">
+          <minSize/>
+        </layoutData>
         <size width="414" height="33"/>
-        <location y="340"/>
+        <location y="346"/>
         <layout xsi:type="com.scade.sdk.layout:GridLayout" marginTop="16" marginBottom="16" marginLeft="16" marginRight="16"/>
         <minArea height="1"/>
         <maxArea width="-1" height="-1"/>
@@ -145,9 +151,11 @@
         </children>
       </children>
       <children xsi:type="com.scade.sdk.view:ListView" name="bottomWrapper" drawing="/3/@children.1/@children.0/@children.9">
-        <layoutData xsi:type="com.scade.sdk.layout:GridData" row="9" grabHorizontalSpace="true" widthConstraint="MATCH_PARENT" heightConstraint="MATCH_PARENT"/>
+        <layoutData xsi:type="com.scade.sdk.layout:GridData" row="9" grabHorizontalSpace="true" widthConstraint="MATCH_PARENT" heightConstraint="MATCH_PARENT">
+          <minSize/>
+        </layoutData>
         <size width="414" height="78"/>
-        <location y="373"/>
+        <location y="379"/>
         <layout xsi:type="com.scade.sdk.layout:GridLayout" rows="3" verticalSpacing="4" marginLeft="16" marginRight="16"/>
         <minArea/>
         <maxArea width="-1" height="-1"/>
@@ -293,7 +301,7 @@
               </expression>
             </constraints>
             <width value="414.0"/>
-            <height value="40.0"/>
+            <height value="46.0"/>
           </children>
           <children xsi:type="svg:Group" attributes="{&quot;template-id&quot;:&quot;content&quot;}" fillOpacity="1.0" strokeOpacity="1.0" opacity="1.0">
             <children xsi:type="svg:Group" attributes="" fillOpacity="1.0" strokeOpacity="1.0" opacity="1.0">
@@ -311,7 +319,7 @@
                   </expression>
                 </constraints>
                 <width value="60.0"/>
-                <height value="40.0"/>
+                <height value="46.0"/>
               </children>
               <children xsi:type="svg:Group" fillOpacity="1.0" strokeOpacity="1.0" opacity="1.0">
                 <constraints xsi:type="svg_1:MatrixConstraint" exprStr="matrix(1 0 0 1 8 size.height/2-11)">
@@ -346,13 +354,13 @@
                   <elements xsi:type="svg_3:PathCubic" x1="0.7453438" y1="11.194371" x2="0.64996576" y2="10.90954" x="0.6701336" y="10.630177"/>
                   <elements xsi:type="svg_3:PathClose"/>
                 </children>
-                <matrix translateX="8.0" translateY="9.0"/>
+                <matrix translateX="8.0" translateY="12.0"/>
                 <fill xsi:type="svg_2:RGBColor" r="0.26666668" g="0.41568628" b="0.7019608"/>
               </children>
               <children xsi:type="svg:Text" attributes="{&quot;template-id&quot;:&quot;node-text&quot;}" fillOpacity="1.0" strokeOpacity="1.0" opacity="1.0" fontSize="17" fontName="ArialMT" text="" anchor="middle" alignmentBaseline="central">
                 <fill xsi:type="svg_2:RGBColor" r="0.26666668" g="0.41568628" b="0.7019608"/>
                 <x value="30.0"/>
-                <y value="20.0"/>
+                <y value="23.0"/>
               </children>
               <matrix translateX="24.0"/>
             </children>
@@ -376,7 +384,7 @@
             <width value="100.0"/>
             <height value="140.0"/>
           </children>
-          <matrix translateX="157.0" translateY="84.0"/>
+          <matrix translateX="157.0" translateY="90.0"/>
         </children>
         <children xsi:type="svg:Group" attributes="" fillOpacity="1.0" strokeOpacity="1.0" opacity="1.0">
           <children xsi:type="svg:Box" attributes="{&quot;template-id&quot;:&quot;background&quot;}">
@@ -400,7 +408,7 @@
             <x value="32.0"/>
             <y value="18.0"/>
           </children>
-          <matrix translateX="174.0" translateY="224.0"/>
+          <matrix translateX="174.0" translateY="230.0"/>
         </children>
         <children xsi:type="svg:Group" attributes="" fillOpacity="1.0" strokeOpacity="1.0" opacity="1.0">
           <children xsi:type="svg:Box" attributes="{&quot;template-id&quot;:&quot;background&quot;}">
@@ -424,7 +432,7 @@
             <x value="20.0"/>
             <y value="15.0"/>
           </children>
-          <matrix translateX="186.0" translateY="260.0"/>
+          <matrix translateX="186.0" translateY="266.0"/>
         </children>
         <children xsi:type="svg:Group" attributes="" fillOpacity="1.0" strokeOpacity="1.0" opacity="1.0">
           <children xsi:type="svg:Box" attributes="{&quot;template-id&quot;:&quot;background&quot;}">
@@ -470,7 +478,7 @@
               <matrix translateX="16.0" translateY="16.0"/>
             </children>
           </children>
-          <matrix translateY="290.0"/>
+          <matrix translateY="296.0"/>
         </children>
         <children xsi:type="svg:Group" attributes="" fillOpacity="1.0" strokeOpacity="1.0" opacity="1.0">
           <children xsi:type="svg:Box" attributes="{&quot;template-id&quot;:&quot;background&quot;}">
@@ -515,7 +523,7 @@
               <matrix translateX="16.0"/>
             </children>
           </children>
-          <matrix translateY="323.0"/>
+          <matrix translateY="329.0"/>
         </children>
         <children xsi:type="svg:Group" attributes="" fillOpacity="1.0" strokeOpacity="1.0" opacity="1.0">
           <children xsi:type="svg:Box" attributes="{&quot;template-id&quot;:&quot;background&quot;}">
@@ -560,7 +568,7 @@
             <children xsi:type="svg:Group" attributes="{&quot;template-id&quot;:&quot;content&quot;}"/>
             <matrix translateX="16.0" translateY="16.0"/>
           </children>
-          <matrix translateY="340.0"/>
+          <matrix translateY="346.0"/>
         </children>
         <children xsi:type="svg:Group" attributes="" fillOpacity="1.0" strokeOpacity="1.0" opacity="1.0">
           <children xsi:type="svg:Box" attributes="{&quot;template-id&quot;:&quot;background&quot;}">
@@ -692,7 +700,7 @@
             </children>
             <matrix translateX="16.0" translateY="56.0"/>
           </children>
-          <matrix translateY="373.0"/>
+          <matrix translateY="379.0"/>
         </children>
         <children xsi:type="svg:Group" attributes="{&quot;template-id&quot;:&quot;content&quot;}">
           <children xsi:type="svg:Group" attributes="" fillOpacity="1.0" strokeOpacity="1.0" opacity="1.0">
