@@ -14,3 +14,14 @@ enum TimeTablePageType: Int, CaseIterable {
         }
     }
 }
+enum MenuPageType: Int, CaseIterable {
+		case home, info, map
+		
+		var target: Constants.PageType {
+				switch self {
+				case .home: return .timeTable
+				case .info: return .timeTable
+				case .map: return .map
+				}
+		}
+}

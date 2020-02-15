@@ -69,6 +69,7 @@ extension TimeTablePageAdapter: LifeCycleEventable {
 		
 		func onExit(with event: SCDWidgetsExitEvent?) {
 				bindables.forEach { $0.deactivate() }
+				timeTablePageView.setSidebar(isHidden: true)
 		}
 }
 
@@ -147,28 +148,6 @@ private extension TimeTablePageAdapter {
         timeTablePageView.appendOnTagClick()
         observeCycle()
     }
-    
-//    func bindAfter() {
-//        /// loading images should use a sub-thread
-//        /// not to block the main thread and not slow down view drawing
-//        //        DispatchQueue.global().async {
-//        //            self.timeTableList.elements.enumerated().forEach { i, wrapper in
-//        //            		let children = wrapper.children.first?.asRow?.children
-//        //                let icon = children?[1].asListView?.children[2].asRow?.children.first?.asImage
-//        //                let request = SCDNetworkRequest()
-//        //                request.url = icon?.content ?? ""
-//        //                if let response = request.call() {
-//        //                    icon?.content = String(data: response.body, encoding: .isoLatin1)! // todo
-//        //                    icon?.isContentPriority = true
-//        //                }
-//        //
-//        //            }
-//        //        }
-//        
-//        
-//        /// append tag click event
-//				timeTablePageView.appendOnTagClick()
-//    }
 }
 
 
@@ -186,6 +165,12 @@ extension TimeTablePageAdapter: TimeTablePageDelegate {
     		debugPrint("---\(#function)---")
     		
     		timeTablePageView.setSidebar()
+    }
+    
+    func onMenuItemClicked(by type: MenuPageType) {
+    		debugPrint("---\(#function)---")
+    		
+    		navigation?.push(type: type.target, transition: .forward)
     }
     
     func onItemSelected(with event: SCDWidgetsItemEvent?) {

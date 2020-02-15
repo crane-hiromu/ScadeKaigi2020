@@ -32,6 +32,11 @@ final class ScadeKaigi2020: SCDApplication {
         return adapter
     }()
     
+    private lazy var mapAdapter: MapPageAdapter = {
+        let adapter = MapPageAdapter()
+        return adapter
+    }()
+    
     
     // MARK: Overrides
     
@@ -44,6 +49,7 @@ final class ScadeKaigi2020: SCDApplication {
         speakersListAdapter.load(type: .speakersList)
         profileAdapter.load(type: .profile)
         sessionAdapter.load(type: .session)
+        mapAdapter.load(type: .map)
         
         timeTableAdapter.show(window)
     }

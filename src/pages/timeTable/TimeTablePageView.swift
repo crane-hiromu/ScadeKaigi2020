@@ -4,7 +4,8 @@ import ScadeKit
 
 protocol TimeTablePageDelegate: SCDLatticePageAdapter {
 		func onSearchClicked()
-    func onMenuClicked()
+		func onMenuClicked()
+    func onMenuItemClicked(by type: MenuPageType)
     func onTabClicked(by type: TimeTablePageType)
     func onItemSelected(with event: SCDWidgetsItemEvent?)
     func onTagSelected(with event: SCDWidgetsEvent?, at index: Int)
@@ -54,9 +55,14 @@ final class TimeTablePageView {
     
     private lazy var sidebar: SCDWidgetsSidebar! = {
         let bar = adapter?.page?.getWidgetByName("sidebar")?.asSideBar
+
         let homeMenu = bar?.panel?.getWidgetByName("homeMenuButton")?.asClikable
-        homeMenu?.onClick.append(SCDWidgetsEventHandler{ _ in 
-        		print("Menu1 clicked")
+        homeMenu?.onClick.append(SCDWidgetsEventHandler{ [weak self] _ in 
+        		self?.timeTablePageDelegate?.onMenuItemClicked(by: .home)
+        })
+        let mapMenu = bar?.panel?.getWidgetByName("mapMenuButton")?.asClikable
+        mapMenu?.onClick.append(SCDWidgetsEventHandler{ [weak self] _ in 
+        		self?.timeTablePageDelegate?.onMenuItemClicked(by: .map)
         })
         return bar
     }()
@@ -120,7 +126,11 @@ extension TimeTablePageView {
         }
     }
     
-    func setSidebar() {
-    		sidebar.isHidden.toggle()
+    func setSidebar(isHidden: Bool? = nil) {   		
+    		if let isHidden = isHidden {
+    				sidebar.isHidden = isHidden
+    		} else {
+    				sidebar.isHidden.toggle()
+    		}
     }
 }
