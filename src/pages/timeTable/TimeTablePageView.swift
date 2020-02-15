@@ -72,6 +72,10 @@ final class TimeTablePageView {
         mapMenu?.onClick.append(SCDWidgetsEventHandler{ [weak self] _ in 
         		self?.timeTablePageDelegate?.onMenuItemClicked(by: .map)
         })
+        let sponsorMenu = bar?.panel?.getWidgetByName("sponsorMenuButton")?.asClikable
+        sponsorMenu?.onClick.append(SCDWidgetsEventHandler{ [weak self] _ in 
+        		self?.timeTablePageDelegate?.onMenuItemClicked(by: .sponsor)
+        })
         return bar
     }()
 

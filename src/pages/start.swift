@@ -41,6 +41,11 @@ final class ScadeKaigi2020: SCDApplication {
         let adapter = MapPageAdapter()
         return adapter
     }()
+
+    private lazy var sponsorAdapter: SponsorPageAdapter = {
+        let adapter = SponsorPageAdapter()
+        return adapter
+    }()
     
     
     // MARK: Overrides
@@ -56,6 +61,7 @@ final class ScadeKaigi2020: SCDApplication {
         sessionAdapter.load(type: .session)
         aboutAdapter.load(type: .about)
         mapAdapter.load(type: .map)
+        sponsorAdapter.load(type: .sponsor)
         
         timeTableAdapter.show(window)
     }
