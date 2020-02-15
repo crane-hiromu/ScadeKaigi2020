@@ -209,7 +209,7 @@ extension TimeTablePageAdapter: TimeTablePageDelegate {
         self.pageType = type
         timeTablePageView.removeOnTabClick()
         timeTablePageView.tabItems.enumerated().forEach { i, item in
-            item.backgroundColor = (type.rawValue == i) ? .tabItemOrange : .white
+            item.backgroundColor = (type.rawValue == i) ? .tabItemOrange : .black
         }
         AlertManager.shared.startIndicator()
         

@@ -7,6 +7,8 @@ final class AlertManager: EObject {
     static let shared = AlertManager()
     private override init() {}
     
+    // MARK: loading indicator
+    
     #if os(iOS)
     var indicator: UIAlertController = {
         let indicator = UIActivityIndicatorView(style: .gray)
@@ -17,7 +19,7 @@ final class AlertManager: EObject {
         let alert = UIAlertController(title: nil, message: "Loading..", preferredStyle: .alert)
         alert.view.addSubview(indicator)
         return alert
-    }()
+    }() 
     #endif
     
     func startIndicator() {
@@ -35,4 +37,15 @@ final class AlertManager: EObject {
         }		
         #endif
     }
+    
+    
+    // MARK: not working
+    
+    #if os(iOS)
+    var notWorking: UIAlertController = {
+        let alert = UIAlertController(title: nil, message: "Loading..", preferredStyle: .alert)
+				// todo button
+        return alert
+    }() 
+    #endif
 }
