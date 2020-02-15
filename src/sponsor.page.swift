@@ -31,7 +31,28 @@ final class SponsorPageAdapter: SCDLatticePageAdapter {
         
         setupSafeArea()
         bind()
+        observeCycle()
     }
+    
+    deinit {
+        bindables.forEach { $0.deactivate() }
+        cancelCycle()
+    }
+}
+
+
+// MARK: - LifeCycleEventable
+
+extension SponsorPageAdapter: LifeCycleEventable {
+	
+		func onEnter(with event: SCDWidgetsEnterEvent?) {
+				AlertManager.shared.stopIndicator()
+				bindables.forEach { $0.activate() }
+		}
+		
+		func onExit(with event: SCDWidgetsExitEvent?) {
+				bindables.forEach { $0.deactivate() }
+		}
 }
 
 
@@ -53,15 +74,31 @@ extension SponsorPageAdapter: SponsorPageDelegate {
 
 private extension SponsorPageAdapter {
     
-    func bind() {
+    func bind() {    	
     		debugPrint("---\(#function)---")
     		
         from(sponsorEntity)
             .select(\.sponsors)
-            .bind(to: sponsorPage.dataSource)
+            .bind(to: sponsorPage.goldDataSource)
             .registered(with: &bindables)
-        
-        let bindableGoldItem = sponsorPage.bindableGoldItem
+            
+        from(sponsorEntity)
+            .select(\.supporters)
+            .bind(to: sponsorPage.supporterDataSource)
+            .registered(with: &bindables)
+            	
+    		/// loading a lot of images is crashed on Android by outOfMemory
+        #if os(Android)
+        bindTxt()
+        #else
+        bindImage()
+        #endif            
+    }
+    
+    func bindImage() {
+    		debugPrint("---\(#function)---")
+    	
+    		let bindableGoldItem = sponsorPage.bindableGoldItem
         let goldRow = sponsorPage.goldRow
         
         bindableGoldItem
@@ -73,18 +110,50 @@ private extension SponsorPageAdapter {
             .select(\SponsorRowModel.right)
             .bind(to: goldRow.rightImage, mapFunction: { $0.logo })
             .registered(with: &bindables)
+        
             
         let bindableSupporterItem = sponsorPage.bindableSupporterItem
         let supporterRow = sponsorPage.supporterRow
         
         bindableSupporterItem
             .select(\SponsorRowModel.left)
-            .bind(to: goldRow.leftImage, mapFunction: { $0.logo })
+            .bind(to: supporterRow.leftImage, mapFunction: { $0.logo })
             .registered(with: &bindables)
 
-        supporterRow
+        bindableSupporterItem
             .select(\SponsorRowModel.right)
-            .bind(to: goldRow.rightImage, mapFunction: { $0.logo })
+            .bind(to: supporterRow.rightImage, mapFunction: { $0.logo })
+            .registered(with: &bindables)
+    }
+    
+    func bindTxt() {
+    		 debugPrint("---\(#function)---")
+    		
+    		let bindableGoldItem = sponsorPage.bindableGoldItem
+        let goldRow = sponsorPage.goldRow
+        
+        bindableGoldItem
+            .select(\SponsorRowModel.left)
+            .bind(to: goldRow.leftText, mapFunction: { $0.name })
+            .registered(with: &bindables)
+
+        bindableGoldItem
+            .select(\SponsorRowModel.right)
+            .bind(to: goldRow.rightText, mapFunction: { $0.name })
+            .registered(with: &bindables)
+        
+            
+        let bindableSupporterItem = sponsorPage.bindableSupporterItem
+        let supporterRow = sponsorPage.supporterRow
+        
+        bindableSupporterItem
+            .select(\SponsorRowModel.left)
+            .bind(to: supporterRow.leftText, mapFunction: { $0.name })
+            .registered(with: &bindables)
+
+        bindableSupporterItem
+            .select(\SponsorRowModel.right)
+            .bind(to: supporterRow.rightText, mapFunction: { $0.name })
             .registered(with: &bindables)
     }
 }

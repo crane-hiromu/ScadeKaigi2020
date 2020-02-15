@@ -50,6 +50,7 @@ final class TimeTablePageAdapter: SCDLatticePageAdapter {
         debugPrint("---\(#function)---")
         
         setup()
+        observeCycle()
     }
     
     deinit {
@@ -146,7 +147,6 @@ private extension TimeTablePageAdapter {
     func setup() {
     	  timeTablePageView.appendOnTabClick()
         timeTablePageView.appendOnTagClick()
-        observeCycle()
     }
 }
 
@@ -170,7 +170,14 @@ extension TimeTablePageAdapter: TimeTablePageDelegate {
     func onMenuItemClicked(by type: MenuPageType) {
     		debugPrint("---\(#function)---")
     		
-    		navigation?.push(type: type.target, transition: .forward)
+    		// fixme 
+    		if type == .sponsor {
+    				AlertManager.shared.startIndicator()
+    		}
+    		
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.2) {
+            self.navigation?.push(type: type.target, transition: .forward)
+        }
     }
     
     func onItemSelected(with event: SCDWidgetsItemEvent?) {

@@ -17,11 +17,13 @@ final class SponsorPage {
     weak var sponsorPageDelegate: SponsorPageDelegate?
     private weak var adapter: SponsorPageAdapter?
     
-    lazy var dataSource = from(goldList).dataSource.cast([SponsorRowModel].self)
+    lazy var goldDataSource = from(goldList).dataSource.cast([SponsorRowModel].self)
     lazy var bindableGoldItem = from(goldList).items
     lazy var goldRow = from(goldList).rows.cast(SponsorPageListElement.self)
+    
+    lazy var supporterDataSource = from(supporterList).dataSource.cast([SponsorRowModel].self)
     lazy var bindableSupporterItem = from(supporterList).items
-    lazy var supporterRow = from(supporterList).rows.cast(SponsorPageListElement.self)
+    lazy var supporterRow = from(supporterList).rows.cast(SupporterPageListElement.self)
     
     // MARK: Widgets
     

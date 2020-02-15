@@ -15,7 +15,7 @@ final class SponsorEntity: EObject {
 				self.supporters = []
 		}
 		
-		func update(sponsors: [Sponsor], type: SponsorType) {
+		func update(type: SponsorType, sponsors: [Sponsor]) {
 				var left = [Sponsor]()
 				var right = [Sponsor]()
 				
@@ -35,17 +35,17 @@ final class SponsorEntity: EObject {
 						new.append(SponsorRowModel(left: left[i], right: right[i]))
 				}
 				
-				if type == .gold {
-						self.sponsors = new	
-				} else {
+				switch type {
+				case .gold:
+						self.sponsors = new
+				case .supporter:
 						self.supporters = new
 				}
-				
 		}
 		
 		/// create static data
 		func create() {
-				update(sponsors: [
+				update(type: .gold, sponsors: [
 						Sponsor(url: "https://developers.google.com/", logo: "res/spGoogle.png"),
 						Sponsor(url: "https://mixi.co.jp/recruit/", logo: "res/spMixi.png"),
 						Sponsor(url: "https://twitter.com/mercaridevjp", logo: "res/spMercari.png"),
@@ -70,16 +70,19 @@ final class SponsorEntity: EObject {
 						Sponsor(url: "https://www.wantedly.com/companies/nissanmotor", logo: "res/spNissan.png"), 
 						Sponsor(url: "https://plaid.co.jp/?source=droidkaigi2020", logo: "res/spPlaid.png"), 
 						Sponsor(url: "https://twitter.com/mercaridevjp", logo: "res/spMerpay.png")
-//						   : "https://pepabo.com/",
-//						   "https://.com/",
-//						   : "https://andfactory.co.jp/",
-//						   "https://www.quipper.com/jp/","
-//						  "https://hatena.ne.jp",
-//						   "https://connehito.com",
-//						  : "https://info.excite.co.jp",
-//						   "https://deploygate.com/",
-//						   "https://www.pixiv.co.jp/",
-//						   "https://www.furyu.jp/","
+				])
+				
+				update(type: .supporter, sponsors: [
+						Sponsor(url: "https://pepabo.com/", logo: "res/spGmo.png"),
+						Sponsor(url:  "https://tabelog.com/", logo: "res/spTabelog.png"),
+						Sponsor(url: "https://andfactory.co.jp/", logo: "res/spAndfactory.png"),
+						Sponsor(url: "https://www.quipper.com/jp/", logo: "res/spQuipper.png"),
+						Sponsor(url: "https://hatena.ne.jp", logo: "res/spHatena.png"),
+						Sponsor(url: "https://connehito.com", logo: "res/spConnehito.png"),
+						Sponsor(url: "https://info.excite.co.jp", logo: "res/spExcite.png"),
+						Sponsor(url: "https://deploygate.com/", logo: "res/spDeployGate.png"),
+						Sponsor(url: "https://www.pixiv.co.jp/", logo: "res/spPixiv.png"),
+						Sponsor(url: "https://www.furyu.jp/", logo: "res/spFURYU.png"),
 				])
 		}
 
@@ -98,15 +101,18 @@ final class SponsorRowModel: EObject {
 
 @objcMembers
 final class Sponsor: EObject {
+		dynamic var name: String
 		dynamic var url: String
 		dynamic var logo: String
 		
 		override init() {
+				self.name = ""
 				self.url = ""
 				self.logo = "" // todo place holder
 		}
 		
 		init(url: String, logo: String) {
+				self.name = ""
 				self.url = url
 				self.logo = logo
 		}

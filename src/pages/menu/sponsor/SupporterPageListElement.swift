@@ -2,12 +2,12 @@ import ScadeKit
 
 // MARK: - Element
 
-final class SponsorPageListElement: SCDWidgetsListElement {}
+final class SupporterPageListElement: SCDWidgetsListElement {}
 
 
 // MARK: - Extension
 
-extension BindingElement where T == SponsorPageListElement {
+extension BindingElement where T == SupporterPageListElement {
     
     // MARK: Wrapper
     

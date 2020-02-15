@@ -20,7 +20,7 @@ final class MapPageAdapter: SCDLatticePageAdapter {
         debugPrint("---\(#function)---")
         
         setupSafeArea()
-        
+
         // accsess
         mapPage.backButton.isVisible = true
     }

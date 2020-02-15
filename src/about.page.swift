@@ -24,7 +24,6 @@ final class AboutPageAdapter: SCDLatticePageAdapter {
     }
 }
 
-
 // MARK: - AboutPageDelegate
 
 extension AboutPageAdapter: AboutPageDelegate {

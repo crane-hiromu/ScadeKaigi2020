@@ -359,7 +359,7 @@
         <constraints source="/0/@children.1" target="/0" active="true"/>
         <constraints source="/0/@children.1" sourceAnchor="BOTTOM" target="/0" targetAnchor="BOTTOM" active="true"/>
       </layoutData>
-      <size width="208" height="896"/>
+      <size width="290" height="896"/>
       <location/>
       <layout xsi:type="com.scade.sdk.layout:GridLayout"/>
       <minArea/>
@@ -1462,7 +1462,7 @@
               <path>w</path>
             </expression>
           </constraints>
-          <width value="208.0"/>
+          <width value="290.0"/>
           <height value="896.0"/>
         </children>
         <children xsi:type="svg:Group" attributes="{&quot;template-id&quot;:&quot;content&quot;}"/>
