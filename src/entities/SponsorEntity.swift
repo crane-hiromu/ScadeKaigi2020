@@ -74,7 +74,7 @@ final class SponsorEntity: EObject {
 				
 				update(type: .supporter, sponsors: [
 						Sponsor(url: "https://pepabo.com/", logo: "res/spGmo.png"),
-						Sponsor(url:  "https://tabelog.com/", logo: "res/spTabelog.png"),
+						Sponsor(url: "https://tabelog.com/", logo: "res/spTabelog.png"),
 						Sponsor(url: "https://andfactory.co.jp/", logo: "res/spAndfactory.png"),
 						Sponsor(url: "https://www.quipper.com/jp/", logo: "res/spQuipper.png"),
 						Sponsor(url: "https://hatena.ne.jp", logo: "res/spHatena.png"),
@@ -83,9 +83,14 @@ final class SponsorEntity: EObject {
 						Sponsor(url: "https://deploygate.com/", logo: "res/spDeployGate.png"),
 						Sponsor(url: "https://www.pixiv.co.jp/", logo: "res/spPixiv.png"),
 						Sponsor(url: "https://www.furyu.jp/", logo: "res/spFURYU.png"),
+						Sponsor(url: "https://info.studyplus.co.jp/", logo: "res/spStudyplus.png"),
+						Sponsor(url: "https://caraquri.com", logo: "res/spCaraquri.png"),
+						Sponsor(url: "https://www.quocard.com/", logo: "res/spQUO.png"),
+						Sponsor(url: "https://www.recruit-mp.co.jp/career_engineer/", logo: "res/spMarketing.png"),
+						Sponsor(url: "https://medpeer.co.jp/", logo: "res/spMedPeer.png"),
+						Sponsor(url: "https://www.i3-systems.com/", logo: "res/spSystems.png")
 				])
 		}
-
 }
 
 @objcMembers

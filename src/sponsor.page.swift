@@ -22,7 +22,6 @@ final class SponsorPageAdapter: SCDLatticePageAdapter {
         debugPrint("---\(#function)---")
         
         self.sponsorEntity = sponsor
-        
     }
     
     override func load(_ path: String) {		
@@ -77,6 +76,13 @@ private extension SponsorPageAdapter {
     func bind() {    	
     		debugPrint("---\(#function)---")
     		
+    		/// loading a lot of images is crashed on Android by outOfMemory
+        #if os(Android)
+        bindTxt()
+        #else
+        bindImage()
+        #endif    
+    		
         from(sponsorEntity)
             .select(\.sponsors)
             .bind(to: sponsorPage.goldDataSource)
@@ -86,13 +92,6 @@ private extension SponsorPageAdapter {
             .select(\.supporters)
             .bind(to: sponsorPage.supporterDataSource)
             .registered(with: &bindables)
-            	
-    		/// loading a lot of images is crashed on Android by outOfMemory
-        #if os(Android)
-        bindTxt()
-        #else
-        bindImage()
-        #endif            
     }
     
     func bindImage() {
