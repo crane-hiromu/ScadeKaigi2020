@@ -4,7 +4,9 @@ import ScadeKit
 
 @objcMembers
 final class TimetableEntity: EObject {
-    private let sessionsEntity: [Sessions]
+    private let dayOneSessionsEntity: [Sessions]
+    private let dayTwoSessionsEntity: [Sessions]
+    private let eventSessionsEntity: [Sessions]    
     
     dynamic var sessions: [Sessions]
     dynamic var rooms: [Rooms]
@@ -13,21 +15,28 @@ final class TimetableEntity: EObject {
     dynamic var categories: [Categories]
     
     override init() {
-        self.sessionsEntity = []
         self.sessions = []
         self.rooms = []
         self.speakers = []
         self.questions = []
         self.categories = []
+        
+        self.dayOneSessionsEntity = []
+        self.dayTwoSessionsEntity = []
+        self.eventSessionsEntity = []
     }
     
     init(_ timetableResponse: TimetableResponse) {
-        self.sessionsEntity = timetableResponse.sessions
         self.sessions = timetableResponse.sessions
         self.rooms = timetableResponse.rooms
         self.speakers = timetableResponse.speakers
         self.questions = timetableResponse.questions
         self.categories = timetableResponse.categories
+        
+        /// calculate first, case of to load view quickly by cache
+        self.dayOneSessionsEntity = timetableResponse.sessions.filter { $0.startsAt.contains("02-20T") }
+        self.dayTwoSessionsEntity = timetableResponse.sessions.filter { $0.startsAt.contains("02-21T") }
+        self.eventSessionsEntity = timetableResponse.sessions.filter { $0.isServiceSession }
     }
     
     func room(by id: Int64) -> String? {
@@ -41,13 +50,13 @@ final class TimetableEntity: EObject {
     func update(type: TimeTablePageType) {
         switch type {
         case .dayOne:
-            self.sessions = sessionsEntity.filter { $0.startsAt.contains("02-20T") }
+            self.sessions = dayOneSessionsEntity
         case .dayTwo:
-            self.sessions = sessionsEntity.filter { $0.startsAt.contains("02-21T") }
+            self.sessions = dayTwoSessionsEntity
         case .event:
-            self.sessions = [] // todo
+            self.sessions = eventSessionsEntity
         case .myPlan:
-            self.sessions = sessionsEntity.filter { 
+            self.sessions = self.sessions.filter { 
                 UserDefaultsHelper.sessionIds.arrayString?.contains($0.id) == true 
             }
         }
