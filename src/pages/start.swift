@@ -31,6 +31,11 @@ final class ScadeKaigi2020: SCDApplication {
         let adapter = SessionPageAdapter()
         return adapter
     }()
+     
+    private lazy var aboutAdapter: AboutPageAdapter = {
+        let adapter = AboutPageAdapter()
+        return adapter
+    }()
     
     private lazy var mapAdapter: MapPageAdapter = {
         let adapter = MapPageAdapter()
@@ -49,6 +54,7 @@ final class ScadeKaigi2020: SCDApplication {
         speakersListAdapter.load(type: .speakersList)
         profileAdapter.load(type: .profile)
         sessionAdapter.load(type: .session)
+        aboutAdapter.load(type: .about)
         mapAdapter.load(type: .map)
         
         timeTableAdapter.show(window)

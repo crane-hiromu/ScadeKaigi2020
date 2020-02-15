@@ -27,7 +27,7 @@ final class MapPageAdapter: SCDLatticePageAdapter {
 }
 
 
-// MARK: - ProfilePageDelegate
+// MARK: - MapPageDelegate
 
 extension MapPageAdapter: MapPageDelegate {
     

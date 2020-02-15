@@ -60,6 +60,14 @@ final class TimeTablePageView {
         homeMenu?.onClick.append(SCDWidgetsEventHandler{ [weak self] _ in 
         		self?.timeTablePageDelegate?.onMenuItemClicked(by: .home)
         })
+        let aboutMenu = bar?.panel?.getWidgetByName("aboutMenuButton")?.asClikable
+        aboutMenu?.onClick.append(SCDWidgetsEventHandler{ [weak self] _ in 
+        		self?.timeTablePageDelegate?.onMenuItemClicked(by: .about)
+        })
+        let infoMenu = bar?.panel?.getWidgetByName("infoMenuButton")?.asClikable
+        aboutMenu?.onClick.append(SCDWidgetsEventHandler{ [weak self] _ in 
+        		self?.timeTablePageDelegate?.onMenuItemClicked(by: .info)
+        })
         let mapMenu = bar?.panel?.getWidgetByName("mapMenuButton")?.asClikable
         mapMenu?.onClick.append(SCDWidgetsEventHandler{ [weak self] _ in 
         		self?.timeTablePageDelegate?.onMenuItemClicked(by: .map)

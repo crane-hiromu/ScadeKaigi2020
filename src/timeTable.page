@@ -439,7 +439,7 @@
           <layout xsi:type="com.scade.sdk.layout:GridLayout" columns="2" horizontalSpacing="16" marginLeft="16"/>
           <minArea height="50"/>
           <maxArea width="-1" height="-1"/>
-          <children xsi:type="com.scade.sdk.view:Button" name="descriptionMenuButton" drawing="/3/@children.1/@children.1/@children.2/@children.5/@children.2" text="DroidKaigiとは">
+          <children xsi:type="com.scade.sdk.view:Button" name="aboutMenuButton" drawing="/3/@children.1/@children.1/@children.2/@children.5/@children.2" text="DroidKaigiとは">
             <layoutData xsi:type="com.scade.sdk.layout:GridData" column="1" verticalAlignment="MIDDLE" grabHorizontalSpace="true" grabVerticalSpace="true" widthConstraint="MATCH_PARENT">
               <minSize width="85" height="41"/>
               <maxSize width="-1" height="-1"/>
