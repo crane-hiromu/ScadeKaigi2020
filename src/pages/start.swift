@@ -43,7 +43,10 @@ final class ScadeKaigi2020: SCDApplication {
     }()
 
     private lazy var sponsorAdapter: SponsorPageAdapter = {
-        let adapter = SponsorPageAdapter()
+        let entity = SponsorEntity()
+        entity.create()
+        
+        let adapter = SponsorPageAdapter(sponsor: entity)
         return adapter
     }()
     

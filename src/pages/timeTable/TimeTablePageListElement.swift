@@ -2,7 +2,6 @@ import ScadeKit
 
 // MARK: - Element
 
-
 final class TimeTablePageListElement: SCDWidgetsListElement {}
 
 
