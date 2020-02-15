@@ -33,4 +33,12 @@ extension BindingElement where T == SponsorPageListElement {
     var rightText: BindingElement <String> {
         return parentWrapper.select(\.children, .at(1)).select(\SCDWidgetsButton.text)
     }
+
+    var leftColor: BindingElement <SCDGraphicsRGB> {
+        return parentWrapper.select(\.children, .at(0)).select(\SCDWidgetsButton.backgroundColor)
+    }
+    
+    var rightColor: BindingElement <SCDGraphicsRGB> {
+        return parentWrapper.select(\.children, .at(1)).select(\SCDWidgetsButton.backgroundColor)
+    }
 }

@@ -140,6 +140,16 @@ private extension SponsorPageAdapter {
             .select(\SponsorRowModel.right)
             .bind(to: goldRow.rightText, mapFunction: { $0.name })
             .registered(with: &bindables)
+            
+        bindableGoldItem
+            .select(\SponsorRowModel.left)
+            .bind(to: goldRow.leftColor, mapFunction: { $0.color })
+            .registered(with: &bindables)
+
+        bindableGoldItem
+            .select(\SponsorRowModel.right)
+            .bind(to: goldRow.rightColor, mapFunction: { $0.color })
+            .registered(with: &bindables)
         
             
         let bindableSupporterItem = sponsorPage.bindableSupporterItem
@@ -153,6 +163,16 @@ private extension SponsorPageAdapter {
         bindableSupporterItem
             .select(\SponsorRowModel.right)
             .bind(to: supporterRow.rightText, mapFunction: { $0.name })
+            .registered(with: &bindables)
+            
+        bindableSupporterItem
+            .select(\SponsorRowModel.left)
+            .bind(to: supporterRow.leftColor, mapFunction: { $0.color })
+            .registered(with: &bindables)
+
+        bindableSupporterItem
+            .select(\SponsorRowModel.right)
+            .bind(to: supporterRow.rightColor, mapFunction: { $0.color })
             .registered(with: &bindables)
     }
 }
