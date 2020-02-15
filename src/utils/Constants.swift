@@ -22,7 +22,7 @@ struct Constants {
     }
     
     enum PageType: String {
-        case timeTable, speakersList, profile, session, about, map, sponsor
+        case timeTable, speakersList, profile, session, info, about, map, sponsor, contributors, setting, questionnaire
         
         var page: String {
             return "\(rawValue).page"

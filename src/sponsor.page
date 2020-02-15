@@ -344,7 +344,7 @@
           </layoutData>
           <size width="382" height="80"/>
           <location x="16" y="771"/>
-          <layout xsi:type="com.scade.sdk.layout:GridLayout" columns="2" horizontalSpacing="8" marginTop="8" marginBottom="8" marginLeft="24" marginRight="32"/>
+          <layout xsi:type="com.scade.sdk.layout:GridLayout" horizontalSpacing="8" marginTop="8" marginBottom="8" marginLeft="24" marginRight="32"/>
           <minArea height="80"/>
           <maxArea width="-1" height="-1"/>
           <children xsi:type="com.scade.sdk.view:Button" name="nonBlankButton" drawing="/3/@children.1/@children.0/@children.4/@children.11/@children.1/@children.0" backgroundImage="res/spKadokawa.png" horizontalAlignment="CENTER">
@@ -352,17 +352,8 @@
               <minSize height="20"/>
               <maxSize width="-1" height="-1"/>
             </layoutData>
-            <size width="159" height="64"/>
+            <size width="326" height="64"/>
             <location x="24" y="8"/>
-            <font fontFamily="ArialMT" size="17"/>
-          </children>
-          <children xsi:type="com.scade.sdk.view:Button" name="blankButton" drawing="/3/@children.1/@children.0/@children.4/@children.11/@children.2" horizontalAlignment="CENTER">
-            <layoutData xsi:type="com.scade.sdk.layout:GridData" column="1" verticalAlignment="MIDDLE" grabHorizontalSpace="true" grabVerticalSpace="true" widthConstraint="MATCH_PARENT" heightConstraint="MATCH_PARENT">
-              <minSize height="20"/>
-              <maxSize width="-1" height="-1"/>
-            </layoutData>
-            <size width="159" height="64"/>
-            <location x="191" y="8"/>
             <font fontFamily="ArialMT" size="17"/>
           </children>
         </children>
@@ -1237,40 +1228,16 @@
                     <width value="100.0" measurement="PERCENTAGE"/>
                     <height value="100.0" measurement="PERCENTAGE"/>
                   </children>
-                  <width value="159.0"/>
+                  <width value="326.0"/>
                   <height value="64.0"/>
                 </children>
                 <children xsi:type="svg:Text" attributes="{&quot;template-id&quot;:&quot;node-text&quot;}" fillOpacity="1.0" strokeOpacity="1.0" opacity="1.0" fontSize="17" fontName="ArialMT" text="" anchor="middle" alignmentBaseline="central">
                   <fill xsi:type="svg_2:RGBColor" r="0.26666668" g="0.41568628" b="0.7019608"/>
-                  <x value="79.0"/>
+                  <x value="163.0"/>
                   <y value="32.0"/>
                 </children>
                 <matrix translateX="24.0" translateY="8.0"/>
               </children>
-            </children>
-            <children xsi:type="svg:Group" attributes="">
-              <children xsi:type="svg:Box" attributes="{&quot;template-id&quot;:&quot;background&quot;}">
-                <constraints xsi:type="svg_1:DirectConstraint" exprStr="size.h">
-                  <feature xsi:type="ecore:EReference" href="http://scade.com/svg#//draw/Box/height"/>
-                  <expression xsi:type="com.scade.sdk.expr:Variable" name="size">
-                    <path>h</path>
-                  </expression>
-                </constraints>
-                <constraints xsi:type="svg_1:DirectConstraint" exprStr="size.w">
-                  <feature xsi:type="ecore:EReference" href="http://scade.com/svg#//draw/Box/width"/>
-                  <expression xsi:type="com.scade.sdk.expr:Variable" name="size">
-                    <path>w</path>
-                  </expression>
-                </constraints>
-                <width value="159.0"/>
-                <height value="64.0"/>
-              </children>
-              <children xsi:type="svg:Text" attributes="{&quot;template-id&quot;:&quot;node-text&quot;}" fillOpacity="1.0" strokeOpacity="1.0" opacity="1.0" fontSize="17" fontName="ArialMT" text="" anchor="middle" alignmentBaseline="central">
-                <fill xsi:type="svg_2:RGBColor" r="0.26666668" g="0.41568628" b="0.7019608"/>
-                <x value="79.0"/>
-                <y value="32.0"/>
-              </children>
-              <matrix translateX="191.0" translateY="8.0"/>
             </children>
             <matrix translateX="16.0" translateY="771.0"/>
           </children>

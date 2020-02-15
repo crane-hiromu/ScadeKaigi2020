@@ -5,7 +5,7 @@ import ScadeKit
 protocol TimeTablePageDelegate: SCDLatticePageAdapter {
 		func onSearchClicked()
 		func onMenuClicked()
-    func onMenuItemClicked(by type: MenuPageType)
+    func onMenuItemClicked(by type: Constants.PageType)
     func onTabClicked(by type: TimeTablePageType)
     func onItemSelected(with event: SCDWidgetsItemEvent?)
     func onTagSelected(with event: SCDWidgetsEvent?, at index: Int)
@@ -58,14 +58,14 @@ final class TimeTablePageView {
 
         let homeMenu = bar?.panel?.getWidgetByName("homeMenuButton")?.asClikable
         homeMenu?.onClick.append(SCDWidgetsEventHandler{ [weak self] _ in 
-        		self?.timeTablePageDelegate?.onMenuItemClicked(by: .home)
+        		self?.timeTablePageDelegate?.onMenuItemClicked(by: .timeTable)
         })
         let aboutMenu = bar?.panel?.getWidgetByName("aboutMenuButton")?.asClikable
         aboutMenu?.onClick.append(SCDWidgetsEventHandler{ [weak self] _ in 
         		self?.timeTablePageDelegate?.onMenuItemClicked(by: .about)
         })
         let infoMenu = bar?.panel?.getWidgetByName("infoMenuButton")?.asClikable
-        aboutMenu?.onClick.append(SCDWidgetsEventHandler{ [weak self] _ in 
+        infoMenu?.onClick.append(SCDWidgetsEventHandler{ [weak self] _ in 
         		self?.timeTablePageDelegate?.onMenuItemClicked(by: .info)
         })
         let mapMenu = bar?.panel?.getWidgetByName("mapMenuButton")?.asClikable
@@ -75,6 +75,18 @@ final class TimeTablePageView {
         let sponsorMenu = bar?.panel?.getWidgetByName("sponsorMenuButton")?.asClikable
         sponsorMenu?.onClick.append(SCDWidgetsEventHandler{ [weak self] _ in 
         		self?.timeTablePageDelegate?.onMenuItemClicked(by: .sponsor)
+        })  
+        let contributorsMenu = bar?.panel?.getWidgetByName("contributorsMenuButton")?.asClikable
+        contributorsMenu?.onClick.append(SCDWidgetsEventHandler{ [weak self] _ in 
+        		self?.timeTablePageDelegate?.onMenuItemClicked(by: .contributors)
+        })
+        let settingsMenu = bar?.panel?.getWidgetByName("settingsMenuButton")?.asClikable
+        settingsMenu?.onClick.append(SCDWidgetsEventHandler{ [weak self] _ in 
+        		self?.timeTablePageDelegate?.onMenuItemClicked(by: .setting)
+        })
+        let questionnaireMenu = bar?.panel?.getWidgetByName("questionnaireMenuButton")?.asClikable
+        questionnaireMenu?.onClick.append(SCDWidgetsEventHandler{ [weak self] _ in 
+        		self?.timeTablePageDelegate?.onMenuItemClicked(by: .questionnaire)
         })
         return bar
     }()

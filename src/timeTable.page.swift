@@ -167,17 +167,22 @@ extension TimeTablePageAdapter: TimeTablePageDelegate {
     		timeTablePageView.setSidebar()
     }
     
-    func onMenuItemClicked(by type: MenuPageType) {
+    func onMenuItemClicked(by type: Constants.PageType) {
     		debugPrint("---\(#function)---")
     		
-    		// fixme 
-    		if type == .sponsor {
+    		switch type {
+    		case .info, .contributors, .setting, .questionnaire:
+						AlertManager.shared.showNotWorking()
+						
+    		case .sponsor:
     				AlertManager.shared.startIndicator()
+    				DispatchQueue.main.asyncAfter(deadline: .now()+0.2) {
+            		self.navigation?.push(type: type, transition: .forward)
+        		}
+    				
+    		default:
+    				navigation?.push(type: type, transition: .forward)
     		}
-    		
-        DispatchQueue.main.asyncAfter(deadline: .now()+0.2) {
-            self.navigation?.push(type: type.target, transition: .forward)
-        }
     }
     
     func onItemSelected(with event: SCDWidgetsItemEvent?) {

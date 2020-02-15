@@ -32,7 +32,7 @@ final class AlertManager: EObject {
     
     func stopIndicator(completion: @escaping () -> Void = {}) {	
         #if os(iOS)
-        DispatchQueue.main.async { 
+        DispatchQueue.main.async {
             self.indicator.dismiss(animated: true, completion: completion)
         }		
         #endif
@@ -43,9 +43,17 @@ final class AlertManager: EObject {
     
     #if os(iOS)
     var notWorking: UIAlertController = {
-        let alert = UIAlertController(title: nil, message: "Loading..", preferredStyle: .alert)
-				// todo button
+        let alert = UIAlertController(title: nil, message: "Coming Soon...", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Close", style: .cancel))
         return alert
     }() 
     #endif
+    
+    func showNotWorking() {
+    		#if os(iOS)
+        DispatchQueue.main.async { 
+            SCDApplication.rootViewController?.present(self.notWorking, animated: true)
+        }
+        #endif
+    }
 }
