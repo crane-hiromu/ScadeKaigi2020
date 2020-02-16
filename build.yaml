@@ -43,12 +43,12 @@ ios:
     certificate: /Users/admin/Scade/profile/appscade.p12
   icons: 
     iphone: # or ipad, sizes: 20X20, 29X29, 40X40, 60X60, 76X76, 83.5X83.5
-      60X60_2X:
-      76X76_2X:
-      76X76_3X:
-      83.5X83.5_2X:
+      60X60_2X: /Users/admin/Scade/ScadeKaigi2020/res/AppIcon/icon_60.png
+      76X76_2X: /Users/admin/Scade/ScadeKaigi2020/res/AppIcon/icon_76.png
+      76X76_3X: /Users/admin/Scade/ScadeKaigi2020/res/AppIcon/icon_76.png
+      83.5X83.5_2X: /Users/admin/Scade/ScadeKaigi2020/res/AppIcon/icon_83_5.png
     marketing:
-      1024X1024_1X:
+      1024X1024_1X: /Users/admin/Scade/ScadeKaigi2020/res/AppIcon/icon_1024.png
   plist: 
     - key: CFBundleShortVersionString
       type: string  # string, bool, int, list or dict
@@ -101,7 +101,7 @@ android:
       scheme:
       categories: [] 
   icons:
-    mdpi:
-    hdpi:
-    xhdpi: 
-    xxhdpi:
+    mdpi: /Users/admin/Scade/ScadeKaigi2020/res/AppIcon/icon_60.png
+    hdpi: /Users/admin/Scade/ScadeKaigi2020/res/AppIcon/icon_60.png
+    xhdpi: /Users/admin/Scade/ScadeKaigi2020/res/AppIcon/icon_60.png
+    xxhdpi: /Users/admin/Scade/ScadeKaigi2020/res/AppIcon/icon_60.png

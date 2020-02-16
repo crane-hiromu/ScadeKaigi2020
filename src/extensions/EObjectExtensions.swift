@@ -50,6 +50,10 @@ extension EObject {
         return self as? SCDWidgetsSidebar
     }
     
+    var asWebView: SCDWidgetsWebView? {
+    		return self as? SCDWidgetsWebView
+    }
+    
     var asClikable: SCDWidgetsClickable? {
         return self as? SCDWidgetsClickable
     }

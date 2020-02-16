@@ -50,10 +50,15 @@ final class ScadeKaigi2020: SCDApplication {
         return adapter
     }()
     
+    private lazy var webAdapter: WebPageAdapter = {
+        let adapter = WebPageAdapter()
+        return adapter
+    }()
+    
     
     // MARK: Overrides
     
-    override func onFinishLaunching() {	
+    override func onFinishLaunching() {
         debugPrint("---\(#function)---")
         
         DataManager.shared.call()
@@ -65,6 +70,7 @@ final class ScadeKaigi2020: SCDApplication {
         aboutAdapter.load(type: .about)
         mapAdapter.load(type: .map)
         sponsorAdapter.load(type: .sponsor)
+        webAdapter.load(type: .web)
         
         timeTableAdapter.show(window)
     }

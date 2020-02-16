@@ -65,6 +65,11 @@ extension SponsorPageAdapter: SponsorPageDelegate {
     
     func onItemSelected(with event: SCDWidgetsItemEvent?) {
     		// todo open url
+    		print(event?.item)
+    }
+    
+    func onSponsorClicked(by type: SponsorType) {
+    		navigation?.push(type: .web, data: type.url, transition: .forward)
     }
 }
 

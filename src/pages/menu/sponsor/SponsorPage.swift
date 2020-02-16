@@ -5,6 +5,7 @@ import ScadeKit
 protocol SponsorPageDelegate: SCDLatticePageAdapter {
     func onBackClicked()
     func onItemSelected(with event: SCDWidgetsItemEvent?)
+    func onSponsorClicked(by type: SponsorType)
 }
 
 
@@ -27,7 +28,7 @@ final class SponsorPage {
     
     // MARK: Widgets
     
-    lazy var backButton: SCDWidgetsButton! = {
+    private lazy var backButton: SCDWidgetsButton! = {
         let btn = adapter?.page?.getWidgetByName("backButton")?.asButton
         btn?.onClick.append(SCDWidgetsEventHandler { [weak self] event in
             self?.sponsorPageDelegate?.onBackClicked()
@@ -37,19 +38,44 @@ final class SponsorPage {
     
     private lazy var goldList: SCDWidgetsList! = {
         let list = adapter?.page?.getWidgetByName("goldList")?.asList
-        list?.onItemSelected.append(SCDWidgetsItemSelectedEventHandler { [weak self] event in
-            self?.sponsorPageDelegate?.onItemSelected(with: event)
-        })
+//        list?.onItemSelected.append(SCDWidgetsItemSelectedEventHandler { [weak self] event in
+//            self?.sponsorPageDelegate?.onItemSelected(with: event)
+//        })
         return list
     }()
     
     private lazy var supporterList: SCDWidgetsList! = {
         let list = adapter?.page?.getWidgetByName("supporterList")?.asList
-        list?.onItemSelected.append(SCDWidgetsItemSelectedEventHandler { [weak self] event in
-            self?.sponsorPageDelegate?.onItemSelected(with: event)
-        })
+//        list?.onItemSelected.append(SCDWidgetsItemSelectedEventHandler { [weak self] event in
+//            self?.sponsorPageDelegate?.onItemSelected(with: event)
+//        })
         return list
     }()
+    
+		private lazy var zozoButton: SCDWidgetsButton! = {
+        let btn = adapter?.page?.getWidgetByName("zozoButton")?.asButton
+        btn?.onClick.append(SCDWidgetsEventHandler { [weak self] event in
+            self?.sponsorPageDelegate?.onSponsorClicked(by: .platinum(.zozo))
+        })
+        return btn
+    }()
+    
+		private lazy var yappliButton: SCDWidgetsButton! = {
+        let btn = adapter?.page?.getWidgetByName("yappliButton")?.asButton
+        btn?.onClick.append(SCDWidgetsEventHandler { [weak self] event in
+            self?.sponsorPageDelegate?.onSponsorClicked(by: .platinum(.yappli))
+        })
+        return btn
+    }()
+		
+		private lazy var yumemiButton: SCDWidgetsButton! = {
+        let btn = adapter?.page?.getWidgetByName("yumemiButton")?.asButton
+        btn?.onClick.append(SCDWidgetsEventHandler { [weak self] event in
+            self?.sponsorPageDelegate?.onSponsorClicked(by: .platinum(.yumemi))
+        })
+        return btn
+    }()
+    
     
     // MARK: Initializer
     
@@ -58,6 +84,9 @@ final class SponsorPage {
         
         /// todo access
         backButton.isVisible = true
+        zozoButton.isVisible = true
+        yappliButton.isVisible = true
+        yumemiButton.isVisible = true
     }
     
     deinit {
