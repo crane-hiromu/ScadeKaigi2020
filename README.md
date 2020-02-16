@@ -36,5 +36,39 @@ You can check Speaker description.
 
 ### 4.SideBar
 
-You can check Speaker description.
+You can choose Page.(example animation is slow)
 
+<img width="300" alt="スクリーンショット 2020-02-16 22 59 31" src="https://user-images.githubusercontent.com/24838521/74606307-bd92d800-5112-11ea-99a6-f7461640a96c.gif">
+
+### 5.About
+
+You can check about DroidKaigi2020 description.
+
+<img width="1500" alt="スクリーンショット 2020-02-16 22 59 31" src="https://user-images.githubusercontent.com/24838521/74606201-ca62fc00-5111-11ea-9879-59583ec6a79d.png">
+
+### 6.Map
+
+You can check Map.
+
+<img width="1500" alt="スクリーンショット 2020-02-16 22 59 42" src="https://user-images.githubusercontent.com/24838521/74606247-3180b080-5112-11ea-8389-e65062586291.png">
+
+### 7.Sponsor
+
+You can check Sponsors.
+
+<img width="1500" alt="スクリーンショット 2020-02-16 22 59 52" src="https://user-images.githubusercontent.com/24838521/74606286-86242b80-5112-11ea-8711-55dab69cc7f0.png">
+
+
+### 8.WebView
+
+You can open WebView.
+
+
+<img width="1500" alt="スクリーンショット 2020-02-16 23 00 14" src="https://user-images.githubusercontent.com/24838521/74606370-41e55b00-5113-11ea-8928-a508c78e3798.png">
+
+
+### 9.Other
+
+Some screens cannot be used.
+
+<img width="584" alt="スクリーンショット 2020-02-16 22 59 24" src="https://user-images.githubusercontent.com/24838521/74606452-c59f4780-5113-11ea-9117-82a66d30494d.png">
