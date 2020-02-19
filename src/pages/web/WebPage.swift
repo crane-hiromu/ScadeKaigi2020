@@ -41,12 +41,12 @@ final class WebPage {
         backButton.isVisible = true
         
         webView.onLoaded.append(SCDWidgetsLoadEventHandler { event in 
-        		print("Page Loaded: \(event)")
+            print("Page Loaded: \(event)")
         })
-				webView.onLoadFailed.append(SCDWidgetsLoadFailedEventHandler { event in 
-						print("Page failed to load \(event)")
-				})
-   	}
+        webView.onLoadFailed.append(SCDWidgetsLoadFailedEventHandler { event in 
+            print("Page failed to load \(event)")
+        })
+    }
     
     deinit {
         adapter = nil

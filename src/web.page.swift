@@ -3,7 +3,7 @@ import ScadeKit
 // MARK: - Page
 
 final class WebPageAdapter: SCDLatticePageAdapter {
-
+    
     // MARK: Properties
     
     private lazy var webPage: WebPage = {
@@ -23,7 +23,7 @@ final class WebPageAdapter: SCDLatticePageAdapter {
         observeCycle()
     }
     
-     override func show(_ view: SCDLatticeView?, data: Any?) {
+    override func show(_ view: SCDLatticeView?, data: Any?) {
         super.show(view, data: data)
         debugPrint("---\(#function)---")
         

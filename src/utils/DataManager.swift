@@ -31,7 +31,7 @@ final class DataManager {
     }
     
     func category(by itemId: Int64) -> Rooms? { 
-    	return categories.compactMap { cat in cat.items.first { $0.id == itemId } }.first
+        return categories.compactMap { cat in cat.items.first { $0.id == itemId } }.first
     }
     
     func description(by id: String) -> String? {
@@ -39,17 +39,17 @@ final class DataManager {
     }
     
     func call() {
-    		DispatchQueue.global().async {
-    				let request = TimetablesRequest()
-    		
-		    		HttpClient.call(request) { [weak self] result in
-		    				switch result {
-		    				case let .success(response):
-		    						self?.descriptions = (response as? TimetablesResponse)?.sessions ?? []
-		    				case let .failure(error):
-		    						debugPrint(error)
-		    				}
-		    		}
-    		}
+        DispatchQueue.global().async {
+            let request = TimetablesRequest()
+            
+            HttpClient.call(request) { [weak self] result in
+                switch result {
+                case let .success(response):
+                    self?.descriptions = (response as? TimetablesResponse)?.sessions ?? []
+                case let .failure(error):
+                    debugPrint(error)
+                }
+            }
+        }
     }
 }

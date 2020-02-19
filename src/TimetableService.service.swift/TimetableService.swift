@@ -3,5 +3,5 @@ import ScadeKit
 
 @objc
 protocol TimetableService: EObjectProtocol {
-  func getTimetable() -> TimetableResponse!
+    func getTimetable() -> TimetableResponse!
 }

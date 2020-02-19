@@ -50,7 +50,7 @@ final class AlertManager: EObject {
     #endif
     
     func showNotWorking() {
-    		#if os(iOS)
+        #if os(iOS)
         DispatchQueue.main.async { 
             SCDApplication.rootViewController?.present(self.notWorking, animated: true)
         }

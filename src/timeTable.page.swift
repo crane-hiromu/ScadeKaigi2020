@@ -63,15 +63,15 @@ final class TimeTablePageAdapter: SCDLatticePageAdapter {
 // MARK: - LifeCycleEventable
 
 extension TimeTablePageAdapter: LifeCycleEventable {
-	
-		func onEnter(with event: SCDWidgetsEnterEvent?) {
-				bindables.forEach { $0.activate() }
-		}
-		
-		func onExit(with event: SCDWidgetsExitEvent?) {
-				bindables.forEach { $0.deactivate() }
-				timeTablePageView.setSidebar(isHidden: true)
-		}
+    
+    func onEnter(with event: SCDWidgetsEnterEvent?) {
+        bindables.forEach { $0.activate() }
+    }
+    
+    func onExit(with event: SCDWidgetsExitEvent?) {
+        bindables.forEach { $0.deactivate() }
+        timeTablePageView.setSidebar(isHidden: true)
+    }
 }
 
 
@@ -145,7 +145,7 @@ private extension TimeTablePageAdapter {
     }
     
     func setup() {
-    	  timeTablePageView.appendOnTabClick()
+        timeTablePageView.appendOnTabClick()
         timeTablePageView.appendOnTagClick()
     }
 }
@@ -154,35 +154,35 @@ private extension TimeTablePageAdapter {
 // MARK: - TimeTablePageDelegate
 
 extension TimeTablePageAdapter: TimeTablePageDelegate {
-	
-	  func onSearchClicked() {
-    		debugPrint("---\(#function)---")
-    		
-    		navigation?.push(type: .speakersList, data: timetable.speakers, transition: .forward)
+    
+    func onSearchClicked() {
+        debugPrint("---\(#function)---")
+        
+        navigation?.push(type: .speakersList, data: timetable.speakers, transition: .forward)
     }
     
     func onMenuClicked() {
-    		debugPrint("---\(#function)---")
-    		
-    		timeTablePageView.setSidebar()
+        debugPrint("---\(#function)---")
+        
+        timeTablePageView.setSidebar()
     }
     
     func onMenuItemClicked(by type: Constants.PageType) {
-    		debugPrint("---\(#function)---")
-    		
-    		switch type {
-    		case .info, .contributors, .setting, .questionnaire:
-						AlertManager.shared.showNotWorking()
-						
-    		case .sponsor:
-    				AlertManager.shared.startIndicator()
-    				DispatchQueue.main.asyncAfter(deadline: .now()+0.2) {
-            		self.navigation?.push(type: type, transition: .forward)
-        		}
-    				
-    		default:
-    				navigation?.push(type: type, transition: .forward)
-    		}
+        debugPrint("---\(#function)---")
+        
+        switch type {
+        case .info, .contributors, .setting, .questionnaire:
+            AlertManager.shared.showNotWorking()
+            
+        case .sponsor:
+            AlertManager.shared.startIndicator()
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.2) {
+                self.navigation?.push(type: type, transition: .forward)
+            }
+            
+        default:
+            navigation?.push(type: type, transition: .forward)
+        }
     }
     
     func onItemSelected(with event: SCDWidgetsItemEvent?) {
@@ -207,10 +207,10 @@ extension TimeTablePageAdapter: TimeTablePageDelegate {
     }
     
     func onTabClicked(by type: TimeTablePageType) {
-    		debugPrint("---\(#function)---")
-    		
-    		guard self.pageType != type else { return } // ignore click current tab
-    		
+        debugPrint("---\(#function)---")
+        
+        guard self.pageType != type else { return } // ignore click current tab
+        
         self.pageType = type
         timeTablePageView.removeOnTabClick()
         timeTablePageView.tabItems.enumerated().forEach { i, item in

@@ -76,7 +76,7 @@ private extension ProfilePageAdapter {
         
         let session = DataManager.shared.sessions.first { $0.id == profile.sessions.first }
         profilePage.sessionLabel.text = session?.title.ja ?? ""
-       	profilePage.timeLabel.text = "\(session?.startsAt.toDateAndTime ?? "") -"
+        profilePage.timeLabel.text = "\(session?.startsAt.toDateAndTime ?? "") -"
         profilePage.profileImage.load(with: profile.profilePicture)
     }
     

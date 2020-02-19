@@ -15,7 +15,7 @@ extension BindingElement where T == SupporterPageListElement {
         return self.select(\.children, .at(0)).cast(SCDWidgetsRowView.self)
     }
     
-        
+    
     // MARK: Parts
     
     var leftImage: BindingElement <String> {

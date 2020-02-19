@@ -31,7 +31,7 @@ final class ScadeKaigi2020: SCDApplication {
         let adapter = SessionPageAdapter()
         return adapter
     }()
-     
+    
     private lazy var aboutAdapter: AboutPageAdapter = {
         let adapter = AboutPageAdapter()
         return adapter
@@ -41,7 +41,7 @@ final class ScadeKaigi2020: SCDApplication {
         let adapter = MapPageAdapter()
         return adapter
     }()
-
+    
     private lazy var sponsorAdapter: SponsorPageAdapter = {
         let entity = SponsorEntity()
         entity.create()

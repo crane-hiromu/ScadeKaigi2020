@@ -15,7 +15,7 @@ extension BindingElement where T == SponsorPageListElement {
         return self.select(\.children, .at(0)).cast(SCDWidgetsRowView.self)
     }
     
-        
+    
     // MARK: Parts
     
     var leftImage: BindingElement <String> {
@@ -33,7 +33,7 @@ extension BindingElement where T == SponsorPageListElement {
     var rightText: BindingElement <String> {
         return parentWrapper.select(\.children, .at(1)).select(\SCDWidgetsButton.text)
     }
-
+    
     var leftColor: BindingElement <SCDGraphicsRGB> {
         return parentWrapper.select(\.children, .at(0)).select(\SCDWidgetsButton.backgroundColor)
     }

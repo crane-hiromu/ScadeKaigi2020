@@ -3,8 +3,8 @@ import ScadeKit
 // MARK: - Delegate
 
 protocol TimeTablePageDelegate: SCDLatticePageAdapter {
-		func onSearchClicked()
-		func onMenuClicked()
+    func onSearchClicked()
+    func onMenuClicked()
     func onMenuItemClicked(by type: Constants.PageType)
     func onTabClicked(by type: TimeTablePageType)
     func onItemSelected(with event: SCDWidgetsItemEvent?)
@@ -55,42 +55,42 @@ final class TimeTablePageView {
     
     private lazy var sidebar: SCDWidgetsSidebar! = {
         let bar = adapter?.page?.getWidgetByName("sidebar")?.asSideBar
-
+        
         let homeMenu = bar?.panel?.getWidgetByName("homeMenuButton")?.asClikable
         homeMenu?.onClick.append(SCDWidgetsEventHandler{ [weak self] _ in 
-        		self?.timeTablePageDelegate?.onMenuItemClicked(by: .timeTable)
+            self?.timeTablePageDelegate?.onMenuItemClicked(by: .timeTable)
         })
         let aboutMenu = bar?.panel?.getWidgetByName("aboutMenuButton")?.asClikable
         aboutMenu?.onClick.append(SCDWidgetsEventHandler{ [weak self] _ in 
-        		self?.timeTablePageDelegate?.onMenuItemClicked(by: .about)
+            self?.timeTablePageDelegate?.onMenuItemClicked(by: .about)
         })
         let infoMenu = bar?.panel?.getWidgetByName("infoMenuButton")?.asClikable
         infoMenu?.onClick.append(SCDWidgetsEventHandler{ [weak self] _ in 
-        		self?.timeTablePageDelegate?.onMenuItemClicked(by: .info)
+            self?.timeTablePageDelegate?.onMenuItemClicked(by: .info)
         })
         let mapMenu = bar?.panel?.getWidgetByName("mapMenuButton")?.asClikable
         mapMenu?.onClick.append(SCDWidgetsEventHandler{ [weak self] _ in 
-        		self?.timeTablePageDelegate?.onMenuItemClicked(by: .map)
+            self?.timeTablePageDelegate?.onMenuItemClicked(by: .map)
         })
         let sponsorMenu = bar?.panel?.getWidgetByName("sponsorMenuButton")?.asClikable
         sponsorMenu?.onClick.append(SCDWidgetsEventHandler{ [weak self] _ in 
-        		self?.timeTablePageDelegate?.onMenuItemClicked(by: .sponsor)
+            self?.timeTablePageDelegate?.onMenuItemClicked(by: .sponsor)
         })  
         let contributorsMenu = bar?.panel?.getWidgetByName("contributorsMenuButton")?.asClikable
         contributorsMenu?.onClick.append(SCDWidgetsEventHandler{ [weak self] _ in 
-        		self?.timeTablePageDelegate?.onMenuItemClicked(by: .contributors)
+            self?.timeTablePageDelegate?.onMenuItemClicked(by: .contributors)
         })
         let settingsMenu = bar?.panel?.getWidgetByName("settingsMenuButton")?.asClikable
         settingsMenu?.onClick.append(SCDWidgetsEventHandler{ [weak self] _ in 
-        		self?.timeTablePageDelegate?.onMenuItemClicked(by: .setting)
+            self?.timeTablePageDelegate?.onMenuItemClicked(by: .setting)
         })
         let questionnaireMenu = bar?.panel?.getWidgetByName("questionnaireMenuButton")?.asClikable
         questionnaireMenu?.onClick.append(SCDWidgetsEventHandler{ [weak self] _ in 
-        		self?.timeTablePageDelegate?.onMenuItemClicked(by: .questionnaire)
+            self?.timeTablePageDelegate?.onMenuItemClicked(by: .questionnaire)
         })
         return bar
     }()
-
+    
     
     // MARK: Initializer
     
@@ -123,38 +123,38 @@ final class TimeTablePageView {
 extension TimeTablePageView {
     
     func appendOnTabClick() {
-    		DispatchQueue.global().async {
-		        self.tabItems.enumerated().forEach { index, item in
-		            item.onClick.append(self.tabHandler[index])
-		        }
+        DispatchQueue.global().async {
+            self.tabItems.enumerated().forEach { index, item in
+                item.onClick.append(self.tabHandler[index])
+            }
         }
     }
     
     func removeOnTabClick() {
-	    	DispatchQueue.global().async {
-		        self.tabItems.forEach { item in
-		            item.onClick.removeAll()
-		        }
-	      }
+        DispatchQueue.global().async {
+            self.tabItems.forEach { item in
+                item.onClick.removeAll()
+            }
+        }
     }
     
     func appendOnTagClick() {
-    		DispatchQueue.global().async {
-						self.timeTableList.elements.enumerated().forEach { i, wrapper in
-	              let image = wrapper.children.first?.asRow?.children[2].asImage
-	              image?.onClick.removeAll() // have to reset case of android keeping previous event
-	              image?.onClick.append(SCDWidgetsEventHandler { [weak self] e in
-	                  self?.timeTablePageDelegate?.onTagSelected(with: e, at: i)
-	              })
-	          }
+        DispatchQueue.global().async {
+            self.timeTableList.elements.enumerated().forEach { i, wrapper in
+                let image = wrapper.children.first?.asRow?.children[2].asImage
+                image?.onClick.removeAll() // have to reset case of android keeping previous event
+                image?.onClick.append(SCDWidgetsEventHandler { [weak self] e in
+                    self?.timeTablePageDelegate?.onTagSelected(with: e, at: i)
+                })
+            }
         }
     }
     
     func setSidebar(isHidden: Bool? = nil) {   		
-    		if let isHidden = isHidden {
-    				sidebar.isHidden = isHidden
-    		} else {
-    				sidebar.isHidden.toggle()
-    		}
+        if let isHidden = isHidden {
+            sidebar.isHidden = isHidden
+        } else {
+            sidebar.isHidden.toggle()
+        }
     }
 }

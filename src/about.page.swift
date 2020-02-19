@@ -3,7 +3,7 @@ import ScadeKit
 // MARK: - Page
 
 final class AboutPageAdapter: SCDLatticePageAdapter {
-
+    
     // MARK: Properties
     
     private lazy var aboutPage: AboutPage = {

@@ -3,7 +3,7 @@ import ScadeKit
 // MARK: - Page
 
 final class MapPageAdapter: SCDLatticePageAdapter {
-
+    
     // MARK: Properties
     
     private lazy var mapPage: MapPage = {
@@ -20,7 +20,7 @@ final class MapPageAdapter: SCDLatticePageAdapter {
         debugPrint("---\(#function)---")
         
         setupSafeArea()
-
+        
         // accsess
         mapPage.backButton.isVisible = true
     }

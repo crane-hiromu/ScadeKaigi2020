@@ -51,7 +51,7 @@ extension EObject {
     }
     
     var asWebView: SCDWidgetsWebView? {
-    		return self as? SCDWidgetsWebView
+        return self as? SCDWidgetsWebView
     }
     
     var asClikable: SCDWidgetsClickable? {

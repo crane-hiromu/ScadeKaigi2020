@@ -12,7 +12,7 @@ protocol SponsorPageDelegate: SCDLatticePageAdapter {
 // MARK: - View
 
 final class SponsorPage {
-	    
+    
     // MARK: Properties
     
     weak var sponsorPageDelegate: SponsorPageDelegate?
@@ -38,21 +38,21 @@ final class SponsorPage {
     
     private lazy var goldList: SCDWidgetsList! = {
         let list = adapter?.page?.getWidgetByName("goldList")?.asList
-//        list?.onItemSelected.append(SCDWidgetsItemSelectedEventHandler { [weak self] event in
-//            self?.sponsorPageDelegate?.onItemSelected(with: event)
-//        })
+        //        list?.onItemSelected.append(SCDWidgetsItemSelectedEventHandler { [weak self] event in
+        //            self?.sponsorPageDelegate?.onItemSelected(with: event)
+        //        })
         return list
     }()
     
     private lazy var supporterList: SCDWidgetsList! = {
         let list = adapter?.page?.getWidgetByName("supporterList")?.asList
-//        list?.onItemSelected.append(SCDWidgetsItemSelectedEventHandler { [weak self] event in
-//            self?.sponsorPageDelegate?.onItemSelected(with: event)
-//        })
+        //        list?.onItemSelected.append(SCDWidgetsItemSelectedEventHandler { [weak self] event in
+        //            self?.sponsorPageDelegate?.onItemSelected(with: event)
+        //        })
         return list
     }()
     
-		private lazy var zozoButton: SCDWidgetsButton! = {
+    private lazy var zozoButton: SCDWidgetsButton! = {
         let btn = adapter?.page?.getWidgetByName("zozoButton")?.asButton
         btn?.onClick.append(SCDWidgetsEventHandler { [weak self] event in
             self?.sponsorPageDelegate?.onSponsorClicked(by: .platinum(.zozo))
@@ -60,15 +60,15 @@ final class SponsorPage {
         return btn
     }()
     
-		private lazy var yappliButton: SCDWidgetsButton! = {
+    private lazy var yappliButton: SCDWidgetsButton! = {
         let btn = adapter?.page?.getWidgetByName("yappliButton")?.asButton
         btn?.onClick.append(SCDWidgetsEventHandler { [weak self] event in
             self?.sponsorPageDelegate?.onSponsorClicked(by: .platinum(.yappli))
         })
         return btn
     }()
-		
-		private lazy var yumemiButton: SCDWidgetsButton! = {
+    
+    private lazy var yumemiButton: SCDWidgetsButton! = {
         let btn = adapter?.page?.getWidgetByName("yumemiButton")?.asButton
         btn?.onClick.append(SCDWidgetsEventHandler { [weak self] event in
             self?.sponsorPageDelegate?.onSponsorClicked(by: .platinum(.yumemi))
