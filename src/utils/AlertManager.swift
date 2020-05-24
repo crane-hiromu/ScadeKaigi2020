@@ -1,5 +1,9 @@
 import ScadeKit
 
+#if os(iOS)
+import UIKit
+#endif
+
 // MARK: - Manager
 
 final class AlertManager: EObject {
