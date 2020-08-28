@@ -9,7 +9,7 @@ You can build App for iOS and Android.
 <img width="800" alt="74605466-b4523d00-510b-11ea-8d5b-494bdaae0238" src="https://user-images.githubusercontent.com/24838521/74605826-e44f0f80-510e-11ea-9c94-c44ded572513.png">
 
 
-* It is an unfinished app
+※ It is an unfinished app
 
 ## UI
 
