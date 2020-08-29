@@ -11,6 +11,10 @@ You can build App for iOS and Android.
 
 ※ It is an unfinished app
 
+### Session
+
+[![](https://img.youtube.com/vi/cUzA4YThK7s/0.jpg)](https://www.youtube.com/watch?v=cUzA4YThK7s)
+
 ## UI
 
 ### 1.Timetable
