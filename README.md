@@ -13,6 +13,8 @@ You can build App for iOS and Android.
 
 ### Session
 
+You can check session on YouTube.
+
 [![](https://img.youtube.com/vi/cUzA4YThK7s/0.jpg)](https://www.youtube.com/watch?v=cUzA4YThK7s)
 
 ## UI
